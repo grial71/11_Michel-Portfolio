@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Le Numérique vient jusqu'à vous : création de sites web simples, montage vidéo, interviews, IA et accompagnement numérique humain pour débutants, associations, artisans et petites entreprises." />
+  <title>Le Numérique vient jusqu'à vous | Accompagnement numérique humain</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#06101f;
+      --bg2:#0b1b34;
+      --card:#0f213d;
+      --card2:#122b4d;
+      --blue:#38bdf8;
+      --blue2:#0ea5e9;
+      --cyan:#22d3ee;
+      --yellow:#facc15;
+      --orange:#fb923c;
+      --green:#22c55e;
+      --white:#f8fafc;
+      --muted:#b6c4d8;
+      --border:rgba(148,163,184,.25);
+      --shadow:0 24px 80px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--white);
+      line-height:1.65;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .site-bg{
+      position:fixed;inset:0;z-index:-5;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(56,189,248,.22), transparent 28%),
+        radial-gradient(circle at 82% 18%, rgba(250,204,21,.14), transparent 24%),
+        radial-gradient(circle at 50% 80%, rgba(34,211,238,.12), transparent 28%),
+        linear-gradient(135deg,#020617 0%,#07152a 45%,#0f2f44 100%);
+    }
+    .site-bg:before{
+      content:"";position:absolute;inset:0;opacity:.26;
+      background-image:url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2338bdf8' stroke-opacity='.35'%3E%3Cpath d='M10 40C35 10 58 55 87 23s43 6 43 6M0 96c24-18 44 13 72-6s46 11 68-8'/%3E%3Ccircle cx='22' cy='42' r='2' fill='%2338bdf8'/%3E%3Ccircle cx='87' cy='23' r='2' fill='%23facc15'/%3E%3Ccircle cx='110' cy='86' r='2' fill='%2322d3ee'/%3E%3C/g%3E%3C/svg%3E");
+      background-size:160px 160px;
+    }
+
+    .container{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+
+    nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(2,6,23,.76);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",sans-serif;font-weight:800;letter-spacing:-.5px}
+    .logo-mark{
+      width:48px;height:48px;border-radius:15px;
+      background:linear-gradient(135deg,var(--blue),var(--yellow));
+      display:grid;place-items:center;color:#06101f;font-size:24px;box-shadow:0 12px 30px rgba(56,189,248,.28)
+    }
+    .logo small{display:block;color:var(--yellow);font-size:.75rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase}
+    .nav-links{display:flex;gap:22px;align-items:center;font-size:.92rem;color:var(--muted);font-weight:650}
+    .nav-links a:hover{color:var(--yellow)}
+    .nav-cta{padding:12px 18px;border-radius:999px;background:var(--yellow);color:#07101f;font-weight:900;box-shadow:0 10px 26px rgba(250,204,21,.25)}
+
+    header{position:relative;padding:86px 0 70px;overflow:hidden}
+    .hero{display:grid;grid-template-columns:1.04fr .96fr;gap:42px;align-items:center}
+    .badge{
+      display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border:1px solid rgba(56,189,248,.35);
+      border-radius:999px;color:var(--cyan);background:rgba(56,189,248,.09);font-weight:750;font-size:.9rem;margin-bottom:20px
+    }
+    .pulse{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(34,197,94,.65);animation:pulse 1.8s infinite}
+    @keyframes pulse{70%{box-shadow:0 0 0 12px rgba(34,197,94,0)}}
+    h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.35rem,5.6vw,5.05rem);line-height:1.02;letter-spacing:-2.8px;margin-bottom:20px}
+    .highlight{color:var(--yellow)}
+    .hero p{color:var(--muted);font-size:1.12rem;max-width:650px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 22px;border-radius:16px;
+      font-weight:850;border:1px solid transparent;transition:.25s ease;cursor:pointer
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--yellow),#f97316);color:#08111f;box-shadow:0 14px 36px rgba(250,204,21,.22)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 48px rgba(250,204,21,.32)}
+    .btn-secondary{background:rgba(15,33,61,.82);border-color:var(--border);color:var(--white)}
+    .btn-secondary:hover{border-color:var(--blue);transform:translateY(-3px)}
+
+    .hero-visual{
+      min-height:520px;border-radius:34px;position:relative;overflow:hidden;border:1px solid rgba(56,189,248,.28);box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg,rgba(2,6,23,.82),rgba(6,16,31,.42)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+    .portrait-card{
+      position:absolute;top:26px;left:26px;right:26px;
+      display:flex;align-items:center;gap:18px;padding:18px;border-radius:26px;
+      background:rgba(6,16,31,.80);border:1px solid rgba(248,250,252,.16);backdrop-filter:blur(14px)
+    }
+    .portrait-wrap{
+      width:104px;height:104px;border-radius:28px;overflow:hidden;flex:0 0 auto;
+      border:3px solid rgba(250,204,21,.75);box-shadow:0 16px 42px rgba(0,0,0,.38);
+      background:linear-gradient(135deg,var(--blue),var(--yellow));
+    }
+    .portrait-wrap img{width:100%;height:100%;object-fit:cover}
+    .portrait-card h2{font-size:1.38rem;margin:0 0 2px;letter-spacing:-.5px}
+    .portrait-card p{font-size:.94rem;color:var(--muted);line-height:1.45}
+    .visual-card{
+      position:absolute;left:24px;right:24px;bottom:24px;padding:22px;border-radius:24px;
+      background:rgba(6,16,31,.80);border:1px solid rgba(248,250,252,.16);backdrop-filter:blur(14px)
+    }
+    .visual-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+    .visual-chip{text-align:center;border-radius:16px;padding:14px 8px;background:rgba(15,33,61,.8);border:1px solid var(--border);font-size:.82rem;color:var(--muted)}
+    .visual-chip b{display:block;color:var(--white);font-size:1.35rem;margin-bottom:2px}
+
+    .strip{padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(2,6,23,.42)}
+    .strip-list{display:flex;gap:28px;overflow:hidden;white-space:nowrap;color:var(--muted);font-weight:800;justify-content:center;flex-wrap:wrap}
+    .strip-list span{color:var(--cyan)}
+
+    section{padding:82px 0}
+    .section-head{text-align:center;margin-bottom:42px}
+    .section-head span{color:var(--yellow);font-weight:900;text-transform:uppercase;letter-spacing:2.5px;font-size:.78rem}
+    h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(2rem,4vw,3.25rem);line-height:1.1;letter-spacing:-1.5px;margin:10px 0 14px}
+    .section-head p{color:var(--muted);max-width:720px;margin:0 auto}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .card{
+      background:linear-gradient(180deg,rgba(15,33,61,.94),rgba(8,23,43,.94));
+      border:1px solid var(--border);border-radius:28px;padding:28px;box-shadow:0 18px 60px rgba(0,0,0,.20);
+      position:relative;overflow:hidden;transition:.25s ease
+    }
+    .card:before{content:"";position:absolute;inset:auto -20% -60% -20%;height:160px;background:radial-gradient(circle,rgba(56,189,248,.18),transparent 70%)}
+    .card:hover{transform:translateY(-6px);border-color:rgba(250,204,21,.55)}
+    .icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:rgba(56,189,248,.11);border:1px solid rgba(56,189,248,.28);font-size:1.8rem;margin-bottom:17px}
+    .card h3{font-family:"Space Grotesk",sans-serif;font-size:1.28rem;margin-bottom:10px}
+    .card p,.card li{color:var(--muted);font-size:.96rem}
+    .card ul{margin-top:14px;padding-left:18px}
+    .tag{display:inline-flex;margin-top:18px;padding:9px 13px;border-radius:999px;background:rgba(250,204,21,.12);border:1px solid rgba(250,204,21,.25);color:var(--yellow);font-weight:850;font-size:.85rem}
+
+    .offer{
+      border-radius:34px;padding:34px;background:linear-gradient(135deg,rgba(250,204,21,.16),rgba(56,189,248,.12));border:1px solid rgba(250,204,21,.28);
+      display:grid;grid-template-columns:1fr .9fr;gap:26px;align-items:center
+    }
+    .offer h2{margin-top:0}.offer p{color:var(--muted)}
+    .check-list{display:grid;gap:12px;margin-top:18px}.check{display:flex;gap:10px;color:var(--muted)}.check b{color:var(--green)}
+
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
+    .step{padding:24px;border-radius:24px;background:rgba(15,33,61,.75);border:1px solid var(--border);position:relative}
+    .step:before{counter-increment:step;content:"0" counter(step);display:inline-grid;place-items:center;width:42px;height:42px;border-radius:14px;background:var(--yellow);color:#06101f;font-weight:950;margin-bottom:16px}
+    .step h3{font-family:"Space Grotesk";margin-bottom:8px}.step p{color:var(--muted);font-size:.92rem}
+
+    .proof-box{
+      margin-top:22px;border-radius:26px;padding:26px;border:1px solid rgba(56,189,248,.25);
+      background:rgba(2,6,23,.32);
+    }
+    .proof-box p{color:var(--muted)}
+    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .proof{padding:16px;border-radius:18px;background:rgba(15,33,61,.75);border:1px solid var(--border);font-weight:800;color:var(--muted)}
+    .proof b{display:block;color:var(--white);font-size:1.35rem;margin-bottom:4px}
+
+    .contact-box{
+      border-radius:34px;background:linear-gradient(135deg,rgba(15,33,61,.98),rgba(6,36,58,.96));border:1px solid rgba(56,189,248,.30);box-shadow:var(--shadow);padding:34px;
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center
+    }
+    .contact-actions{display:grid;gap:14px}.contact-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;border-radius:18px;font-weight:900;border:1px solid rgba(248,250,252,.16);transition:.25s ease}
+    .contact-btn:hover{transform:translateY(-3px)}
+    .mail{background:linear-gradient(135deg,#2563eb,#38bdf8)}.telegram{background:linear-gradient(135deg,#0891b2,#22d3ee);color:#03111f}.rdv{background:linear-gradient(135deg,#16a34a,#86efac);color:#03111f}
+    .small{font-size:.9rem;color:var(--muted);margin-top:12px}
+
+    footer{padding:38px 0;border-top:1px solid var(--border);background:rgba(2,6,23,.78);text-align:center;color:var(--muted)}
+
+    .floating-telegram{
+      position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:22px;background:linear-gradient(135deg,#22d3ee,#0ea5e9);display:grid;place-items:center;color:#03111f;font-size:1.8rem;box-shadow:0 18px 45px rgba(14,165,233,.35)
+    }
+
+    @media(max-width:980px){
+      .hero,.offer,.contact-box{grid-template-columns:1fr}.hero-visual{min-height:500px}.grid{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.nav-links{display:none}.proof-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:640px){
+      .container{width:min(100% - 26px,1180px)}.nav-inner{height:68px}.logo span{font-size:.9rem}.hero{gap:26px}header{padding:56px 0}.grid,.grid-2,.process{grid-template-columns:1fr}.visual-grid{grid-template-columns:1fr 1fr}.hero-actions .btn{width:100%}section{padding:58px 0}.card,.offer,.contact-box{padding:22px;border-radius:24px}h1{letter-spacing:-1.5px}.portrait-card{align-items:flex-start;flex-direction:column}.portrait-wrap{width:92px;height:92px}.hero-visual{min-height:610px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-bg" aria-hidden="true"></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#accueil" aria-label="Accueil">
+        <span class="logo-mark">💙</span>
+        <span>LE NUMÉRIQUE<br><small>vient jusqu'à vous</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#apprendre">Apprendre</a>
+        <a href="#offre">Offre gratuite</a>
+        <a href="#methode">Méthode</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Prendre RDV</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="accueil">
+    <div class="container hero">
+      <div>
+        <div class="badge"><span class="pulse"></span> Projet en préparation — accompagnement numérique humain</div>
+        <h1>Vos idées,<br><span class="highlight">votre présence en ligne</span>, simplement.</h1>
+        <p>Je vous accompagne pas à pas pour créer votre page web, apprendre à utiliser l'IA, monter vos vidéos, préparer des interviews et mieux communiquer sur vos réseaux. Même si vous êtes débutant.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#services">🚀 Découvrir mes services</a>
+          <a class="btn btn-secondary" href="#contact">✉️ Me contacter</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" role="img" aria-label="Services numériques, création web, vidéo et accompagnement">
+        <div class="portrait-card">
+          <div class="portrait-wrap">
+            <img src="images/michel-portrait-professionnel.webp.png" alt="Portrait professionnel de Michel Quinones">
+          </div>
+          <div>
+            <h2>Michel Quinones</h2>
+            <p>Accompagnement numérique, IA, création web, contenus visuels et aide personnalisée pour débutants, associations et petites structures.</p>
+          </div>
+        </div>
+
+        <div class="visual-card">
+          <h3>Un accompagnement concret, simple et bienveillant</h3>
+          <p>Sites web, vidéos, réseaux sociaux, IA, conseils sur rendez-vous et autonomie progressive.</p>
+          <div class="visual-grid">
+            <div class="visual-chip"><b>🌐</b>Site web</div>
+            <div class="visual-chip"><b>🎬</b>Vidéo</div>
+            <div class="visual-chip"><b>🎤</b>Interview</div>
+            <div class="visual-chip"><b>🤖</b>IA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="strip">
+    <div class="container strip-list">
+      <div>🌐 Sites simples</div><div>🎬 Montage vidéo</div><div>🎤 Interviews</div><div>🤖 IA</div><div>📱 Réseaux sociaux</div><div>🤝 Accompagnement humain</div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <span>Services</span>
+        <h2>Ce que je peux faire avec vous</h2>
+        <p>Je ne cherche pas seulement à faire à votre place. Mon objectif est aussi de vous apprendre à comprendre, créer et devenir plus autonome.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="icon">🌐</div>
+          <h3>Création de pages web</h3>
+          <p>Création de sites vitrines simples, modernes et adaptés aux débutants.</p>
+          <ul><li>Page de présentation</li><li>Services, photos, contacts</li><li>Adapté téléphone et ordinateur</li></ul>
+          <span class="tag">Idéal petites entreprises</span>
+        </article>
+
+        <article class="card">
+          <div class="icon">🎬</div>
+          <h3>Montage vidéo</h3>
+          <p>Aide à la création de vidéos courtes pour vos réseaux sociaux.</p>
+          <ul><li>TikTok, Facebook, Instagram, YouTube</li><li>Montage simple et clair</li><li>Formation pour monter soi-même</li></ul>
+          <span class="tag">Formation incluse</span>
+        </article>
+
+        <article class="card">
+          <div class="icon">🎤</div>
+          <h3>Interviews & témoignages</h3>
+          <p>Préparation et mise en valeur de vos interviews pour raconter votre histoire.</p>
+          <ul><li>Questions préparées</li><li>Présentation professionnelle</li><li>Diffusion sur vos réseaux</li></ul>
+          <span class="tag">Racontez votre parcours</span>
+        </article>
+
+        <article class="card">
+          <div class="icon">🤖</div>
+          <h3>Initiation à l'IA</h3>
+          <p>Apprendre à utiliser ChatGPT et les outils IA pour gagner du temps.</p>
+          <ul><li>Rédiger des textes</li><li>Organiser ses idées</li><li>Créer des supports</li></ul>
+          <span class="tag">IA utile et accessible</span>
+        </article>
+
+        <article class="card">
+          <div class="icon">📱</div>
+          <h3>Réseaux sociaux</h3>
+          <p>Conseils pour présenter vos activités et communiquer plus clairement.</p>
+          <ul><li>Profil professionnel</li><li>Publications</li><li>Images et messages</li></ul>
+          <span class="tag">Visibilité locale</span>
+        </article>
+
+        <article class="card">
+          <div class="icon">🧭</div>
+          <h3>Conseils sur rendez-vous</h3>
+          <p>Un temps d'échange pour comprendre vos besoins et choisir les bons outils.</p>
+          <ul><li>En ligne ou en présentiel selon secteur</li><li>Conseils personnalisés</li><li>Plan d'action simple</li></ul>
+          <span class="tag">Accompagnement humain</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="apprendre">
+    <div class="container grid-2">
+      <div class="card">
+        <div class="icon">🎓</div>
+        <h2>Apprendre à créer sa page web facilement</h2>
+        <p>Vous pensez que créer une page web est trop compliqué ? Je vous montre une méthode simple, étape par étape, avec des outils accessibles.</p>
+        <div class="check-list">
+          <div class="check"><b>✓</b><span>Choisir une structure simple pour votre page.</span></div>
+          <div class="check"><b>✓</b><span>Présenter votre activité, vos photos et vos coordonnées.</span></div>
+          <div class="check"><b>✓</b><span>Modifier votre texte sans stress.</span></div>
+          <div class="check"><b>✓</b><span>Gagner en autonomie progressivement.</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛠️</div>
+        <h2>Faire soi-même, mais pas seul</h2>
+        <p>Je vous accompagne comme un guide. Vous avancez à votre rythme, avec des explications claires, sans vocabulaire compliqué.</p>
+        <p class="small">Cette approche est pensée pour les artisans, associations, commerçants, créateurs de contenu et personnes qui débutent.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="offre">
+    <div class="container offer">
+      <div>
+        <div class="badge"><span class="pulse"></span> Offre de lancement</div>
+        <h2>Accompagnement gratuit possible pendant la préparation de mon activité</h2>
+        <p>Dans la phase de construction de mon projet, je peux proposer certains accompagnements gratuits à de petites structures, selon disponibilité et cohérence avec mon projet.</p>
+        <div class="check-list">
+          <div class="check"><b>✓</b><span>Petites entreprises, artisans, associations, projets locaux.</span></div>
+          <div class="check"><b>✓</b><span>Aide à créer une première page, une affiche, une vidéo ou une présentation.</span></div>
+          <div class="check"><b>✓</b><span>Possibilité de témoignage ou retour d'expérience pour valoriser le travail réalisé.</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">💡</div>
+        <h3>Pourquoi cette offre ?</h3>
+        <p>Elle me permet de tester mes services, mieux comprendre les besoins réels du terrain et construire une future offre professionnelle utile, humaine et accessible.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="methode">
+    <div class="container">
+      <div class="section-head">
+        <span>Méthode</span>
+        <h2>Comment se passe l'accompagnement ?</h2>
+        <p>Un fonctionnement simple pour ne pas se perdre dans la technique.</p>
+      </div>
+      <div class="process">
+        <div class="step"><h3>Écoute</h3><p>On échange sur votre activité, vos difficultés et vos objectifs.</p></div>
+        <div class="step"><h3>Plan simple</h3><p>Je vous propose une méthode claire avec les étapes à suivre.</p></div>
+        <div class="step"><h3>Création</h3><p>On crée ensemble vos supports : page, vidéo, texte, réseaux.</p></div>
+        <div class="step"><h3>Autonomie</h3><p>Je vous montre comment modifier, publier et progresser seul.</p></div>
+      </div>
+
+      <div class="proof-box">
+        <h3>Une démarche en construction, avec des preuves concrètes</h3>
+        <p>Ce projet est encore en préparation. Chaque échange, chaque aide apportée et chaque retour du terrain me permet d'améliorer progressivement l'offre.</p>
+        <div class="proof-grid">
+          <div class="proof"><b>🤝</b>Écoute humaine</div>
+          <div class="proof"><b>🧠</b>IA utile</div>
+          <div class="proof"><b>📌</b>Résultats visibles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-box">
+      <div>
+        <div class="section-head" style="text-align:left;margin-bottom:10px">
+          <span>Contact</span>
+        </div>
+        <h2>Discutons de votre projet</h2>
+        <p class="small">Contact professionnel uniquement. Présentez rapidement votre besoin : site web, vidéo, interview, conseils numériques ou accompagnement IA.</p>
+      </div>
+
+      <div class="contact-actions">
+        <a class="contact-btn mail" href="mailto:quinones.michel@yahoo.fr?subject=Demande%20d'information%20-%20Le%20Num%C3%A9rique%20vient%20jusqu'%C3%A0%20vous">📧 Me contacter par mail <span>→</span></a>
+        <a class="contact-btn telegram" href="https://t.me/+3375205355">✈️ Telegram professionnel : 003375205355 <span>→</span></a>
+        <a class="contact-btn rdv" href="mailto:quinones.michel@yahoo.fr?subject=Demande%20de%20rendez-vous%20num%C3%A9rique">📅 Demander un rendez-vous <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Michel Quinones — Le Numérique vient jusqu'à vous</p>
+      <p class="small">Proximité · Écoute · Autonomie · Numérique humain</p>
+    </div>
+  </footer>
+
+  <a class="floating-telegram" href="https://t.me/+3375205355" aria-label="Me contacter sur Telegram">✈️</a>
+
+  <script>
+    // Animation légère des cartes au défilement, sans dépendance externe.
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.animate([
+            { opacity: 0, transform: 'translateY(26px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { duration: 650, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+
+    document.querySelectorAll('.card,.step,.offer,.contact-box,.proof-box').forEach(el => {
+      el.style.opacity = 0;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
