@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Le Numérique vient jusqu'à vous : accompagnement numérique humain, création de pages web, IA, CV, affiches, cartes de visite, interviews avec micro-cravate, podcast, visioconférence et formations gratuites sur rendez-vous à Rouen ou à distance." />
+  <meta name="description" content="Le Numérique vient jusqu'à vous : accompagnement numérique humain, création de pages web, IA, CV, affiches, cartes de visite, interviews avec micro-cravate, podcast, visioconférence, méditation douce, gestion des émotions et formations gratuites sur rendez-vous à Rouen ou à distance." />
   <title>Le Numérique vient jusqu'à vous | Accompagnement numérique humain</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -183,17 +183,59 @@
       position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:22px;background:linear-gradient(135deg,#22d3ee,#0ea5e9);display:grid;place-items:center;color:#03111f;font-size:1.8rem;box-shadow:0 18px 45px rgba(14,165,233,.35)
     }
 
+
+
+    /* Boutons de traduction Google */
+    .language-switcher{
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end
+    }
+    .lang-btn{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:9px 12px;border-radius:999px;
+      border:1px solid rgba(248,250,252,.18);
+      background:rgba(15,33,61,.78);color:var(--white);
+      font-weight:850;font-size:.86rem;cursor:pointer;
+      transition:.25s ease;box-shadow:0 8px 24px rgba(0,0,0,.18)
+    }
+    .lang-btn:hover{transform:translateY(-2px);border-color:rgba(250,204,21,.65);color:var(--yellow)}
+    .lang-btn .flag{font-size:1.05rem;line-height:1}
+    #google_translate_element{position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden}
+    .goog-te-banner-frame.skiptranslate,.goog-te-gadget-icon{display:none!important}
+    body{top:0!important}
+
+
+    /* Lecteur audio et témoignages */
+    .audio-box{
+      margin-top:22px;padding:24px;border-radius:26px;
+      background:rgba(2,6,23,.34);border:1px solid rgba(56,189,248,.28)
+    }
+    .audio-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+    .audio-btn{
+      display:inline-flex;align-items:center;gap:8px;padding:13px 18px;border-radius:999px;
+      border:1px solid rgba(250,204,21,.35);background:linear-gradient(135deg,var(--yellow),#f97316);
+      color:#06101f;font-weight:950;cursor:pointer
+    }
+    .volume-wrap{display:flex;align-items:center;gap:10px;color:var(--muted);font-weight:800}
+    input[type="range"]{accent-color:var(--yellow);cursor:pointer}
+    .audio-status{color:var(--muted);font-size:.92rem}
+    .notice{margin-top:14px;padding:14px 16px;border-radius:18px;background:rgba(250,204,21,.10);border:1px solid rgba(250,204,21,.24);color:var(--muted)}
+    .video-request{
+      margin-top:20px;padding:22px;border-radius:24px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(56,189,248,.10));
+      border:1px solid rgba(34,197,94,.25)
+    }
+
     @media(max-width:980px){
       .hero,.offer,.contact-box{grid-template-columns:1fr}.hero-visual{min-height:500px}.grid{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.nav-links{display:none}.proof-grid{grid-template-columns:1fr}
     }
     @media(max-width:640px){
-      .container{width:min(100% - 26px,1180px)}.nav-inner{height:68px}.logo span{font-size:.9rem}.hero{gap:26px}header{padding:56px 0}.grid,.grid-2,.process{grid-template-columns:1fr}.visual-grid{grid-template-columns:1fr 1fr}.hero-actions .btn{width:100%}section{padding:58px 0}.card,.offer,.contact-box{padding:22px;border-radius:24px}h1{letter-spacing:-1.5px}.portrait-card{align-items:flex-start;flex-direction:column}.portrait-wrap{width:92px;height:92px}.hero-visual{min-height:610px}
+      .container{width:min(100% - 26px,1180px)}.nav-inner{height:auto;min-height:68px;padding:10px 0;flex-wrap:wrap}.language-switcher{width:100%;justify-content:center}.lang-btn{font-size:.82rem;padding:8px 10px}.logo span{font-size:.9rem}.hero{gap:26px}header{padding:56px 0}.grid,.grid-2,.process{grid-template-columns:1fr}.visual-grid{grid-template-columns:1fr 1fr}.hero-actions .btn{width:100%}section{padding:58px 0}.card,.offer,.contact-box{padding:22px;border-radius:24px}h1{letter-spacing:-1.5px}.portrait-card{align-items:flex-start;flex-direction:column}.portrait-wrap{width:92px;height:92px}.hero-visual{min-height:610px}
     }
   </style>
 </head>
 
 <body>
   <div class="site-bg" aria-hidden="true"></div>
+  <div id="google_translate_element" aria-hidden="true"></div>
 
   <nav>
     <div class="container nav-inner">
@@ -206,9 +248,16 @@
         <a href="#apprendre">Apprendre</a>
         <a href="#offre">Offre gratuite</a>
         <a href="#methode">Méthode</a>
+        <a href="#meditation">Méditation</a>
+        <a href="#temoignages">Témoignages</a>
         <a href="#contact">Contact</a>
         <a href="#soutien">Soutien</a>
         <a class="nav-cta" href="#contact">Prendre RDV</a>
+      </div>
+      <div class="language-switcher" aria-label="Choisir la langue">
+        <button class="lang-btn" type="button" onclick="changeLanguage('fr')"><span class="flag">🇫🇷</span> Français</button>
+        <button class="lang-btn" type="button" onclick="changeLanguage('es')"><span class="flag">🇪🇸</span> Español</button>
+        <button class="lang-btn" type="button" onclick="changeLanguage('en')"><span class="flag">🇬🇧</span> English</button>
       </div>
     </div>
   </nav>
@@ -416,6 +465,65 @@
   </section>
 
 
+  <section id="meditation">
+    <div class="container grid-2">
+      <div class="card">
+        <div class="icon">🧘</div>
+        <h2>Un espace calme pour apprendre avec moins de pression</h2>
+        <p>En plus de l'accompagnement numérique, je souhaite proposer une approche humaine et pédagogique : apprendre à avancer plus calmement, reprendre confiance et mieux gérer les émotions quand la technique paraît compliquée.</p>
+        <div class="check-list">
+          <div class="check"><b>✓</b><span>Respirer, ralentir et reprendre confiance avant d'apprendre.</span></div>
+          <div class="check"><b>✓</b><span>Comprendre que l'erreur fait partie de l'apprentissage.</span></div>
+          <div class="check"><b>✓</b><span>Utiliser des outils simples pour organiser ses idées et ses émotions.</span></div>
+          <div class="check"><b>✓</b><span>Avancer pas à pas, sans jugement et selon le niveau de chacun.</span></div>
+        </div>
+        <p class="notice">Je ne me présente pas comme professionnel de santé. Cette démarche est seulement un soutien pédagogique, humain et bienveillant, basé sur mon expérience personnelle et ma façon d'accompagner les personnes.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎵</div>
+        <h2>Musique de méditation</h2>
+        <p>Vous pouvez lancer une musique douce pendant la lecture ou pendant certains moments d'apprentissage, si cela vous aide à vous concentrer et à rester calme.</p>
+        <div class="audio-box">
+          <audio id="meditationAudio" preload="metadata" src="musique/Musique_Gratuite_Libre_de_droit_Sappheiros_Awake.mp3"></audio>
+          <div class="audio-controls">
+            <button class="audio-btn" type="button" id="playPauseBtn">▶️ Play</button>
+            <label class="volume-wrap" for="volumeControl">🔊 Volume
+              <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.55">
+            </label>
+          </div>
+          <p class="audio-status" id="audioStatus">Musique prête. Placez le fichier MP3 dans un dossier nommé <strong>musique</strong> à côté de votre fichier index.html.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="temoignages">
+    <div class="container offer">
+      <div>
+        <div class="badge"><span class="pulse"></span> Témoignages vidéo bienvenus</div>
+        <h2>Votre expérience peut aider d'autres personnes</h2>
+        <p>Si mon accompagnement vous a aidé à créer une page web, comprendre l'IA, préparer un CV, réaliser une vidéo, faire une interview, reprendre confiance ou mieux organiser vos idées, votre témoignage peut encourager d'autres personnes à oser apprendre.</p>
+        <div class="check-list">
+          <div class="check"><b>✓</b><span>Témoignage vidéo court, simple et naturel.</span></div>
+          <div class="check"><b>✓</b><span>Dire ce que vous avez appris et ce que cela vous a apporté.</span></div>
+          <div class="check"><b>✓</b><span>Possibilité de témoigner aussi par écrit si vous préférez.</span></div>
+          <div class="check"><b>✓</b><span>Publication uniquement avec votre accord.</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">🎥</div>
+        <h3>Pourquoi je demande des témoignages ?</h3>
+        <p>Ces retours permettent de montrer concrètement l'utilité du projet, d'améliorer ma méthode et de préparer plus sérieusement ma future micro-entreprise.</p>
+        <div class="video-request">
+          <p><strong>Exemple :</strong> “Michel m'a aidé à comprendre comment créer une page, utiliser ChatGPT ou préparer ma communication.”</p>
+        </div>
+        <a class="btn btn-primary" href="#contact">🎥 Proposer un témoignage</a>
+      </div>
+    </div>
+  </section>
+
+
   <section id="soutien">
     <div class="container offer">
       <div>
@@ -444,7 +552,7 @@
           <span>Contact</span>
         </div>
         <h2>Discutons de votre projet</h2>
-        <p class="small">Contact professionnel uniquement. Présentez rapidement votre besoin : site web, vidéo, interview, conseils numériques ou accompagnement IA.</p>
+        <p class="small">Contact professionnel uniquement. Présentez rapidement votre besoin : site web, vidéo, interview, conseils numériques, accompagnement IA, musique/méditation douce, gestion des émotions dans l’apprentissage ou témoignage vidéo.</p>
       </div>
 
       <div class="contact-actions">
@@ -465,6 +573,83 @@
 
   <a class="floating-telegram" href="https://compose.mail.yahoo.com/?to=quinones.michel%40yahoo.fr&subject=Demande%20de%20rendez-vous%20-%20accompagnement%20num%C3%A9rique" target="_blank" rel="noopener" aria-label="Me contacter par e-mail">📧</a>
 
+
+  <script>
+    // Traduction Google : boutons FR / ES / EN avec drapeaux.
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'fr',
+        includedLanguages: 'fr,es,en',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    function setTranslateCookie(lang) {
+      const value = lang === 'fr' ? '/fr/fr' : '/fr/' + lang;
+      const hostname = window.location.hostname;
+      document.cookie = 'googtrans=' + value + '; path=/';
+      if (hostname) {
+        document.cookie = 'googtrans=' + value + '; path=/; domain=' + hostname;
+        const parts = hostname.split('.');
+        if (parts.length > 2) {
+          document.cookie = 'googtrans=' + value + '; path=/; domain=.' + parts.slice(-2).join('.');
+        }
+      }
+    }
+
+    function changeLanguage(lang) {
+      setTranslateCookie(lang);
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change'));
+      }
+      setTimeout(() => window.location.reload(), 300);
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    // Lecteur musique méditation : Play / Pause / Volume.
+    const meditationAudio = document.getElementById('meditationAudio');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const volumeControl = document.getElementById('volumeControl');
+    const audioStatus = document.getElementById('audioStatus');
+
+    if (meditationAudio && playPauseBtn && volumeControl) {
+      meditationAudio.volume = Number(volumeControl.value);
+
+      playPauseBtn.addEventListener('click', async () => {
+        try {
+          if (meditationAudio.paused) {
+            await meditationAudio.play();
+            playPauseBtn.textContent = '⏸️ Pause';
+            if (audioStatus) audioStatus.textContent = 'Musique en lecture.';
+          } else {
+            meditationAudio.pause();
+            playPauseBtn.textContent = '▶️ Play';
+            if (audioStatus) audioStatus.textContent = 'Musique en pause.';
+          }
+        } catch (error) {
+          if (audioStatus) audioStatus.textContent = 'Le fichier audio n’est pas trouvé ou le navigateur bloque la lecture. Vérifiez le nom du fichier MP3 et le dossier musique.';
+        }
+      });
+
+      volumeControl.addEventListener('input', () => {
+        meditationAudio.volume = Number(volumeControl.value);
+      });
+
+      meditationAudio.addEventListener('ended', () => {
+        playPauseBtn.textContent = '▶️ Play';
+        if (audioStatus) audioStatus.textContent = 'Musique terminée.';
+      });
+
+      meditationAudio.addEventListener('error', () => {
+        if (audioStatus) audioStatus.textContent = 'Audio introuvable : créez un dossier musique et mettez-y le fichier MP3 avec le même nom que dans le code.';
+      });
+    }
+  </script>
+
   <script>
     // Animation légère des cartes au défilement, sans dépendance externe.
     const observer = new IntersectionObserver((entries) => {
@@ -479,7 +664,7 @@
       });
     }, { threshold: .12 });
 
-    document.querySelectorAll('.card,.step,.offer,.contact-box,.proof-box').forEach(el => {
+    document.querySelectorAll('.card,.step,.offer,.contact-box,.proof-box,.audio-box,.video-request').forEach(el => {
       el.style.opacity = 0;
       observer.observe(el);
     });
