@@ -184,6 +184,24 @@
     }
 
 
+    /* Lecteur musique permanent */
+    .floating-player{
+      position:fixed;left:18px;bottom:18px;z-index:70;
+      width:min(420px,calc(100% - 92px));
+      padding:13px 14px;border-radius:24px;
+      background:linear-gradient(135deg,rgba(2,6,23,.96),rgba(15,33,61,.96));
+      border:1px solid rgba(250,204,21,.34);
+      box-shadow:0 18px 55px rgba(0,0,0,.42);
+      backdrop-filter:blur(14px)
+    }
+    .floating-player-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;color:var(--yellow);font-weight:950;font-size:.88rem}
+    .floating-player-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .mini-audio-btn{border:0;border-radius:999px;background:linear-gradient(135deg,var(--yellow),#fb923c);color:#06101f;font-weight:950;padding:10px 14px;cursor:pointer;white-space:nowrap}
+    .mini-volume{display:flex;align-items:center;gap:7px;color:var(--muted);font-weight:850;font-size:.85rem;flex:1;min-width:145px}
+    .mini-volume input{width:100%}
+    .mini-status{font-size:.78rem;color:var(--muted);margin-top:7px;line-height:1.3}
+
+
 
     /* Boutons de traduction Google */
     .language-switcher{
@@ -228,7 +246,7 @@
       .hero,.offer,.contact-box{grid-template-columns:1fr}.hero-visual{min-height:500px}.grid{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.nav-links{display:none}.proof-grid{grid-template-columns:1fr}
     }
     @media(max-width:640px){
-      .container{width:min(100% - 26px,1180px)}.nav-inner{height:auto;min-height:68px;padding:10px 0;flex-wrap:wrap}.language-switcher{width:100%;justify-content:center}.lang-btn{font-size:.82rem;padding:8px 10px}.logo span{font-size:.9rem}.hero{gap:26px}header{padding:56px 0}.grid,.grid-2,.process{grid-template-columns:1fr}.visual-grid{grid-template-columns:1fr 1fr}.hero-actions .btn{width:100%}section{padding:58px 0}.card,.offer,.contact-box{padding:22px;border-radius:24px}h1{letter-spacing:-1.5px}.portrait-card{align-items:flex-start;flex-direction:column}.portrait-wrap{width:92px;height:92px}.hero-visual{min-height:610px}
+      .container{width:min(100% - 26px,1180px)}.nav-inner{height:auto;min-height:68px;padding:10px 0;flex-wrap:wrap}.language-switcher{width:100%;justify-content:center}.lang-btn{font-size:.82rem;padding:8px 10px}.logo span{font-size:.9rem}.hero{gap:26px}header{padding:56px 0}.grid,.grid-2,.process{grid-template-columns:1fr}.visual-grid{grid-template-columns:1fr 1fr}.hero-actions .btn{width:100%}section{padding:58px 0}.card,.offer,.contact-box{padding:22px;border-radius:24px}h1{letter-spacing:-1.5px}.portrait-card{align-items:flex-start;flex-direction:column}.portrait-wrap{width:92px;height:92px}.hero-visual{min-height:610px}.floating-player{left:10px;bottom:10px;width:calc(100% - 86px);padding:11px}.floating-player-title{font-size:.8rem}.mini-audio-btn{padding:9px 11px}.mini-status{display:none}
     }
   </style>
 </head>
@@ -483,16 +501,15 @@
       <div class="card">
         <div class="icon">🎵</div>
         <h2>Musique de méditation</h2>
-        <p>Vous pouvez lancer une musique douce pendant la lecture ou pendant certains moments d'apprentissage, si cela vous aide à vous concentrer et à rester calme.</p>
+        <p>Vous pouvez lancer une musique douce pendant la lecture ou pendant certains moments d'apprentissage, si cela vous aide à vous concentrer et à rester calme. Le lecteur reste aussi disponible en bas de l'écran, même lorsque vous faites défiler la page.</p>
         <div class="audio-box">
-          <audio id="meditationAudio" preload="metadata" src="musique/Musique_Gratuite_Libre_de_droit_Sappheiros_Awake.mp3"></audio>
           <div class="audio-controls">
             <button class="audio-btn" type="button" id="playPauseBtn">▶️ Play</button>
             <label class="volume-wrap" for="volumeControl">🔊 Volume
               <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.55">
             </label>
           </div>
-          <p class="audio-status" id="audioStatus">Musique prête. Placez le fichier MP3 dans un dossier nommé <strong>musique</strong> à côté de votre fichier index.html.</p>
+          <p class="audio-status" id="audioStatus">Musique prête. Le lecteur reste aussi permanent en bas de l’écran. Placez le fichier MP3 dans un dossier nommé <strong>musique</strong> à côté de votre fichier index.html.</p>
         </div>
       </div>
     </div>
@@ -571,6 +588,23 @@
     </div>
   </footer>
 
+
+
+  <div class="floating-player" aria-label="Lecteur musique de méditation permanent">
+    <audio id="meditationAudio" preload="metadata" src="musique/Musique_Gratuite_Libre_de_droit_Sappheiros_Awake.mp3"></audio>
+    <div class="floating-player-title">
+      <span>🎵 Méditation / concentration</span>
+      <span>Libre de droit</span>
+    </div>
+    <div class="floating-player-controls">
+      <button class="mini-audio-btn" type="button" id="miniPlayPauseBtn">▶️ Play</button>
+      <label class="mini-volume" for="miniVolumeControl">🔊
+        <input id="miniVolumeControl" type="range" min="0" max="1" step="0.01" value="0.55">
+      </label>
+    </div>
+    <div class="mini-status" id="miniAudioStatus">Lecteur disponible en permanence.</div>
+  </div>
+
   <a class="floating-telegram" href="https://compose.mail.yahoo.com/?to=quinones.michel%40yahoo.fr&subject=Demande%20de%20rendez-vous%20-%20accompagnement%20num%C3%A9rique" target="_blank" rel="noopener" aria-label="Me contacter par e-mail">📧</a>
 
 
@@ -610,42 +644,65 @@
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
-    // Lecteur musique méditation : Play / Pause / Volume.
+    // Lecteur musique méditation permanent : Play / Pause / Volume synchronisés.
     const meditationAudio = document.getElementById('meditationAudio');
     const playPauseBtn = document.getElementById('playPauseBtn');
+    const miniPlayPauseBtn = document.getElementById('miniPlayPauseBtn');
     const volumeControl = document.getElementById('volumeControl');
+    const miniVolumeControl = document.getElementById('miniVolumeControl');
     const audioStatus = document.getElementById('audioStatus');
+    const miniAudioStatus = document.getElementById('miniAudioStatus');
 
-    if (meditationAudio && playPauseBtn && volumeControl) {
-      meditationAudio.volume = Number(volumeControl.value);
+    function setAudioMessage(message) {
+      if (audioStatus) audioStatus.textContent = message;
+      if (miniAudioStatus) miniAudioStatus.textContent = message;
+    }
 
-      playPauseBtn.addEventListener('click', async () => {
-        try {
-          if (meditationAudio.paused) {
-            await meditationAudio.play();
-            playPauseBtn.textContent = '⏸️ Pause';
-            if (audioStatus) audioStatus.textContent = 'Musique en lecture.';
-          } else {
-            meditationAudio.pause();
-            playPauseBtn.textContent = '▶️ Play';
-            if (audioStatus) audioStatus.textContent = 'Musique en pause.';
-          }
-        } catch (error) {
-          if (audioStatus) audioStatus.textContent = 'Le fichier audio n’est pas trouvé ou le navigateur bloque la lecture. Vérifiez le nom du fichier MP3 et le dossier musique.';
+    function updatePlayButtons() {
+      const text = meditationAudio && !meditationAudio.paused ? '⏸️ Pause' : '▶️ Play';
+      if (playPauseBtn) playPauseBtn.textContent = text;
+      if (miniPlayPauseBtn) miniPlayPauseBtn.textContent = text;
+    }
+
+    async function toggleMeditationAudio() {
+      if (!meditationAudio) return;
+      try {
+        if (meditationAudio.paused) {
+          await meditationAudio.play();
+          setAudioMessage('Musique en lecture.');
+        } else {
+          meditationAudio.pause();
+          setAudioMessage('Musique en pause.');
         }
-      });
+        updatePlayButtons();
+      } catch (error) {
+        setAudioMessage('Le fichier audio n’est pas trouvé ou le navigateur bloque la lecture. Vérifiez le dossier musique et le nom exact du fichier MP3.');
+      }
+    }
 
-      volumeControl.addEventListener('input', () => {
-        meditationAudio.volume = Number(volumeControl.value);
-      });
+    function setVolume(value) {
+      if (!meditationAudio) return;
+      const volume = Number(value);
+      meditationAudio.volume = volume;
+      if (volumeControl) volumeControl.value = String(volume);
+      if (miniVolumeControl) miniVolumeControl.value = String(volume);
+    }
 
+    if (meditationAudio) {
+      setVolume(0.55);
+      if (playPauseBtn) playPauseBtn.addEventListener('click', toggleMeditationAudio);
+      if (miniPlayPauseBtn) miniPlayPauseBtn.addEventListener('click', toggleMeditationAudio);
+      if (volumeControl) volumeControl.addEventListener('input', () => setVolume(volumeControl.value));
+      if (miniVolumeControl) miniVolumeControl.addEventListener('input', () => setVolume(miniVolumeControl.value));
+
+      meditationAudio.addEventListener('play', updatePlayButtons);
+      meditationAudio.addEventListener('pause', updatePlayButtons);
       meditationAudio.addEventListener('ended', () => {
-        playPauseBtn.textContent = '▶️ Play';
-        if (audioStatus) audioStatus.textContent = 'Musique terminée.';
+        updatePlayButtons();
+        setAudioMessage('Musique terminée.');
       });
-
       meditationAudio.addEventListener('error', () => {
-        if (audioStatus) audioStatus.textContent = 'Audio introuvable : créez un dossier musique et mettez-y le fichier MP3 avec le même nom que dans le code.';
+        setAudioMessage('Audio introuvable : créez un dossier musique et mettez-y le fichier MP3 avec le même nom que dans le code.');
       });
     }
   </script>
