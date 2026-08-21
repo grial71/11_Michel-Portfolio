@@ -237,6 +237,24 @@
       border:1px solid rgba(34,197,94,.25)
     }
 
+    /* Étude bénévole des besoins numériques */
+    .survey-section{position:relative;background:linear-gradient(180deg,rgba(2,6,23,.16),rgba(6,36,58,.52));border-block:1px solid var(--border)}
+    .survey-intro{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:stretch}
+    .survey-intro>div:first-child{padding:10px 0}.survey-intro p{color:var(--muted);max-width:760px}
+    .survey-trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.survey-trust span{padding:9px 12px;border-radius:999px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.24);color:#bbf7d0;font-size:.82rem;font-weight:800}
+    .survey-summary{display:flex;flex-direction:column;justify-content:center;padding:28px;border-radius:28px;background:linear-gradient(145deg,rgba(15,33,61,.98),rgba(4,15,30,.98));border:1px solid rgba(56,189,248,.3);box-shadow:var(--shadow)}
+    .survey-summary-label,.survey-step{color:var(--yellow);font-size:.76rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase}.survey-summary strong{font:700 1.8rem "Space Grotesk";margin:8px 0}.survey-summary .btn{margin-top:18px;align-self:flex-start}
+    .survey-summary .survey-test-note{margin-top:13px;padding:12px;border-radius:14px;background:rgba(250,204,21,.08);border:1px solid rgba(250,204,21,.2);font-size:.82rem}.survey-summary .survey-test-note strong{font:inherit;color:var(--yellow)}
+    .survey-panel{margin-top:28px;padding:30px;border-radius:30px;background:linear-gradient(155deg,rgba(15,33,61,.98),rgba(4,15,30,.98));border:1px solid rgba(56,189,248,.3);box-shadow:0 28px 80px rgba(0,0,0,.32)}
+    .survey-panel[hidden],.survey-question[hidden],.survey-success[hidden]{display:none}
+    .survey-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}.survey-panel-head h3{font:700 clamp(1.3rem,3vw,2rem) "Space Grotesk";margin:6px 0 18px}.survey-close{width:42px;height:42px;flex:0 0 auto;border-radius:14px;border:1px solid var(--border);background:rgba(2,6,23,.45);color:var(--white);font-size:1.8rem;cursor:pointer}
+    .survey-progress{height:7px;overflow:hidden;border-radius:999px;background:rgba(148,163,184,.16);margin-bottom:28px}.survey-progress span{display:block;width:10%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--yellow),var(--cyan));transition:width .3s ease}
+    .survey-question{display:none;border:0;padding:0;margin:0}.survey-question.is-active{display:block}.survey-question legend{font:700 clamp(1.2rem,2.7vw,1.65rem) "Space Grotesk";margin-bottom:8px}.survey-help{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+    .choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.choice-grid label,.privacy-check{display:flex;align-items:flex-start;gap:11px;padding:14px 15px;border:1px solid var(--border);border-radius:16px;background:rgba(2,6,23,.28);color:#dbeafe;cursor:pointer;transition:.2s ease}.choice-grid label:hover,.choice-grid label:has(input:checked){border-color:rgba(250,204,21,.55);background:rgba(250,204,21,.08)}
+    .choice-grid input,.privacy-check input{margin-top:3px;accent-color:var(--yellow);transform:scale(1.14)}.survey-question textarea{width:100%;resize:vertical;padding:16px;border-radius:16px;border:1px solid var(--border);background:rgba(2,6,23,.45);color:var(--white);font:inherit}.survey-question textarea:focus{outline:2px solid var(--cyan);outline-offset:2px}.char-count{text-align:right;color:var(--muted);font-size:.82rem;margin:6px 0 18px}.privacy-check{cursor:pointer;color:var(--muted);font-size:.9rem}
+    .survey-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:26px}.survey-error{min-height:1.4em;margin-top:16px;color:#fca5a5;font-weight:750}.survey-success{text-align:center;padding:35px 15px}.survey-success>span{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 18px;border-radius:50%;background:var(--green);color:#03110a;font-size:2rem;font-weight:900}.survey-success p{color:var(--muted)}
+    .privacy-details{margin-top:28px;padding:17px 19px;border:1px solid var(--border);border-radius:18px;background:rgba(2,6,23,.24)}.privacy-details summary{cursor:pointer;color:var(--cyan);font-weight:850}.privacy-details p{color:var(--muted);font-size:.88rem;margin-top:12px}
+
     /* Réalisations publiques et trajectoire du projet */
     .projects-section{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,rgba(2,6,23,.18),rgba(4,18,36,.82))}
     .projects-section:before{content:"";position:absolute;inset:8% -15% auto;height:420px;z-index:-2;background:radial-gradient(ellipse,rgba(34,211,238,.13),transparent 67%);filter:blur(18px)}
@@ -275,7 +293,7 @@
     .support-use-panel{display:grid;grid-template-columns:.75fr 1.25fr;gap:34px;padding:36px;border:1px solid rgba(56,189,248,.28);border-radius:32px;background:linear-gradient(140deg,rgba(15,33,61,.94),rgba(6,36,58,.7))}.support-use-panel h2{margin:8px 0 14px}.support-use-panel>div:first-child>p:last-child{color:var(--muted)}.support-use-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.support-use-grid>div{display:grid;grid-template-columns:auto 1fr;column-gap:11px;padding:15px;border:1px solid var(--border);border-radius:17px;background:rgba(2,6,23,.3)}.support-use-grid>div>span{grid-row:1/3;font-size:1.4rem}.support-use-grid strong{font-size:.9rem}.support-use-grid small{color:var(--muted);line-height:1.4}
 
     @media(max-width:980px){
-      .hero,.offer,.contact-box{grid-template-columns:1fr}.hero-visual{min-height:500px}.grid{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.proof-grid{grid-template-columns:1fr}
+      .hero,.offer,.contact-box,.survey-intro{grid-template-columns:1fr}.hero-visual{min-height:500px}.grid{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.proof-grid{grid-template-columns:1fr}
       .menu-toggle{display:inline-flex;margin-left:auto}
       .nav-inner{position:relative}
       .nav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:12px;background:rgba(2,6,23,.98);border:1px solid var(--border);border-radius:0 0 20px 20px;box-shadow:var(--shadow)}
@@ -290,7 +308,7 @@
     }
     @media(max-width:640px){
       .container{width:min(100% - 26px,1180px)}.nav-inner{height:auto;min-height:68px;padding:10px 0;flex-wrap:wrap}.language-switcher{width:100%;justify-content:center}.lang-btn{font-size:.82rem;padding:8px 10px}.logo span{font-size:.9rem}.hero{gap:26px}header{padding:56px 0}.grid,.grid-2,.process{grid-template-columns:1fr}.visual-grid{grid-template-columns:1fr 1fr}.hero-actions .btn{width:100%}section{padding:58px 0}.card,.offer,.contact-box{padding:22px;border-radius:24px}h1{letter-spacing:-1.5px}.portrait-card{align-items:flex-start;flex-direction:column}.portrait-wrap{width:92px;height:92px}.hero-visual{min-height:610px}.floating-player{left:10px;bottom:10px;width:calc(100% - 86px);padding:11px}.floating-player-title{font-size:.8rem}.mini-audio-btn{padding:9px 11px}.mini-status{display:none}
-      .project-card{min-height:0;border-radius:24px}.project-visual{height:155px}.project-body{padding:22px}.confidential-note{padding:18px}.projects-head h2 br{display:none}
+      .project-card{min-height:0;border-radius:24px}.project-visual{height:155px}.project-body{padding:22px}.confidential-note{padding:18px}.projects-head h2 br{display:none}.survey-panel{padding:20px;border-radius:22px}.choice-grid{grid-template-columns:1fr}.survey-actions{justify-content:stretch}.survey-actions .btn{flex:1}
       .internal-hero{padding:62px 0}.case-study{grid-template-columns:1fr}.case-study-number{min-height:64px;border-right:0;border-bottom:1px solid var(--border)}.case-study-content{padding:22px}.case-facts{grid-template-columns:1fr}.privacy-panel,.support-use-panel{padding:23px}.pillar-grid,.support-use-grid{grid-template-columns:1fr}.status-banner{align-items:flex-start;flex-direction:column}.projects-page-links .btn{width:100%}
     }
 

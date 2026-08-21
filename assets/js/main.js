@@ -140,3 +140,105 @@
     });
     }
 
+    // Questionnaire bénévole : navigation accessible et conservation locale uniquement.
+    const surveyPanel = document.getElementById('surveyPanel');
+    const surveyForm = document.getElementById('needsSurvey');
+    const surveyQuestions = Array.from(document.querySelectorAll('.survey-question'));
+    const surveyStep = document.getElementById('surveyStep');
+    const surveyProgress = document.getElementById('surveyProgress');
+    const surveyPrev = document.getElementById('surveyPrev');
+    const surveyNext = document.getElementById('surveyNext');
+    const surveySubmit = document.getElementById('surveySubmit');
+    const surveyError = document.getElementById('surveyError');
+    const surveySuccess = document.getElementById('surveySuccess');
+    const suggestion = surveyForm && surveyForm.elements.suggestion;
+    let currentSurveyQuestion = 0;
+
+    function showSurveyQuestion(index) {
+      currentSurveyQuestion = Math.max(0, Math.min(index, surveyQuestions.length - 1));
+      surveyQuestions.forEach((question, position) => question.classList.toggle('is-active', position === currentSurveyQuestion));
+      if (surveyStep) surveyStep.textContent = `Question ${currentSurveyQuestion + 1} sur ${surveyQuestions.length}`;
+      if (surveyProgress) surveyProgress.style.width = `${((currentSurveyQuestion + 1) / surveyQuestions.length) * 100}%`;
+      if (surveyPrev) surveyPrev.hidden = currentSurveyQuestion === 0;
+      if (surveyNext) surveyNext.hidden = currentSurveyQuestion === surveyQuestions.length - 1;
+      if (surveySubmit) surveySubmit.hidden = currentSurveyQuestion !== surveyQuestions.length - 1;
+      if (surveyError) surveyError.textContent = '';
+      const legend = surveyQuestions[currentSurveyQuestion].querySelector('legend');
+      if (legend && index > 0) legend.focus?.();
+    }
+
+    function hasAnswer(question) {
+      if (question.dataset.question === '10') return Boolean(surveyForm.elements.privacy_ack.checked);
+      return Boolean(question.querySelector('input:checked'));
+    }
+
+    document.querySelectorAll('[data-max-choices]').forEach(group => {
+      const limit = Number(group.dataset.maxChoices);
+      group.addEventListener('change', event => {
+        const checked = group.querySelectorAll('input:checked');
+        if (checked.length > limit) {
+          event.target.checked = false;
+          if (surveyError) surveyError.textContent = `Vous pouvez choisir au maximum ${limit} réponses.`;
+        } else if (surveyError) surveyError.textContent = '';
+      });
+    });
+
+    const openSurvey = document.getElementById('openSurvey');
+    const closeSurvey = document.getElementById('closeSurvey');
+    if (openSurvey && surveyPanel) openSurvey.addEventListener('click', () => {
+      surveyPanel.hidden = false;
+      showSurveyQuestion(0);
+      surveyPanel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+    if (closeSurvey && surveyPanel) closeSurvey.addEventListener('click', () => {
+      surveyPanel.hidden = true;
+      openSurvey.focus();
+    });
+    if (surveyNext) surveyNext.addEventListener('click', () => {
+      if (!hasAnswer(surveyQuestions[currentSurveyQuestion])) {
+        surveyError.textContent = 'Choisissez au moins une réponse pour continuer.';
+        return;
+      }
+      showSurveyQuestion(currentSurveyQuestion + 1);
+    });
+    if (surveyPrev) surveyPrev.addEventListener('click', () => showSurveyQuestion(currentSurveyQuestion - 1));
+    if (suggestion) suggestion.addEventListener('input', () => {
+      const counter = document.getElementById('charCount');
+      if (counter) counter.textContent = String(suggestion.value.length);
+    });
+
+    if (surveyForm) surveyForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!surveyForm.elements.privacy_ack.checked) {
+        surveyError.textContent = 'Veuillez confirmer la notice de confidentialité.';
+        return;
+      }
+      const payload = {};
+      new FormData(surveyForm).forEach((value, key) => {
+        if (key === 'privacy_ack') return;
+        if (Object.prototype.hasOwnProperty.call(payload, key)) payload[key] = [].concat(payload[key], value);
+        else payload[key] = value;
+      });
+      try {
+        const localResponses = JSON.parse(localStorage.getItem('michel_benevole_survey') || '[]');
+        localResponses.push({ answers: payload });
+        localStorage.setItem('michel_benevole_survey', JSON.stringify(localResponses));
+        localStorage.setItem('michel_benevole_survey_done', '1');
+      } catch (error) {
+        surveyError.textContent = "Votre navigateur empêche l'enregistrement local. Aucune donnée n'a été envoyée.";
+        return;
+      }
+      surveyForm.hidden = true;
+      surveySuccess.hidden = false;
+      surveySuccess.focus();
+      if (document.getElementById('surveyCount')) document.getElementById('surveyCount').textContent = 'Participation enregistrée sur cet appareil';
+    });
+
+    try {
+      if (localStorage.getItem('michel_benevole_survey_done') === '1' && document.getElementById('surveyCount')) {
+        document.getElementById('surveyCount').textContent = 'Vous avez déjà participé sur cet appareil';
+      }
+    } catch (error) {
+      // Le questionnaire reste consultable si le stockage du navigateur est bloqué.
+    }
+
