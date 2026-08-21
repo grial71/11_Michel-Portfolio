@@ -153,6 +153,7 @@
     const surveySuccess = document.getElementById('surveySuccess');
     const suggestion = surveyForm && surveyForm.elements.suggestion;
     let currentSurveyQuestion = 0;
+    const surveyApi = 'https://etude-numerique-benevole.grial888.chatgpt.site/api/survey';
 
     const surveyLabels = {
       aisance: {'pas-du-tout': "Pas du tout à l'aise", peu: "Peu à l'aise", simple: 'Usages simples', plutot: "Plutôt à l'aise", tres: "Très à l'aise"},
@@ -161,29 +162,14 @@
       disponibilites: {'semaine-matin': 'En semaine le matin', 'semaine-apres-midi': "En semaine l'après-midi", 'semaine-soir': 'En semaine le soir', samedi: 'Le samedi', variable: 'Selon les semaines'}
     };
 
-    function getLocalSurveyResponses() {
-      try {
-        const stored = JSON.parse(localStorage.getItem('michel_benevole_survey') || '[]');
-        return Array.isArray(stored) ? stored : [];
-      } catch (error) {
-        return [];
-      }
-    }
-
-    function getMostFrequent(responses, key) {
-      const counts = {};
-      responses.forEach(response => {
-        const raw = response && response.answers && response.answers[key];
-        const values = Array.isArray(raw) ? raw : raw ? [raw] : [];
-        values.forEach(value => { counts[value] = (counts[value] || 0) + 1; });
-      });
-      const winner = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+    function getMostFrequent(counts, total) {
+      const winner = Object.entries(counts || {}).sort((a, b) => b[1] - a[1])[0];
       if (!winner) return null;
-      return {value: winner[0], count: winner[1], percent: Math.round((winner[1] / responses.length) * 100)};
+      return {value: winner[0], count: Number(winner[1]), percent: Math.round((Number(winner[1]) / total) * 100)};
     }
 
-    function updateStatCard(responses, key, valueId, detailId, barId) {
-      const result = getMostFrequent(responses, key);
+    function updateStatCard(data, key, valueId, detailId, barId) {
+      const result = data.thresholdReached ? getMostFrequent(data.counts[key], data.total) : null;
       const value = document.getElementById(valueId);
       const detail = document.getElementById(detailId);
       const bar = document.getElementById(barId);
@@ -194,20 +180,33 @@
         return;
       }
       if (value) value.textContent = surveyLabels[key][result.value] || result.value;
-      if (detail) detail.textContent = responses.length >= 10 ? `${result.percent} % des participations` : `${result.count} réponse${result.count > 1 ? 's' : ''} sur cet appareil`;
+      if (detail) detail.textContent = `${result.percent} % des participations`;
       if (bar) bar.style.width = `${Math.min(result.percent, 100)}%`;
     }
 
-    function renderSurveyStats() {
-      const responses = getLocalSurveyResponses();
+    function renderSurveyStats(data) {
       const total = document.getElementById('statTotal');
-      if (total) total.textContent = String(responses.length);
+      if (total) total.textContent = String(data.total || 0);
       const totalLabel = document.querySelector('.stat-total p');
-      if (totalLabel) totalLabel.textContent = `participation${responses.length > 1 ? 's' : ''} enregistrée${responses.length > 1 ? 's' : ''}`;
-      updateStatCard(responses, 'aisance', 'statAisance', 'statAisanceDetail', 'statAisanceBar');
-      updateStatCard(responses, 'besoins', 'statBesoin', 'statBesoinDetail', 'statBesoinBar');
-      updateStatCard(responses, 'format', 'statFormat', 'statFormatDetail', 'statFormatBar');
-      updateStatCard(responses, 'disponibilites', 'statDisponibilite', 'statDisponibiliteDetail', 'statDisponibiliteBar');
+      if (totalLabel) totalLabel.textContent = `participation${data.total > 1 ? 's' : ''} enregistrée${data.total > 1 ? 's' : ''}`;
+      updateStatCard(data, 'aisance', 'statAisance', 'statAisanceDetail', 'statAisanceBar');
+      updateStatCard(data, 'besoins', 'statBesoin', 'statBesoinDetail', 'statBesoinBar');
+      updateStatCard(data, 'format', 'statFormat', 'statFormatDetail', 'statFormatBar');
+      updateStatCard(data, 'disponibilites', 'statDisponibilite', 'statDisponibiliteDetail', 'statDisponibiliteBar');
+    }
+
+    async function loadSurveyStats() {
+      try {
+        const response = await fetch(surveyApi, {headers: {'Accept': 'application/json'}});
+        if (!response.ok) throw new Error('Statistiques indisponibles');
+        const data = await response.json();
+        renderSurveyStats(data);
+        const count = document.getElementById('surveyCount');
+        if (count) count.textContent = `${data.total} participation${data.total > 1 ? 's' : ''}`;
+      } catch (error) {
+        const scope = document.getElementById('statsScope');
+        if (scope) scope.textContent = 'Le compteur partagé est momentanément indisponible.';
+      }
     }
 
     function showSurveyQuestion(index) {
@@ -263,7 +262,7 @@
       if (counter) counter.textContent = String(suggestion.value.length);
     });
 
-    if (surveyForm) surveyForm.addEventListener('submit', event => {
+    if (surveyForm) surveyForm.addEventListener('submit', async event => {
       event.preventDefault();
       if (!surveyForm.elements.privacy_ack.checked) {
         surveyError.textContent = 'Veuillez confirmer la notice de confidentialité.';
@@ -271,24 +270,27 @@
       }
       const payload = {};
       new FormData(surveyForm).forEach((value, key) => {
-        if (key === 'privacy_ack') return;
+        if (key === 'privacy_ack' || key === 'suggestion') return;
         if (Object.prototype.hasOwnProperty.call(payload, key)) payload[key] = [].concat(payload[key], value);
         else payload[key] = value;
       });
       try {
-        const localResponses = JSON.parse(localStorage.getItem('michel_benevole_survey') || '[]');
-        localResponses.push({ answers: payload });
-        localStorage.setItem('michel_benevole_survey', JSON.stringify(localResponses));
+        surveySubmit.disabled = true;
+        surveySubmit.textContent = 'Envoi en cours…';
+        const response = await fetch(surveyApi, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload)});
+        if (!response.ok) throw new Error('Envoi refusé');
         localStorage.setItem('michel_benevole_survey_done', '1');
       } catch (error) {
-        surveyError.textContent = "Votre navigateur empêche l'enregistrement local. Aucune donnée n'a été envoyée.";
+        surveyError.textContent = "La participation n'a pas pu être enregistrée. Vérifiez votre connexion et réessayez.";
+        surveySubmit.disabled = false;
+        surveySubmit.textContent = 'Valider ma participation';
         return;
       }
       surveyForm.hidden = true;
       surveySuccess.hidden = false;
       surveySuccess.focus();
-      if (document.getElementById('surveyCount')) document.getElementById('surveyCount').textContent = 'Participation enregistrée sur cet appareil';
-      renderSurveyStats();
+      if (document.getElementById('surveyCount')) document.getElementById('surveyCount').textContent = 'Participation enregistrée';
+      await loadSurveyStats();
     });
 
     try {
@@ -298,5 +300,5 @@
     } catch (error) {
       // Le questionnaire reste consultable si le stockage du navigateur est bloqué.
     }
-    renderSurveyStats();
+    loadSurveyStats();
 
