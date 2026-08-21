@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Michel Quinones">
+  <defs>
+    <linearGradient id="g" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/><stop offset="1" stop-color="#facc15"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#06101f"/>
+  <rect x="3" y="3" width="58" height="58" rx="16" fill="none" stroke="url(#g)" stroke-width="3"/>
+  <path d="M15 44V20h6l11 14 11-14h6v24h-7V31L32 44 22 31v13z" fill="url(#g)"/>
+</svg>

@@ -4,254 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Le Numérique vient jusqu'à vous : accompagnement numérique humain, création de pages web, IA, CV, affiches, cartes de visite, interviews avec micro-cravate, podcast, visioconférence, méditation douce, gestion des émotions et formations gratuites sur rendez-vous à Rouen ou à distance." />
+  <meta name="theme-color" content="#06101f">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="Michel Quinones — Portfolio et accompagnement numérique">
+  <meta property="og:description" content="Découvrez des réalisations publiques, un accompagnement numérique humain et une vision fondée sur la transmission et l'entraide.">
+  <meta property="og:url" content="https://grial71.github.io/11_Michel-Portfolio/">
+  <meta property="og:image" content="https://grial71.github.io/11_Michel-Portfolio/assets/images/michel-quinones.webp">
+  <meta name="twitter:card" content="summary_large_image">
   <title>Le Numérique vient jusqu'à vous | Accompagnement numérique humain</title>
+  <link rel="canonical" href="https://grial71.github.io/11_Michel-Portfolio/">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 
-  <style>
-    :root{
-      --bg:#06101f;
-      --bg2:#0b1b34;
-      --card:#0f213d;
-      --card2:#122b4d;
-      --blue:#38bdf8;
-      --blue2:#0ea5e9;
-      --cyan:#22d3ee;
-      --yellow:#facc15;
-      --orange:#fb923c;
-      --green:#22c55e;
-      --white:#f8fafc;
-      --muted:#b6c4d8;
-      --border:rgba(148,163,184,.25);
-      --shadow:0 24px 80px rgba(0,0,0,.35);
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:var(--bg);
-      color:var(--white);
-      line-height:1.65;
-      overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    .site-bg{
-      position:fixed;inset:0;z-index:-5;
-      background:
-        radial-gradient(circle at 12% 15%, rgba(56,189,248,.22), transparent 28%),
-        radial-gradient(circle at 82% 18%, rgba(250,204,21,.14), transparent 24%),
-        radial-gradient(circle at 50% 80%, rgba(34,211,238,.12), transparent 28%),
-        linear-gradient(135deg,#020617 0%,#07152a 45%,#0f2f44 100%);
-    }
-    .site-bg:before{
-      content:"";position:absolute;inset:0;opacity:.26;
-      background-image:url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2338bdf8' stroke-opacity='.35'%3E%3Cpath d='M10 40C35 10 58 55 87 23s43 6 43 6M0 96c24-18 44 13 72-6s46 11 68-8'/%3E%3Ccircle cx='22' cy='42' r='2' fill='%2338bdf8'/%3E%3Ccircle cx='87' cy='23' r='2' fill='%23facc15'/%3E%3Ccircle cx='110' cy='86' r='2' fill='%2322d3ee'/%3E%3C/g%3E%3C/svg%3E");
-      background-size:160px 160px;
-    }
-
-    .container{width:min(1180px,calc(100% - 40px));margin-inline:auto}
-
-    nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter:blur(18px);
-      background:rgba(2,6,23,.76);
-      border-bottom:1px solid var(--border);
-    }
-    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .logo{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk",sans-serif;font-weight:800;letter-spacing:-.5px}
-    .logo-mark{
-      width:48px;height:48px;border-radius:15px;
-      background:linear-gradient(135deg,var(--blue),var(--yellow));
-      display:grid;place-items:center;color:#06101f;font-size:24px;box-shadow:0 12px 30px rgba(56,189,248,.28)
-    }
-    .logo small{display:block;color:var(--yellow);font-size:.75rem;font-weight:800;letter-spacing:.8px;text-transform:uppercase}
-    .nav-links{display:flex;gap:22px;align-items:center;font-size:.92rem;color:var(--muted);font-weight:650}
-    .nav-links a:hover{color:var(--yellow)}
-    .nav-cta{padding:12px 18px;border-radius:999px;background:var(--yellow);color:#07101f;font-weight:900;box-shadow:0 10px 26px rgba(250,204,21,.25)}
-
-    header{position:relative;padding:86px 0 70px;overflow:hidden}
-    .hero{display:grid;grid-template-columns:1.04fr .96fr;gap:42px;align-items:center}
-    .badge{
-      display:inline-flex;align-items:center;gap:10px;padding:9px 16px;border:1px solid rgba(56,189,248,.35);
-      border-radius:999px;color:var(--cyan);background:rgba(56,189,248,.09);font-weight:750;font-size:.9rem;margin-bottom:20px
-    }
-    .pulse{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(34,197,94,.65);animation:pulse 1.8s infinite}
-    @keyframes pulse{70%{box-shadow:0 0 0 12px rgba(34,197,94,0)}}
-    h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.35rem,5.6vw,5.05rem);line-height:1.02;letter-spacing:-2.8px;margin-bottom:20px}
-    .highlight{color:var(--yellow)}
-    .hero p{color:var(--muted);font-size:1.12rem;max-width:650px}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 22px;border-radius:16px;
-      font-weight:850;border:1px solid transparent;transition:.25s ease;cursor:pointer
-    }
-    .btn-primary{background:linear-gradient(135deg,var(--yellow),#f97316);color:#08111f;box-shadow:0 14px 36px rgba(250,204,21,.22)}
-    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 48px rgba(250,204,21,.32)}
-    .btn-secondary{background:rgba(15,33,61,.82);border-color:var(--border);color:var(--white)}
-    .btn-secondary:hover{border-color:var(--blue);transform:translateY(-3px)}
-
-    .hero-visual{
-      min-height:520px;border-radius:34px;position:relative;overflow:hidden;border:1px solid rgba(56,189,248,.28);box-shadow:var(--shadow);
-      background:
-        linear-gradient(135deg,rgba(2,6,23,.82),rgba(6,16,31,.42)),
-        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80") center/cover;
-    }
-    .portrait-card{
-      position:absolute;top:26px;left:26px;right:26px;
-      display:flex;align-items:center;gap:18px;padding:18px;border-radius:26px;
-      background:rgba(6,16,31,.80);border:1px solid rgba(248,250,252,.16);backdrop-filter:blur(14px)
-    }
-    .portrait-wrap{
-      width:104px;height:104px;border-radius:28px;overflow:hidden;flex:0 0 auto;
-      border:3px solid rgba(250,204,21,.75);box-shadow:0 16px 42px rgba(0,0,0,.38);
-      background:linear-gradient(135deg,var(--blue),var(--yellow));
-    }
-    .portrait-wrap img{width:100%;height:100%;object-fit:cover}
-    .portrait-card h2{font-size:1.38rem;margin:0 0 2px;letter-spacing:-.5px}
-    .portrait-card p{font-size:.94rem;color:var(--muted);line-height:1.45}
-    .visual-card{
-      position:absolute;left:24px;right:24px;bottom:24px;padding:22px;border-radius:24px;
-      background:rgba(6,16,31,.80);border:1px solid rgba(248,250,252,.16);backdrop-filter:blur(14px)
-    }
-    .visual-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
-    .visual-chip{text-align:center;border-radius:16px;padding:14px 8px;background:rgba(15,33,61,.8);border:1px solid var(--border);font-size:.82rem;color:var(--muted)}
-    .visual-chip b{display:block;color:var(--white);font-size:1.35rem;margin-bottom:2px}
-
-    .strip{padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(2,6,23,.42)}
-    .strip-list{display:flex;gap:28px;overflow:hidden;white-space:nowrap;color:var(--muted);font-weight:800;justify-content:center;flex-wrap:wrap}
-    .strip-list span{color:var(--cyan)}
-
-    section{padding:82px 0}
-    .section-head{text-align:center;margin-bottom:42px}
-    .section-head span{color:var(--yellow);font-weight:900;text-transform:uppercase;letter-spacing:2.5px;font-size:.78rem}
-    h2{font-family:"Space Grotesk",sans-serif;font-size:clamp(2rem,4vw,3.25rem);line-height:1.1;letter-spacing:-1.5px;margin:10px 0 14px}
-    .section-head p{color:var(--muted);max-width:720px;margin:0 auto}
-
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-    .card{
-      background:linear-gradient(180deg,rgba(15,33,61,.94),rgba(8,23,43,.94));
-      border:1px solid var(--border);border-radius:28px;padding:28px;box-shadow:0 18px 60px rgba(0,0,0,.20);
-      position:relative;overflow:hidden;transition:.25s ease
-    }
-    .card:before{content:"";position:absolute;inset:auto -20% -60% -20%;height:160px;background:radial-gradient(circle,rgba(56,189,248,.18),transparent 70%)}
-    .card:hover{transform:translateY(-6px);border-color:rgba(250,204,21,.55)}
-    .icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:rgba(56,189,248,.11);border:1px solid rgba(56,189,248,.28);font-size:1.8rem;margin-bottom:17px}
-    .card h3{font-family:"Space Grotesk",sans-serif;font-size:1.28rem;margin-bottom:10px}
-    .card p,.card li{color:var(--muted);font-size:.96rem}
-    .card ul{margin-top:14px;padding-left:18px}
-    .tag{display:inline-flex;margin-top:18px;padding:9px 13px;border-radius:999px;background:rgba(250,204,21,.12);border:1px solid rgba(250,204,21,.25);color:var(--yellow);font-weight:850;font-size:.85rem}
-
-    .offer{
-      border-radius:34px;padding:34px;background:linear-gradient(135deg,rgba(250,204,21,.16),rgba(56,189,248,.12));border:1px solid rgba(250,204,21,.28);
-      display:grid;grid-template-columns:1fr .9fr;gap:26px;align-items:center
-    }
-    .offer h2{margin-top:0}.offer p{color:var(--muted)}
-    .check-list{display:grid;gap:12px;margin-top:18px}.check{display:flex;gap:10px;color:var(--muted)}.check b{color:var(--green)}
-
-    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
-    .step{padding:24px;border-radius:24px;background:rgba(15,33,61,.75);border:1px solid var(--border);position:relative}
-    .step:before{counter-increment:step;content:"0" counter(step);display:inline-grid;place-items:center;width:42px;height:42px;border-radius:14px;background:var(--yellow);color:#06101f;font-weight:950;margin-bottom:16px}
-    .step h3{font-family:"Space Grotesk";margin-bottom:8px}.step p{color:var(--muted);font-size:.92rem}
-
-    .proof-box{
-      margin-top:22px;border-radius:26px;padding:26px;border:1px solid rgba(56,189,248,.25);
-      background:rgba(2,6,23,.32);
-    }
-    .proof-box p{color:var(--muted)}
-    .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-    .proof{padding:16px;border-radius:18px;background:rgba(15,33,61,.75);border:1px solid var(--border);font-weight:800;color:var(--muted)}
-    .proof b{display:block;color:var(--white);font-size:1.35rem;margin-bottom:4px}
-
-    .contact-box{
-      border-radius:34px;background:linear-gradient(135deg,rgba(15,33,61,.98),rgba(6,36,58,.96));border:1px solid rgba(56,189,248,.30);box-shadow:var(--shadow);padding:34px;
-      display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center
-    }
-    .contact-actions{display:grid;gap:14px}.contact-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;border-radius:18px;font-weight:900;border:1px solid rgba(248,250,252,.16);transition:.25s ease}
-    .contact-btn:hover{transform:translateY(-3px)}
-    .mail{background:linear-gradient(135deg,#2563eb,#38bdf8)}.telegram{background:linear-gradient(135deg,#0891b2,#22d3ee);color:#03111f}.rdv{background:linear-gradient(135deg,#16a34a,#86efac);color:#03111f}.paypal{background:linear-gradient(135deg,#facc15,#fb923c);color:#03111f}
-    .small{font-size:.9rem;color:var(--muted);margin-top:12px}
-
-    footer{padding:38px 0;border-top:1px solid var(--border);background:rgba(2,6,23,.78);text-align:center;color:var(--muted)}
-
-    .floating-telegram{
-      position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:22px;background:linear-gradient(135deg,#22d3ee,#0ea5e9);display:grid;place-items:center;color:#03111f;font-size:1.8rem;box-shadow:0 18px 45px rgba(14,165,233,.35)
-    }
-
-
-    /* Lecteur musique permanent */
-    .floating-player{
-      position:fixed;left:18px;bottom:18px;z-index:70;
-      width:min(420px,calc(100% - 92px));
-      padding:13px 14px;border-radius:24px;
-      background:linear-gradient(135deg,rgba(2,6,23,.96),rgba(15,33,61,.96));
-      border:1px solid rgba(250,204,21,.34);
-      box-shadow:0 18px 55px rgba(0,0,0,.42);
-      backdrop-filter:blur(14px)
-    }
-    .floating-player-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;color:var(--yellow);font-weight:950;font-size:.88rem}
-    .floating-player-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .mini-audio-btn{border:0;border-radius:999px;background:linear-gradient(135deg,var(--yellow),#fb923c);color:#06101f;font-weight:950;padding:10px 14px;cursor:pointer;white-space:nowrap}
-    .mini-volume{display:flex;align-items:center;gap:7px;color:var(--muted);font-weight:850;font-size:.85rem;flex:1;min-width:145px}
-    .mini-volume input{width:100%}
-    .mini-status{font-size:.78rem;color:var(--muted);margin-top:7px;line-height:1.3}
-
-
-
-    /* Boutons de traduction Google */
-    .language-switcher{
-      display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end
-    }
-    .lang-btn{
-      display:inline-flex;align-items:center;gap:6px;
-      padding:9px 12px;border-radius:999px;
-      border:1px solid rgba(248,250,252,.18);
-      background:rgba(15,33,61,.78);color:var(--white);
-      font-weight:850;font-size:.86rem;cursor:pointer;
-      transition:.25s ease;box-shadow:0 8px 24px rgba(0,0,0,.18)
-    }
-    .lang-btn:hover{transform:translateY(-2px);border-color:rgba(250,204,21,.65);color:var(--yellow)}
-    .lang-btn .flag{font-size:1.05rem;line-height:1}
-    #google_translate_element{position:absolute;left:-9999px;top:-9999px;height:0;overflow:hidden}
-    .goog-te-banner-frame.skiptranslate,.goog-te-gadget-icon{display:none!important}
-    body{top:0!important}
-
-
-    /* Lecteur audio et témoignages */
-    .audio-box{
-      margin-top:22px;padding:24px;border-radius:26px;
-      background:rgba(2,6,23,.34);border:1px solid rgba(56,189,248,.28)
-    }
-    .audio-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
-    .audio-btn{
-      display:inline-flex;align-items:center;gap:8px;padding:13px 18px;border-radius:999px;
-      border:1px solid rgba(250,204,21,.35);background:linear-gradient(135deg,var(--yellow),#f97316);
-      color:#06101f;font-weight:950;cursor:pointer
-    }
-    .volume-wrap{display:flex;align-items:center;gap:10px;color:var(--muted);font-weight:800}
-    input[type="range"]{accent-color:var(--yellow);cursor:pointer}
-    .audio-status{color:var(--muted);font-size:.92rem}
-    .notice{margin-top:14px;padding:14px 16px;border-radius:18px;background:rgba(250,204,21,.10);border:1px solid rgba(250,204,21,.24);color:var(--muted)}
-    .video-request{
-      margin-top:20px;padding:22px;border-radius:24px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(56,189,248,.10));
-      border:1px solid rgba(34,197,94,.25)
-    }
-
-    @media(max-width:980px){
-      .hero,.offer,.contact-box{grid-template-columns:1fr}.hero-visual{min-height:500px}.grid{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.nav-links{display:none}.proof-grid{grid-template-columns:1fr}
-    }
-    @media(max-width:640px){
-      .container{width:min(100% - 26px,1180px)}.nav-inner{height:auto;min-height:68px;padding:10px 0;flex-wrap:wrap}.language-switcher{width:100%;justify-content:center}.lang-btn{font-size:.82rem;padding:8px 10px}.logo span{font-size:.9rem}.hero{gap:26px}header{padding:56px 0}.grid,.grid-2,.process{grid-template-columns:1fr}.visual-grid{grid-template-columns:1fr 1fr}.hero-actions .btn{width:100%}section{padding:58px 0}.card,.offer,.contact-box{padding:22px;border-radius:24px}h1{letter-spacing:-1.5px}.portrait-card{align-items:flex-start;flex-direction:column}.portrait-wrap{width:92px;height:92px}.hero-visual{min-height:610px}.floating-player{left:10px;bottom:10px;width:calc(100% - 86px);padding:11px}.floating-player-title{font-size:.8rem}.mini-audio-btn{padding:9px 11px}.mini-status{display:none}
-    }
-  </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
   <div class="site-bg" aria-hidden="true"></div>
   <div id="google_translate_element" aria-hidden="true"></div>
 
@@ -261,7 +35,12 @@
         <span class="logo-mark">💙</span>
         <span>LE NUMÉRIQUE<br><small>vient jusqu'à vous</small></span>
       </a>
-      <div class="nav-links">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation-principale">
+        <span class="menu-toggle-icon" aria-hidden="true"></span>
+        <span class="menu-toggle-label">Menu</span>
+      </button>
+      <div class="nav-links" id="navigation-principale">
+        <a href="#realisations">Réalisations</a>
         <a href="#services">Services</a>
         <a href="#apprendre">Apprendre</a>
         <a href="#offre">Offre gratuite</a>
@@ -280,6 +59,7 @@
     </div>
   </nav>
 
+  <main id="contenu-principal">
   <header id="accueil">
     <div class="container hero">
       <div>
@@ -296,7 +76,7 @@
       <div class="hero-visual" role="img" aria-label="Services numériques, création web, vidéo et accompagnement">
         <div class="portrait-card">
           <div class="portrait-wrap">
-            <img src="images/michel-portrait-professionnel.webp.png" alt="Portrait professionnel de Michel Quinones">
+            <img src="assets/images/michel-quinones.webp" width="640" height="640" fetchpriority="high" alt="Portrait professionnel de Michel Quinones">
           </div>
           <div>
             <h2>Michel Quinones</h2>
@@ -323,6 +103,92 @@
       <div>🌐 Sites simples</div><div>🎬 Montage vidéo</div><div>🎤 Interviews micro-cravate</div><div>🤖 IA</div><div>📄 CV & documents</div><div>🖨️ Cartes / affiches</div><div>💻 Visio à distance</div>
     </div>
   </div>
+
+  <section id="realisations" class="projects-section" aria-labelledby="projects-title">
+    <div class="network-field" aria-hidden="true">
+      <span class="network-node node-a"></span><span class="network-node node-b"></span>
+      <span class="network-node node-c"></span><span class="network-node node-d"></span>
+    </div>
+    <div class="container projects-content">
+      <div class="section-head projects-head">
+        <span>Réalisations vérifiables</span>
+        <h2 id="projects-title">Des projets concrets.<br><span class="gradient-text">Une vision qui se construit.</span></h2>
+        <p>Ces réalisations disposent d'un dépôt public : leur contenu et leur existence peuvent être consultés directement. Elles illustrent un accompagnement numérique appliqué à des projets humains et entrepreneuriaux.</p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card project-card-lsj">
+          <div class="project-visual" aria-hidden="true">
+            <span class="project-symbol">🌱</span>
+            <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta"><span class="verified-dot"></span> Projet public et vérifiable</div>
+            <p class="project-kicker">France — Bénin</p>
+            <h3>Les Serveurs de Jérusalem — LSJ Bénin</h3>
+            <p>Un site consacré à un projet local associant agriculture, élevage, transformation du manioc, transmission des savoir-faire et développement progressif. Michel y est présenté comme conseiller bénévole.</p>
+            <ul class="project-tags" aria-label="Caractéristiques du projet">
+              <li>React</li><li>Vite</li><li>Multilingue</li><li>Projet solidaire</li>
+            </ul>
+            <a class="project-link" href="https://github.com/grial71/serveurs-jerusalem-benin-app" target="_blank" rel="noopener noreferrer" aria-label="Consulter le dépôt public du projet Les Serveurs de Jérusalem">
+              Consulter la réalisation <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card project-card-fashion">
+          <div class="project-visual" aria-hidden="true">
+            <span class="project-symbol">✦</span>
+            <span class="fashion-ring"></span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta"><span class="verified-dot"></span> Projet public et vérifiable</div>
+            <p class="project-kicker">Boutique & services</p>
+            <h3>Fashion Larissa</h3>
+            <p>Une présence numérique dédiée à une boutique et à ses services, avec une identité visuelle affirmée et des collections de sacs, sandales, vêtements, pagnes et produits de soin.</p>
+            <ul class="project-tags" aria-label="Caractéristiques du projet">
+              <li>HTML</li><li>Responsive</li><li>Catalogue visuel</li><li>Identité de marque</li>
+            </ul>
+            <a class="project-link" href="https://github.com/grial71/fashion-larissa" target="_blank" rel="noopener noreferrer" aria-label="Consulter le dépôt public du projet Fashion Larissa">
+              Consulter la réalisation <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="confidential-note">
+        <span aria-hidden="true">◉</span>
+        <p><strong>Des réalisations visibles, sans tout exposer.</strong> D'autres accompagnements existent, mais ne sont pas tous publiés afin de respecter la confidentialité, les personnes accompagnées et leurs choix de communication.</p>
+      </div>
+
+      <div class="projects-page-links">
+        <a class="btn btn-primary" href="realisations.html">Explorer toutes les réalisations <span aria-hidden="true">→</span></a>
+        <a class="btn btn-secondary" href="vision.html">Découvrir la vision à long terme <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="vision-timeline" aria-label="Progression du projet dans le temps">
+        <article class="timeline-stage is-current">
+          <span class="timeline-index">01</span>
+          <p class="timeline-label">Aujourd'hui</p>
+          <h3>Agir concrètement</h3>
+          <p>Accompagnements numériques, réalisations publiques, apprentissage et création de premiers liens.</p>
+        </article>
+        <article class="timeline-stage">
+          <span class="timeline-index">02</span>
+          <p class="timeline-label">Demain</p>
+          <h3>Développer progressivement</h3>
+          <p>Consolider les méthodes, les formations, le matériel et les partenariats selon les possibilités réelles.</p>
+        </article>
+        <article class="timeline-stage is-future">
+          <span class="timeline-index">03</span>
+          <p class="timeline-label">Vision future</p>
+          <h3>Relier et transmettre</h3>
+          <p>Faire grandir, à long terme, un écosystème humain et international fondé sur l'entraide et le partage des connaissances.</p>
+        </article>
+      </div>
+      <p class="future-disclaimer">La troisième étape présente une vision à long terme : elle ne décrit pas une structure déjà existante.</p>
+    </div>
+  </section>
 
   <section id="services">
     <div class="container">
@@ -581,6 +447,8 @@
     </div>
   </section>
 
+  </main>
+
   <footer>
     <div class="container">
       <p>© 2026 Michel Quinones — Le Numérique vient jusqu'à vous</p>
@@ -591,7 +459,7 @@
 
 
   <div class="floating-player" aria-label="Lecteur musique de méditation permanent">
-    <audio id="meditationAudio" preload="metadata" src="musique/Musique_Gratuite_Libre_de_droit_Sappheiros_Awake.mp3"></audio>
+    <audio id="meditationAudio" preload="none" src="musique/Musique_Gratuite_Libre_de_droit_Sappheiros_Awake.mp3"></audio>
     <div class="floating-player-title">
       <span>🎵 Méditation / concentration</span>
       <span>Libre de droit</span>
@@ -607,124 +475,7 @@
 
   <a class="floating-telegram" href="https://compose.mail.yahoo.com/?to=quinones.michel%40yahoo.fr&subject=Demande%20de%20rendez-vous%20-%20accompagnement%20num%C3%A9rique" target="_blank" rel="noopener" aria-label="Me contacter par e-mail">📧</a>
 
-
-  <script>
-    // Traduction Google : boutons FR / ES / EN avec drapeaux.
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'fr',
-        includedLanguages: 'fr,es,en',
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
-
-    function setTranslateCookie(lang) {
-      const value = lang === 'fr' ? '/fr/fr' : '/fr/' + lang;
-      const hostname = window.location.hostname;
-      document.cookie = 'googtrans=' + value + '; path=/';
-      if (hostname) {
-        document.cookie = 'googtrans=' + value + '; path=/; domain=' + hostname;
-        const parts = hostname.split('.');
-        if (parts.length > 2) {
-          document.cookie = 'googtrans=' + value + '; path=/; domain=.' + parts.slice(-2).join('.');
-        }
-      }
-    }
-
-    function changeLanguage(lang) {
-      setTranslateCookie(lang);
-      const select = document.querySelector('.goog-te-combo');
-      if (select) {
-        select.value = lang;
-        select.dispatchEvent(new Event('change'));
-      }
-      setTimeout(() => window.location.reload(), 300);
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <script>
-    // Lecteur musique méditation permanent : Play / Pause / Volume synchronisés.
-    const meditationAudio = document.getElementById('meditationAudio');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const miniPlayPauseBtn = document.getElementById('miniPlayPauseBtn');
-    const volumeControl = document.getElementById('volumeControl');
-    const miniVolumeControl = document.getElementById('miniVolumeControl');
-    const audioStatus = document.getElementById('audioStatus');
-    const miniAudioStatus = document.getElementById('miniAudioStatus');
-
-    function setAudioMessage(message) {
-      if (audioStatus) audioStatus.textContent = message;
-      if (miniAudioStatus) miniAudioStatus.textContent = message;
-    }
-
-    function updatePlayButtons() {
-      const text = meditationAudio && !meditationAudio.paused ? '⏸️ Pause' : '▶️ Play';
-      if (playPauseBtn) playPauseBtn.textContent = text;
-      if (miniPlayPauseBtn) miniPlayPauseBtn.textContent = text;
-    }
-
-    async function toggleMeditationAudio() {
-      if (!meditationAudio) return;
-      try {
-        if (meditationAudio.paused) {
-          await meditationAudio.play();
-          setAudioMessage('Musique en lecture.');
-        } else {
-          meditationAudio.pause();
-          setAudioMessage('Musique en pause.');
-        }
-        updatePlayButtons();
-      } catch (error) {
-        setAudioMessage('Le fichier audio n’est pas trouvé ou le navigateur bloque la lecture. Vérifiez le dossier musique et le nom exact du fichier MP3.');
-      }
-    }
-
-    function setVolume(value) {
-      if (!meditationAudio) return;
-      const volume = Number(value);
-      meditationAudio.volume = volume;
-      if (volumeControl) volumeControl.value = String(volume);
-      if (miniVolumeControl) miniVolumeControl.value = String(volume);
-    }
-
-    if (meditationAudio) {
-      setVolume(0.55);
-      if (playPauseBtn) playPauseBtn.addEventListener('click', toggleMeditationAudio);
-      if (miniPlayPauseBtn) miniPlayPauseBtn.addEventListener('click', toggleMeditationAudio);
-      if (volumeControl) volumeControl.addEventListener('input', () => setVolume(volumeControl.value));
-      if (miniVolumeControl) miniVolumeControl.addEventListener('input', () => setVolume(miniVolumeControl.value));
-
-      meditationAudio.addEventListener('play', updatePlayButtons);
-      meditationAudio.addEventListener('pause', updatePlayButtons);
-      meditationAudio.addEventListener('ended', () => {
-        updatePlayButtons();
-        setAudioMessage('Musique terminée.');
-      });
-      meditationAudio.addEventListener('error', () => {
-        setAudioMessage('Audio introuvable : créez un dossier musique et mettez-y le fichier MP3 avec le même nom que dans le code.');
-      });
-    }
-  </script>
-
-  <script>
-    // Animation légère des cartes au défilement, sans dépendance externe.
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.animate([
-            { opacity: 0, transform: 'translateY(26px)' },
-            { opacity: 1, transform: 'translateY(0)' }
-          ], { duration: 650, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: .12 });
-
-    document.querySelectorAll('.card,.step,.offer,.contact-box,.proof-box,.audio-box,.video-request').forEach(el => {
-      el.style.opacity = 0;
-      observer.observe(el);
-    });
-  </script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 </body>
 </html>
