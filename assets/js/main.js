@@ -154,6 +154,62 @@
     const suggestion = surveyForm && surveyForm.elements.suggestion;
     let currentSurveyQuestion = 0;
 
+    const surveyLabels = {
+      aisance: {'pas-du-tout': "Pas du tout à l'aise", peu: "Peu à l'aise", simple: 'Usages simples', plutot: "Plutôt à l'aise", tres: "Très à l'aise"},
+      besoins: {'prise-main': "Prise en main d'un appareil", demarches: 'Démarches numériques', installation: 'Installation et configuration', depannage: 'Dépannage informatique', securite: 'Sécurité et arnaques', fichiers: 'Photos et sauvegardes', communication: 'E-mails et visioconférence', ia: 'Intelligence artificielle'},
+      format: {domicile: 'À domicile', distance: 'À distance', individuel: 'Rendez-vous individuel', atelier: 'Atelier en petit groupe', 'sans-preference': 'Sans préférence', aucun: 'Aucun actuellement'},
+      disponibilites: {'semaine-matin': 'En semaine le matin', 'semaine-apres-midi': "En semaine l'après-midi", 'semaine-soir': 'En semaine le soir', samedi: 'Le samedi', variable: 'Selon les semaines'}
+    };
+
+    function getLocalSurveyResponses() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('michel_benevole_survey') || '[]');
+        return Array.isArray(stored) ? stored : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function getMostFrequent(responses, key) {
+      const counts = {};
+      responses.forEach(response => {
+        const raw = response && response.answers && response.answers[key];
+        const values = Array.isArray(raw) ? raw : raw ? [raw] : [];
+        values.forEach(value => { counts[value] = (counts[value] || 0) + 1; });
+      });
+      const winner = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+      if (!winner) return null;
+      return {value: winner[0], count: winner[1], percent: Math.round((winner[1] / responses.length) * 100)};
+    }
+
+    function updateStatCard(responses, key, valueId, detailId, barId) {
+      const result = getMostFrequent(responses, key);
+      const value = document.getElementById(valueId);
+      const detail = document.getElementById(detailId);
+      const bar = document.getElementById(barId);
+      if (!result) {
+        if (value) value.textContent = 'En attente';
+        if (detail) detail.textContent = 'Aucune donnée regroupée pour le moment.';
+        if (bar) bar.style.width = '0';
+        return;
+      }
+      if (value) value.textContent = surveyLabels[key][result.value] || result.value;
+      if (detail) detail.textContent = responses.length >= 10 ? `${result.percent} % des participations` : `${result.count} réponse${result.count > 1 ? 's' : ''} sur cet appareil`;
+      if (bar) bar.style.width = `${Math.min(result.percent, 100)}%`;
+    }
+
+    function renderSurveyStats() {
+      const responses = getLocalSurveyResponses();
+      const total = document.getElementById('statTotal');
+      if (total) total.textContent = String(responses.length);
+      const totalLabel = document.querySelector('.stat-total p');
+      if (totalLabel) totalLabel.textContent = `participation${responses.length > 1 ? 's' : ''} enregistrée${responses.length > 1 ? 's' : ''}`;
+      updateStatCard(responses, 'aisance', 'statAisance', 'statAisanceDetail', 'statAisanceBar');
+      updateStatCard(responses, 'besoins', 'statBesoin', 'statBesoinDetail', 'statBesoinBar');
+      updateStatCard(responses, 'format', 'statFormat', 'statFormatDetail', 'statFormatBar');
+      updateStatCard(responses, 'disponibilites', 'statDisponibilite', 'statDisponibiliteDetail', 'statDisponibiliteBar');
+    }
+
     function showSurveyQuestion(index) {
       currentSurveyQuestion = Math.max(0, Math.min(index, surveyQuestions.length - 1));
       surveyQuestions.forEach((question, position) => question.classList.toggle('is-active', position === currentSurveyQuestion));
@@ -232,6 +288,7 @@
       surveySuccess.hidden = false;
       surveySuccess.focus();
       if (document.getElementById('surveyCount')) document.getElementById('surveyCount').textContent = 'Participation enregistrée sur cet appareil';
+      renderSurveyStats();
     });
 
     try {
@@ -241,4 +298,5 @@
     } catch (error) {
       // Le questionnaire reste consultable si le stockage du navigateur est bloqué.
     }
+    renderSurveyStats();
 
