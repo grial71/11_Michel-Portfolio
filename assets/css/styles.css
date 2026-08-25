@@ -325,3 +325,8 @@
       .internal-hero{padding:62px 0}.case-study{grid-template-columns:1fr}.case-study-number{min-height:64px;border-right:0;border-bottom:1px solid var(--border)}.case-study-content{padding:22px}.case-facts{grid-template-columns:1fr}.privacy-panel,.support-use-panel{padding:23px}.pillar-grid,.support-use-grid{grid-template-columns:1fr}.status-banner{align-items:flex-start;flex-direction:column}.projects-page-links .btn{width:100%}
     }
 
+
+/* Bouton de soutien PayPal */
+.contact-btn.paypal{background:linear-gradient(135deg,#0070ba,#1546a0);color:#fff;border-color:rgba(255,255,255,.24);box-shadow:0 12px 30px rgba(0,112,186,.24)}
+.contact-btn.paypal:hover{box-shadow:0 16px 38px rgba(0,112,186,.34)}
+.paypal-note{margin:0 4px;color:var(--muted);font-size:.88rem;line-height:1.55}
