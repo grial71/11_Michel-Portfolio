@@ -342,10 +342,8 @@
 .asl-course-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:24px 0}
 .asl-course-grid article{display:grid;grid-template-columns:auto 1fr;gap:13px;padding:18px;border:1px solid rgba(250,204,21,.22);border-radius:20px;background:rgba(2,6,23,.32)}
 .asl-course-grid article>span{font-size:1.65rem}.asl-course-grid h3{font-family:"Space Grotesk",sans-serif;font-size:1.04rem;margin-bottom:5px}.asl-course-grid p{color:var(--muted);font-size:.88rem;line-height:1.5}
-.asl-address{margin:0 0 18px;color:#fde68a!important;font-weight:800}
 .asl-whatsapp{background:linear-gradient(135deg,#22c55e,#16a34a);color:#03110a;box-shadow:0 14px 34px rgba(34,197,94,.22)}
 .asl-whatsapp:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(34,197,94,.33)}
-.asl-contact-note{margin-top:10px;font-size:.84rem}
 
 @media(max-width:980px){.asl-card{grid-template-columns:1fr}.asl-logo-wrap img{width:min(100%,360px)}}
 @media(max-width:640px){.asl-card{padding:22px;border-radius:24px;gap:24px}.asl-logo-wrap{padding:16px}.asl-course-grid{grid-template-columns:1fr}.asl-whatsapp{width:100%}}
