@@ -1,0 +1,11 @@
+{
+  "name": "Aoua Coach Formation",
+  "short_name": "Aoua Formation",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f7f8",
+  "theme_color": "#b91c1c",
+  "lang": "fr",
+  "description": "Révisions, flashcards, entraînements et examens blancs personnalisés pour Aoua."
+}
