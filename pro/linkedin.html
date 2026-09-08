@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Sélection publique de publications LinkedIn de Michel Quinones illustrant sa méthode de recherche, synthèse et présentation éditoriale.">
   <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070b11">
   <title>Publications LinkedIn — Michel Quinones</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,20 +13,29 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="ambient-bg" aria-hidden="true">
+    <span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span><span class="grid-glow"></span>
+  </div>
+
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Retour à la vitrine Michel Quinones">MQ</a>
-    <nav aria-label="Navigation principale">
+    <a class="brand-lockup" href="index.html" aria-label="Retour à la vitrine Michel Quinones">
+      <span class="brand-mark">MQ</span>
+      <span class="brand-copy"><strong>Michel Quinones</strong><small>Publications & présence éditoriale</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span></button>
+    <nav id="main-nav" aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a href="#selection">Sélection</a>
       <a href="#methode">Méthode</a>
       <a href="index.html#partenariats">Partenariats</a>
-      <a href="index.html#contact">Contact</a>
+      <a class="nav-cta" href="index.html#contact">Contact</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="accueil">
-      <div class="hero-copy">
+      <div class="hero-copy reveal">
+        <div class="hero-kicker"><span class="live-dot"></span> Publications publiques · Recherche · Synthèse</div>
         <p class="eyebrow">Publications & présence éditoriale</p>
         <h1>Rechercher. Structurer.<br><span>Donner envie d’aller plus loin.</span></h1>
         <p class="lead">Cette sélection rassemble des publications publiques qui illustrent ma manière de transformer un sujet complexe ou une découverte en contenu clair, documenté et accessible.</p>
@@ -35,50 +45,31 @@
         </div>
         <p class="disclaimer">Les exemples ci-dessous sont des publications éditoriales personnelles. Ils ne constituent pas, par eux-mêmes, des partenariats avec les organisations citées.</p>
       </div>
-      <div class="hero-card">
-        <div style="padding:30px 22px">
-          <p class="eyebrow">Repères publics</p>
-          <strong style="font-family:'Playfair Display',serif;font-size:2rem">Plus de 3 000 publications</strong>
-          <p>Une activité éditoriale publique développée sur LinkedIn, en français et en espagnol, autour de l’innovation, de la science, des projets, de l’entrepreneuriat et de sujets internationaux.</p>
+      <div class="hero-stage reveal" data-delay="120">
+        <div class="portrait-shell" style="max-width:450px">
+          <div class="portrait-caption" style="padding:34px 22px">
+            <p class="eyebrow">Une méthode visible</p>
+            <h2>Observer, vérifier, structurer, présenter.</h2>
+            <p>Une activité éditoriale publique développée en français et en espagnol autour de l’innovation, de la science, des projets, de l’entrepreneuriat et de sujets internationaux.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="selection" class="section">
+    <section id="selection" class="section reveal">
       <p class="eyebrow">Sélection publique</p>
       <h2>Trois exemples qui montrent la méthode.</h2>
       <p class="section-intro">La sélection privilégie ici des publications dont le contenu et le lien sont publiquement vérifiables. Les présentations d’entreprises de Monaco et de Saint-Tropez seront ajoutées dès que leurs URL exactes auront été récupérées et vérifiées.</p>
-
       <div class="grid three">
-        <article class="project">
-          <p class="tag">Innovation médicale · vulgarisation</p>
-          <h3>Histotripsie : quand le son devient un outil contre certaines tumeurs</h3>
-          <p>Un sujet technique présenté en plusieurs étapes : principe physique, fonctionnement, limites, reconnaissance réglementaire et pistes de recherche. L’objectif est de rendre une innovation complexe compréhensible sans supprimer les nuances.</p>
-          <a href="https://fr.linkedin.com/posts/michel-quinones-254118287_m%C3%A9decine-innovation-histotripsy-activity-7439360722108616704-Fc1o" target="_blank" rel="noopener">Voir la publication →</a>
-        </article>
-
-        <article class="project">
-          <p class="tag">Environnement · agriculture · recherche</p>
-          <h3>Almería : plastiques agricoles, microbiologie et antibiorésistance</h3>
-          <p>Une publication qui relie agriculture intensive, biofilms microbiens, environnement et santé publique, tout en rappelant explicitement les limites d’interprétation des résultats scientifiques.</p>
-          <a href="https://fr.linkedin.com/posts/michel-quinones-254118287_science-recherche-microbiologie-activity-7439197406447071232-MDyx" target="_blank" rel="noopener">Voir la publication →</a>
-        </article>
-
-        <article class="project">
-          <p class="tag">International · droit · coordination</p>
-          <h3>Dossier patrimonial international : présenter un sujet complexe à des partenaires potentiels</h3>
-          <p>Une publication en espagnol structurée pour expliquer la nature d’un dossier international, son état documentaire, les travaux de préparation effectués et le type de collaboration recherchée.</p>
-          <a href="https://es.linkedin.com/posts/michel-quinones-254118287_litigationfinance-internationallaw-realestatelaw-activity-7478115030044012544-KdIV" target="_blank" rel="noopener">Voir la publication →</a>
-        </article>
+        <article class="project premium-card"><p class="tag">Innovation médicale · vulgarisation</p><h3>Histotripsie : quand le son devient un outil contre certaines tumeurs</h3><p>Un sujet technique présenté en plusieurs étapes : principe physique, fonctionnement, limites, reconnaissance réglementaire et pistes de recherche. L’objectif est de rendre une innovation complexe compréhensible sans supprimer les nuances.</p><a href="https://fr.linkedin.com/posts/michel-quinones-254118287_m%C3%A9decine-innovation-histotripsy-activity-7439360722108616704-Fc1o" target="_blank" rel="noopener">Voir la publication →</a></article>
+        <article class="project premium-card"><p class="tag">Environnement · agriculture · recherche</p><h3>Almería : plastiques agricoles, microbiologie et antibiorésistance</h3><p>Une publication qui relie agriculture intensive, biofilms microbiens, environnement et santé publique, tout en rappelant explicitement les limites d’interprétation des résultats scientifiques.</p><a href="https://fr.linkedin.com/posts/michel-quinones-254118287_science-recherche-microbiologie-activity-7439197406447071232-MDyx" target="_blank" rel="noopener">Voir la publication →</a></article>
+        <article class="project premium-card"><p class="tag">International · droit · coordination</p><h3>Dossier patrimonial international : présenter un sujet complexe à des partenaires potentiels</h3><p>Une publication en espagnol structurée pour expliquer la nature d’un dossier international, son état documentaire, les travaux de préparation effectués et le type de collaboration recherchée.</p><a href="https://es.linkedin.com/posts/michel-quinones-254118287_litigationfinance-internationallaw-realestatelaw-activity-7478115030044012544-KdIV" target="_blank" rel="noopener">Voir la publication →</a></article>
       </div>
     </section>
 
-    <section id="methode" class="section split">
-      <div>
-        <p class="eyebrow">Méthode éditoriale</p>
-        <h2>Une présentation ne commence pas par le texte.</h2>
-      </div>
-      <div class="copy-block">
+    <section id="methode" class="section split reveal">
+      <div><p class="eyebrow">Méthode éditoriale</p><h2>Une présentation ne commence pas par le texte.</h2></div>
+      <div class="copy-block glass-panel">
         <p><strong>1. Observer.</strong> Identifier ce qui mérite d’être présenté : une entreprise, une innovation, un lieu, un projet ou un savoir-faire.</p>
         <p><strong>2. Vérifier.</strong> Revenir aux informations publiques disponibles et distinguer les éléments établis des affirmations qui demandent davantage de prudence.</p>
         <p><strong>3. Structurer.</strong> Transformer les informations en une progression lisible : contexte, éléments clés, intérêt, limites et ouverture.</p>
@@ -86,24 +77,13 @@
       </div>
     </section>
 
-    <section class="section callout">
-      <div>
-        <p class="eyebrow">Prochaine étape</p>
-        <h2>Construire un véritable portfolio de communication de marque.</h2>
-      </div>
-      <div>
-        <p>La prochaine sélection sera centrée sur les publications consacrées volontairement à des entreprises, établissements et marques, notamment à Monaco et sur la Côte d’Azur.</p>
-        <p>Chaque exemple sera présenté comme une étude éditoriale indépendante, avec son lien LinkedIn et, lorsque cela est possible, la source officielle de l’entreprise utilisée pour vérifier les informations.</p>
-        <a class="btn primary" href="index.html#partenariats">Découvrir les partenariats</a>
-      </div>
+    <section class="section callout reveal">
+      <div><p class="eyebrow">Prochaine étape</p><h2>Construire un véritable portfolio de communication de marque.</h2></div>
+      <div class="glass-panel"><p>La prochaine sélection sera centrée sur les publications consacrées volontairement à des entreprises, établissements et marques, notamment à Monaco et sur la Côte d’Azur.</p><p>Chaque exemple sera présenté comme une étude éditoriale indépendante, avec son lien LinkedIn et, lorsque cela est possible, la source officielle de l’entreprise utilisée pour vérifier les informations.</p><a class="btn primary" href="index.html#partenariats">Découvrir les partenariats</a></div>
     </section>
   </main>
 
-  <footer>
-    <strong>Michel Quinones</strong>
-    <p>Communication · Création numérique · Engagement</p>
-    <p class="footer-note">Une entreprise citée dans une publication éditoriale indépendante n’est pas présentée comme partenaire, client ou sponsor sans accord réel.</p>
-    <p>© 2026 Michel Quinones.</p>
-  </footer>
+  <footer><strong>Michel Quinones</strong><p>Communication · Création numérique · Engagement</p><p class="footer-note">Une entreprise citée dans une publication éditoriale indépendante n’est pas présentée comme partenaire, client ou sponsor sans accord réel.</p><p>© 2026 Michel Quinones.</p></footer>
+  <script src="app.js"></script>
 </body>
 </html>
