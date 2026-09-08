@@ -302,3 +302,30 @@
     }
     loadSurveyStats();
 
+    // Accès officiel à la vitrine professionnelle, intégré au portfolio principal.
+    (() => {
+      const proUrl = 'https://www.lenumeriquevientavous.fr/pro/';
+
+      if (navigation && !navigation.querySelector('[data-pro-access]')) {
+        const proNavLink = document.createElement('a');
+        proNavLink.href = proUrl;
+        proNavLink.textContent = 'Espace professionnel';
+        proNavLink.className = 'nav-cta';
+        proNavLink.dataset.proAccess = 'true';
+        proNavLink.setAttribute('aria-label', 'Accéder à la vitrine professionnelle de Michel Quinones');
+        const existingCta = navigation.querySelector('.nav-cta');
+        navigation.insertBefore(proNavLink, existingCta || null);
+        proNavLink.addEventListener('click', closeMenu);
+      }
+
+      const heroActions = document.querySelector('.hero-actions');
+      if (heroActions && !heroActions.querySelector('[data-pro-access]')) {
+        const proHeroLink = document.createElement('a');
+        proHeroLink.href = proUrl;
+        proHeroLink.textContent = '💼 Espace professionnel';
+        proHeroLink.className = 'btn btn-secondary';
+        proHeroLink.dataset.proAccess = 'true';
+        proHeroLink.setAttribute('aria-label', 'Découvrir la vitrine professionnelle Communication et Valorisation');
+        heroActions.appendChild(proHeroLink);
+      }
+    })();
