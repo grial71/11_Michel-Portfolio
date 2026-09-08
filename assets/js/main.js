@@ -96,6 +96,53 @@
     const menuToggle = document.querySelector('.menu-toggle');
     const navigation = document.getElementById('navigation-principale');
 
+    // Accès à la vitrine professionnelle : créé immédiatement avant les autres modules.
+    (() => {
+      const proUrl = 'https://www.lenumeriquevientavous.fr/pro/';
+
+      if (navigation && !navigation.querySelector('[data-pro-access]')) {
+        const proNavLink = document.createElement('a');
+        proNavLink.href = proUrl;
+        proNavLink.textContent = '💼 Vitrine professionnelle';
+        proNavLink.className = 'nav-cta';
+        proNavLink.dataset.proAccess = 'true';
+        proNavLink.setAttribute('aria-label', 'Accéder à la vitrine professionnelle de Michel Quinones');
+        const existingCta = navigation.querySelector('.nav-cta');
+        navigation.insertBefore(proNavLink, existingCta || null);
+      }
+
+      const heroActions = document.querySelector('.hero-actions');
+      if (heroActions && !heroActions.querySelector('[data-pro-access]')) {
+        const proHeroLink = document.createElement('a');
+        proHeroLink.href = proUrl;
+        proHeroLink.textContent = '💼 Découvrir ma vitrine professionnelle';
+        proHeroLink.className = 'btn btn-primary';
+        proHeroLink.dataset.proAccess = 'true';
+        proHeroLink.setAttribute('aria-label', 'Découvrir la vitrine professionnelle Communication et Valorisation');
+        heroActions.appendChild(proHeroLink);
+      }
+
+      if (!document.querySelector('[data-pro-floating]')) {
+        const floatingPro = document.createElement('a');
+        floatingPro.href = proUrl;
+        floatingPro.textContent = '💼 Vitrine pro';
+        floatingPro.dataset.proFloating = 'true';
+        floatingPro.setAttribute('aria-label', 'Ouvrir la vitrine professionnelle de Michel Quinones');
+        floatingPro.style.position = 'fixed';
+        floatingPro.style.right = '16px';
+        floatingPro.style.top = '92px';
+        floatingPro.style.zIndex = '9999';
+        floatingPro.style.padding = '11px 16px';
+        floatingPro.style.borderRadius = '999px';
+        floatingPro.style.background = '#facc15';
+        floatingPro.style.color = '#07111f';
+        floatingPro.style.fontWeight = '800';
+        floatingPro.style.boxShadow = '0 10px 30px rgba(0,0,0,.28)';
+        floatingPro.style.textDecoration = 'none';
+        document.body.appendChild(floatingPro);
+      }
+    })();
+
     function closeMenu() {
       if (!menuToggle || !navigation) return;
       menuToggle.setAttribute('aria-expanded', 'false');
@@ -302,30 +349,17 @@
     }
     loadSurveyStats();
 
-    // Accès officiel à la vitrine professionnelle, intégré au portfolio principal.
+    // Sécurité de secours : si un navigateur a chargé tardivement le DOM, on vérifie une seconde fois.
     (() => {
       const proUrl = 'https://www.lenumeriquevientavous.fr/pro/';
-
       if (navigation && !navigation.querySelector('[data-pro-access]')) {
         const proNavLink = document.createElement('a');
         proNavLink.href = proUrl;
-        proNavLink.textContent = 'Espace professionnel';
+        proNavLink.textContent = '💼 Vitrine professionnelle';
         proNavLink.className = 'nav-cta';
         proNavLink.dataset.proAccess = 'true';
-        proNavLink.setAttribute('aria-label', 'Accéder à la vitrine professionnelle de Michel Quinones');
         const existingCta = navigation.querySelector('.nav-cta');
         navigation.insertBefore(proNavLink, existingCta || null);
         proNavLink.addEventListener('click', closeMenu);
-      }
-
-      const heroActions = document.querySelector('.hero-actions');
-      if (heroActions && !heroActions.querySelector('[data-pro-access]')) {
-        const proHeroLink = document.createElement('a');
-        proHeroLink.href = proUrl;
-        proHeroLink.textContent = '💼 Espace professionnel';
-        proHeroLink.className = 'btn btn-secondary';
-        proHeroLink.dataset.proAccess = 'true';
-        proHeroLink.setAttribute('aria-label', 'Découvrir la vitrine professionnelle Communication et Valorisation');
-        heroActions.appendChild(proHeroLink);
       }
     })();
