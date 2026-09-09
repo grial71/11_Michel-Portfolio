@@ -11,8 +11,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="translate.css">
 </head>
 <body>
+  <div id="google_translate_element" aria-hidden="true"></div>
   <div class="ambient-bg" aria-hidden="true">
     <span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span><span class="grid-glow"></span>
   </div>
@@ -31,6 +33,11 @@
       <a href="index.html#partenariats">Partenariats</a>
       <a class="nav-cta" href="index.html#contact">Contact</a>
     </nav>
+    <div class="pro-language-switcher notranslate" translate="no" aria-label="Choisir la langue">
+      <button class="pro-lang-btn" type="button" data-pro-lang="fr" onclick="changeProLanguage('fr')"><strong>FR</strong><span class="pro-lang-label">Français</span></button>
+      <button class="pro-lang-btn" type="button" data-pro-lang="es" onclick="changeProLanguage('es')"><strong>ES</strong><span class="pro-lang-label">Español</span></button>
+      <button class="pro-lang-btn" type="button" data-pro-lang="en" onclick="changeProLanguage('en')"><strong>GB</strong><span class="pro-lang-label">English</span></button>
+    </div>
   </header>
 
   <main>
@@ -116,6 +123,8 @@
   </main>
 
   <footer><strong>Michel Quinones</strong><p>Communication · Création numérique · Engagement</p><p class="footer-note">Une entreprise citée dans une publication éditoriale indépendante n’est pas présentée comme partenaire, client ou sponsor sans accord réel.</p><p>© 2026 Michel Quinones.</p></footer>
+  <script src="translate.js"></script>
   <script src="app.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 </body>
 </html>
