@@ -18,8 +18,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="translate.css">
 </head>
 <body>
+  <div id="google_translate_element" aria-hidden="true"></div>
   <div class="ambient-bg" aria-hidden="true">
     <span class="orb orb-a"></span>
     <span class="orb orb-b"></span>
@@ -44,6 +46,11 @@
       <a class="nav-cta" href="#contact">Contact</a>
       <a class="nav-home" href="../index.html">Le Numérique vient à Vous</a>
     </nav>
+    <div class="pro-language-switcher notranslate" translate="no" aria-label="Choisir la langue">
+      <button class="pro-lang-btn" type="button" data-pro-lang="fr" onclick="changeProLanguage('fr')"><strong>FR</strong><span class="pro-lang-label">Français</span></button>
+      <button class="pro-lang-btn" type="button" data-pro-lang="es" onclick="changeProLanguage('es')"><strong>ES</strong><span class="pro-lang-label">Español</span></button>
+      <button class="pro-lang-btn" type="button" data-pro-lang="en" onclick="changeProLanguage('en')"><strong>GB</strong><span class="pro-lang-label">English</span></button>
+    </div>
   </header>
 
   <main>
@@ -224,6 +231,8 @@
     <p class="footer-note">Les noms et marques mentionnés restent la propriété de leurs titulaires respectifs. Leur présence dans une publication éditoriale indépendante n’implique aucune relation commerciale sauf mention contraire.</p>
     <p>© 2026 Michel Quinones.</p>
   </footer>
+  <script src="translate.js"></script>
   <script src="app.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 </body>
 </html>
