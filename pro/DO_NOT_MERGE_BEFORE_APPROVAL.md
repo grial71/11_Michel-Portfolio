@@ -1,0 +1,1 @@
+Ne pas fusionner cette branche dans `main` avant validation visuelle explicite de Michel.
