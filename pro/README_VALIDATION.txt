@@ -1,0 +1,1 @@
+Branche de validation. Ne pas fusionner avant validation visuelle explicite de Michel.
