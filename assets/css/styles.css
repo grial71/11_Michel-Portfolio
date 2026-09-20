@@ -84,7 +84,7 @@
     .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
     .featured-videos{position:relative;padding:76px 0;background:linear-gradient(180deg,rgba(7,20,38,.98),rgba(8,29,49,.95));border-bottom:1px solid var(--border)}
     .featured-videos-head{max-width:820px;margin-bottom:30px}
-    .featured-video-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:24px;align-items:start}
+    .featured-video-grid{display:grid;grid-template-columns:.72fr 1fr 1fr;gap:24px;align-items:start}
     .featured-video-card{display:flex;flex-direction:column;gap:20px;padding:24px;background:linear-gradient(145deg,rgba(18,42,65,.96),rgba(8,22,40,.96));border:1px solid rgba(55,210,200,.23);border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.28)}
     .featured-video-primary{border-color:rgba(255,205,27,.42);box-shadow:0 24px 70px rgba(0,0,0,.32),0 0 36px rgba(55,210,200,.08)}
     .video-copy h3{margin:6px 0 10px;font-size:clamp(1.35rem,2.2vw,2rem)}
