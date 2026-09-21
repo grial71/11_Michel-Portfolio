@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Handicap & autonomie — espace pratique du Numérique Vient à Vous pour retrouver des informations officielles sur les droits, démarches, emploi, mobilité, logement, scolarité et aidants.">
+  <meta name="theme-color" content="#06101f">
+  <meta name="robots" content="index, follow">
+  <title>Handicap & autonomie | Le Numérique Vient à Vous</title>
+  <link rel="canonical" href="https://www.lenumeriquevientavous.fr/handicap.html">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .handicap-page{min-height:100vh}
+    .handicap-hero{padding:130px 0 54px}
+    .handicap-hero .container{max-width:1120px}
+    .handicap-back{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;text-decoration:none}
+    .handicap-title{max-width:900px}
+    .handicap-title h1{margin-bottom:16px}
+    .handicap-title p{max-width:820px;font-size:1.08rem}
+    .handicap-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .handicap-notice{margin-top:26px;padding:16px 18px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.04)}
+    .handicap-app{padding:34px 0 80px}
+    .handicap-toolbar{display:grid;gap:18px;margin-bottom:26px}
+    .handicap-search-wrap{display:grid;gap:8px}
+    .handicap-search-wrap label{font-weight:700}
+    .handicap-search{width:100%;padding:15px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:rgba(4,12,25,.78);color:#fff;font:inherit;outline:none}
+    .handicap-search:focus{border-color:#72d6ff;box-shadow:0 0 0 3px rgba(114,214,255,.16)}
+    .handicap-filters{display:flex;gap:9px;flex-wrap:wrap}
+    .filter-btn{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#eaf7ff;padding:10px 13px;border-radius:999px;font:inherit;font-weight:700;cursor:pointer}
+    .filter-btn:hover,.filter-btn:focus-visible,.filter-btn.is-active{background:linear-gradient(135deg,#1ca6e8,#7c5cff);border-color:transparent;color:#fff}
+    .handicap-results-info{margin:4px 0 16px;color:#bcd0df}
+    .resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .resource-card{display:flex;flex-direction:column;gap:12px;padding:22px;border-radius:20px;border:1px solid rgba(255,255,255,.12);background:rgba(7,18,35,.82);box-shadow:0 18px 42px rgba(0,0,0,.18)}
+    .resource-card[hidden]{display:none}
+    .resource-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .resource-icon{font-size:1.65rem}
+    .resource-category{font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#8edcff}
+    .resource-card h2{font-size:1.2rem;margin:0}
+    .resource-card p{margin:0;color:#c9d8e4;line-height:1.6}
+    .resource-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}
+    .resource-tags span{font-size:.8rem;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.06);color:#d9e8f2}
+    .resource-link{display:inline-flex;align-items:center;gap:7px;margin-top:4px;font-weight:800;text-decoration:none;color:#9ee5ff}
+    .resource-link:hover{text-decoration:underline}
+    .source-note{margin-top:34px;padding:20px;border-left:4px solid #46c2ff;background:rgba(255,255,255,.04);border-radius:0 16px 16px 0}
+    .source-note p{margin:.4rem 0;color:#c9d8e4}
+    .empty-state{padding:32px;text-align:center;border:1px dashed rgba(255,255,255,.18);border-radius:18px;color:#c9d8e4}
+    .quick-paths{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:26px 0 4px}
+    .quick-path{padding:16px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);cursor:pointer;color:#fff;text-align:left;font:inherit}
+    .quick-path strong{display:block;margin-bottom:4px}
+    .quick-path span{font-size:.88rem;color:#bdd0dd}
+    @media(max-width:900px){.resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.quick-paths{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:640px){.handicap-hero{padding-top:105px}.resource-grid,.quick-paths{grid-template-columns:1fr}.handicap-actions .btn{width:100%;justify-content:center}}
+  </style>
+</head>
+<body class="handicap-page">
+  <a class="skip-link" href="#contenu-handicap">Aller au contenu principal</a>
+  <div class="site-bg" aria-hidden="true"></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="index.html" aria-label="Retour à l'accueil">
+        <span class="logo-mark"><img src="assets/images/logo-le-numerique.png" width="96" height="96" alt=""></span>
+        <span>LE NUMÉRIQUE<br><small>Vient à Vous</small></span>
+      </a>
+      <div class="nav-links" style="margin-left:auto">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#videos">Forum du handicap</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="contenu-handicap">
+    <header class="handicap-hero">
+      <div class="container">
+        <a class="handicap-back" href="index.html">← Retour au Numérique Vient à Vous</a>
+        <div class="handicap-title">
+          <div class="badge"><span class="pulse"></span> Information · orientation · autonomie</div>
+          <h1>Handicap & <span class="highlight">autonomie</span></h1>
+          <p>Un espace simple pour trouver plus vite les bons interlocuteurs et les informations officielles concernant les droits, les démarches MDPH, l'emploi, la mobilité, le logement, la scolarité et les aidants.</p>
+        </div>
+
+        <div class="handicap-actions">
+          <a class="btn btn-primary" href="#recherche">🔎 Rechercher un thème</a>
+          <a class="btn btn-secondary" href="index.html#videos">🤝 Voir les organismes du Forum de Rouen</a>
+        </div>
+
+        <div class="handicap-notice">
+          <strong>Important :</strong> cet espace aide à s'orienter mais ne remplace ni la MDPH, ni un professionnel de santé, ni un professionnel du droit. Les conditions d'attribution des aides dépendent de chaque situation.
+        </div>
+      </div>
+    </header>
+
+    <section class="handicap-app" id="recherche">
+      <div class="container">
+        <div class="section-head" style="text-align:left">
+          <span>Outil de recherche</span>
+          <h2>Que cherchez-vous aujourd'hui ?</h2>
+          <p>Écrivez un mot comme « RQTH », « emploi », « carte », « logement », « aidant » ou choisissez un thème.</p>
+        </div>
+
+        <div class="quick-paths" aria-label="Accès rapides">
+          <button class="quick-path" type="button" data-quick="droits"><strong>📑 Mes droits</strong><span>MDPH, AAH, PCH, RQTH</span></button>
+          <button class="quick-path" type="button" data-quick="emploi"><strong>💼 Travail & formation</strong><span>Emploi, maintien, accompagnement</span></button>
+          <button class="quick-path" type="button" data-quick="mobilite"><strong>♿ Mobilité</strong><span>CMI et déplacements</span></button>
+          <button class="quick-path" type="button" data-quick="aidants"><strong>🤝 Aidants</strong><span>Droits, aides et répit</span></button>
+        </div>
+
+        <div class="handicap-toolbar">
+          <div class="handicap-search-wrap">
+            <label for="resourceSearch">Rechercher dans les ressources</label>
+            <input id="resourceSearch" class="handicap-search" type="search" placeholder="Exemple : MDPH, emploi, aidant, logement…" autocomplete="off">
+          </div>
+          <div class="handicap-filters" role="group" aria-label="Filtrer par thème">
+            <button class="filter-btn is-active" type="button" data-filter="all">Tout</button>
+            <button class="filter-btn" type="button" data-filter="droits">Droits & démarches</button>
+            <button class="filter-btn" type="button" data-filter="emploi">Emploi</button>
+            <button class="filter-btn" type="button" data-filter="mobilite">Mobilité</button>
+            <button class="filter-btn" type="button" data-filter="logement">Logement</button>
+            <button class="filter-btn" type="button" data-filter="scolarite">Scolarité</button>
+            <button class="filter-btn" type="button" data-filter="aidants">Aidants</button>
+            <button class="filter-btn" type="button" data-filter="local">Rouen / local</button>
+          </div>
+        </div>
+
+        <p class="handicap-results-info" id="resultCount" aria-live="polite"></p>
+
+        <div class="resource-grid" id="resourceGrid">
+          <article class="resource-card" data-category="droits" data-search="mdph maison départementale handicap dossier demande cerfa droits prestations renouvellement">
+            <div class="resource-top"><span class="resource-icon">🏛️</span><span class="resource-category">Droits & démarches</span></div>
+            <h2>MDPH : préparer et déposer une demande</h2>
+            <p>La MDPH est le guichet de référence pour l'information, l'évaluation des besoins, les prestations et les orientations liées au handicap. Plusieurs départements permettent le dépôt en ligne.</p>
+            <div class="resource-tags"><span>MDPH</span><span>Dossier</span><span>Cerfa</span></div>
+            <a class="resource-link" href="https://www.monparcourshandicap.gouv.fr/aides/mdph-en-ligne" target="_blank" rel="noopener noreferrer">Source officielle ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="droits" data-search="aah allocation adulte handicapé ressources mdph caf prestation">
+            <div class="resource-top"><span class="resource-icon">💶</span><span class="resource-category">Droits & démarches</span></div>
+            <h2>AAH : comprendre la démarche</h2>
+            <p>L'allocation aux adultes handicapés peut être demandée via la MDPH. L'évaluation tient compte de critères liés au handicap et de conditions administratives.</p>
+            <div class="resource-tags"><span>AAH</span><span>MDPH</span><span>CAF</span></div>
+            <a class="resource-link" href="https://www.monparcourshandicap.gouv.fr/demarches/demarches-pour-demander-laah" target="_blank" rel="noopener noreferrer">Source officielle ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="droits" data-search="pch prestation compensation handicap aide humaine technique transport logement mdph">
+            <div class="resource-top"><span class="resource-icon">🧩</span><span class="resource-category">Droits & démarches</span></div>
+            <h2>PCH : compenser les besoins liés au handicap</h2>
+            <p>La prestation de compensation du handicap peut participer à la prise en charge de certains besoins de compensation, selon l'évaluation de la situation.</p>
+            <div class="resource-tags"><span>PCH</span><span>Compensation</span><span>MDPH</span></div>
+            <a class="resource-link" href="https://www.monparcourshandicap.gouv.fr/demarches/demarches-pour-demander-la-pch" target="_blank" rel="noopener noreferrer">Source officielle ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="emploi droits" data-search="rqth reconnaissance qualité travailleur handicapé emploi travail aménagement poste formation">
+            <div class="resource-top"><span class="resource-icon">🪪</span><span class="resource-category">Emploi</span></div>
+            <h2>RQTH : emploi, formation et maintien dans l'emploi</h2>
+            <p>La RQTH peut ouvrir l'accès à des mesures favorisant l'insertion professionnelle, l'adaptation du poste, la formation et le maintien dans l'emploi.</p>
+            <div class="resource-tags"><span>RQTH</span><span>Travail</span><span>Aménagement</span></div>
+            <a class="resource-link" href="https://www.monparcourshandicap.gouv.fr/aides/la-reconnaissance-de-la-qualite-de-travailleur-handicape-rqth" target="_blank" rel="noopener noreferrer">Source officielle ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="emploi" data-search="agefiph emploi handicap aides formation entreprise compensation accompagnement">
+            <div class="resource-top"><span class="resource-icon">🧰</span><span class="resource-category">Emploi</span></div>
+            <h2>Agefiph : aides et services pour l'emploi</h2>
+            <p>L'Agefiph propose des solutions pour faciliter l'accès à l'emploi, la formation, la compensation du handicap au travail et le maintien en emploi dans le secteur privé.</p>
+            <div class="resource-tags"><span>Agefiph</span><span>Emploi</span><span>Formation</span></div>
+            <a class="resource-link" href="https://www.agefiph.fr/personne-en-situation-de-handicap" target="_blank" rel="noopener noreferrer">Site officiel ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="emploi" data-search="cap emploi france travail accompagnement recherche emploi maintien personne handicapée">
+            <div class="resource-top"><span class="resource-icon">🤝</span><span class="resource-category">Emploi</span></div>
+            <h2>Cap emploi : accompagnement spécialisé</h2>
+            <p>Cap emploi accompagne les personnes en situation de handicap dans l'accès à l'emploi et la sécurisation du parcours professionnel, en articulation avec France Travail.</p>
+            <div class="resource-tags"><span>Cap emploi</span><span>France Travail</span></div>
+            <a class="resource-link" href="https://www.capemploi.info/nos-missions/laccompagnement-vers-lemploi.html" target="_blank" rel="noopener noreferrer">Site officiel ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="mobilite droits" data-search="cmi carte mobilité inclusion invalidité priorité stationnement déplacement transport">
+            <div class="resource-top"><span class="resource-icon">♿</span><span class="resource-category">Mobilité</span></div>
+            <h2>Carte mobilité inclusion (CMI)</h2>
+            <p>La CMI vise à faciliter la vie quotidienne et les déplacements. Elle comprend notamment les mentions invalidité, priorité et stationnement, attribuées sous conditions.</p>
+            <div class="resource-tags"><span>CMI</span><span>Stationnement</span><span>Priorité</span></div>
+            <a class="resource-link" href="https://www.monparcourshandicap.gouv.fr/aides/la-carte-mobilite-inclusion-mention-invalidite" target="_blank" rel="noopener noreferrer">Source officielle ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="logement" data-search="logement adaptation travaux accessibilité domicile location handicap autonomie">
+            <div class="resource-top"><span class="resource-icon">🏠</span><span class="resource-category">Logement</span></div>
+            <h2>Adapter son logement</h2>
+            <p>Des informations officielles existent pour identifier les besoins, préparer des travaux d'adaptation, rechercher des financements et connaître les démarches avec un bailleur.</p>
+            <div class="resource-tags"><span>Logement</span><span>Adaptation</span><span>Autonomie</span></div>
+            <a class="resource-link" href="https://www.monparcourshandicap.gouv.fr/logement" target="_blank" rel="noopener noreferrer">Source officielle ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="scolarite" data-search="école scolarité enfant handicap mdph aesh pps étudiant aménagement">
+            <div class="resource-top"><span class="resource-icon">🎓</span><span class="resource-category">Scolarité</span></div>
+            <h2>Scolarité : dossier MDPH et aménagements</h2>
+            <p>Pour un enfant en situation de handicap, le dossier MDPH peut notamment concerner le projet personnalisé de scolarisation, l'accompagnement humain et certains matériels ou aménagements.</p>
+            <div class="resource-tags"><span>École</span><span>AESH</span><span>PPS</span></div>
+            <a class="resource-link" href="https://www.monparcourshandicap.gouv.fr/scolarite/pourquoi-et-comment-deposer-un-dossier-aupres-de-la-mdph" target="_blank" rel="noopener noreferrer">Source officielle ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="aidants" data-search="aidant proche aidant familial répit ajpa congé aide accompagnement">
+            <div class="resource-top"><span class="resource-icon">💛</span><span class="resource-category">Aidants</span></div>
+            <h2>Aidants : droits, aides et solutions de répit</h2>
+            <p>Les proches aidants peuvent trouver des informations sur leurs droits, le congé de proche aidant, l'AJPA et les solutions de répit disponibles selon leur situation.</p>
+            <div class="resource-tags"><span>Aidant</span><span>Répit</span><span>AJPA</span></div>
+            <a class="resource-link" href="https://www.monparcourshandicap.gouv.fr/aidant" target="_blank" rel="noopener noreferrer">Source officielle ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="droits" data-search="mon parcours handicap portail officiel aides prestations annuaire services falc">
+            <div class="resource-top"><span class="resource-icon">🧭</span><span class="resource-category">Portail officiel</span></div>
+            <h2>Mon Parcours Handicap : portail national</h2>
+            <p>Le portail officiel rassemble des informations sur les aides, démarches, études, emploi, logement, vie quotidienne et services en ligne.</p>
+            <div class="resource-tags"><span>Officiel</span><span>Annuaire</span><span>FALC</span></div>
+            <a class="resource-link" href="https://www.monparcourshandicap.gouv.fr/aides" target="_blank" rel="noopener noreferrer">Accéder au portail ↗</a>
+          </article>
+
+          <article class="resource-card" data-category="local" data-search="rouen forum handicap organismes associations 61 stands afr cycles cap parents handisup france parkinson udaf">
+            <div class="resource-top"><span class="resource-icon">📍</span><span class="resource-category">Rouen / local</span></div>
+            <h2>Forum du handicap de Rouen : organismes rencontrés</h2>
+            <p>Retrouvez sur Le Numérique Vient à Vous la vidéo du Forum et l'annuaire commenté des exposants, avec la liste des 61 stands et les liens officiels déjà vérifiés.</p>
+            <div class="resource-tags"><span>Rouen</span><span>Forum 2026</span><span>Associations</span></div>
+            <a class="resource-link" href="index.html#videos">Voir l'annuaire du Forum →</a>
+          </article>
+        </div>
+
+        <div id="emptyState" class="empty-state" hidden>
+          Aucun résultat pour cette recherche. Essayez un mot plus général comme « emploi », « MDPH », « aidant » ou « logement ».
+        </div>
+
+        <div class="source-note">
+          <strong>Sources et mise à jour</strong>
+          <p>Les liens nationaux ci-dessus pointent vers des organismes ou portails officiels. Ils ont été vérifiés lors de l'intégration de cet espace le 21 septembre 2026.</p>
+          <p>Le Numérique Vient à Vous ne collecte ici aucune donnée de santé et ne réalise aucun diagnostic. Cet outil sert uniquement à faciliter l'orientation vers les bonnes ressources.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Michel Quinones — Le Numérique Vient à Vous</p>
+      <p class="small">Espace d'information et d'orientation · Sources officielles · Aucun diagnostic médical</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const search = document.getElementById('resourceSearch');
+      const cards = [...document.querySelectorAll('.resource-card')];
+      const buttons = [...document.querySelectorAll('.filter-btn')];
+      const quicks = [...document.querySelectorAll('[data-quick]')];
+      const count = document.getElementById('resultCount');
+      const empty = document.getElementById('emptyState');
+      let activeFilter = 'all';
+
+      const normalize = (value) => (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+      function applyFilters() {
+        const query = normalize(search.value.trim());
+        let visible = 0;
+
+        cards.forEach(card => {
+          const categories = normalize(card.dataset.category).split(/\s+/);
+          const text = normalize(card.dataset.search + ' ' + card.textContent);
+          const matchesFilter = activeFilter === 'all' || categories.includes(activeFilter);
+          const matchesSearch = !query || text.includes(query);
+          const show = matchesFilter && matchesSearch;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+
+        count.textContent = visible + (visible > 1 ? ' ressources affichées' : ' ressource affichée');
+        empty.hidden = visible !== 0;
+      }
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          activeFilter = button.dataset.filter;
+          buttons.forEach(item => item.classList.toggle('is-active', item === button));
+          applyFilters();
+        });
+      });
+
+      quicks.forEach(button => {
+        button.addEventListener('click', () => {
+          activeFilter = button.dataset.quick;
+          search.value = '';
+          buttons.forEach(item => item.classList.toggle('is-active', item.dataset.filter === activeFilter));
+          applyFilters();
+          document.getElementById('resourceGrid').scrollIntoView({behavior:'smooth', block:'start'});
+        });
+      });
+
+      search.addEventListener('input', applyFilters);
+      applyFilters();
+    })();
+  </script>
+</body>
+</html>
