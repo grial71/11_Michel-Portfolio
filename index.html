@@ -20,8 +20,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260923-premium-3">
 
+
+  <style id="premium-critical-20260923">
+    nav{background:rgba(252,250,245,.94)!important;border-bottom:1px solid rgba(42,66,73,.13)!important;color:#20313a!important}
+    .logo{color:#20313a!important}.logo small{color:#9a7440!important}
+    .menu-toggle,.lang-btn{background:#fffdf8!important;color:#20313a!important;border-color:#d9d2c5!important}
+    .cinematic-hero{position:relative;isolation:isolate;min-height:680px;display:flex;align-items:center;background:linear-gradient(135deg,#152b34,#365864)!important}
+    .hero-video-layer{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(circle at 74% 22%,rgba(215,190,140,.22),transparent 26%),linear-gradient(135deg,#152b34,#365864)}
+    .hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(.72) contrast(1.04) brightness(.78)}
+    .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,36,44,.92),rgba(17,36,44,.70) 46%,rgba(17,36,44,.34)),linear-gradient(180deg,rgba(9,22,28,.18),rgba(9,22,28,.52))}
+    .hero-grid-glow{position:absolute;inset:0;opacity:.12;background-image:linear-gradient(rgba(222,199,154,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(222,199,154,.16) 1px,transparent 1px);background-size:72px 72px}
+    .cinematic-hero .hero{position:relative;z-index:2}
+    .cinematic-hero h1{color:#fffaf1!important}.cinematic-hero .highlight{color:#e1c18b!important}.cinematic-hero .hero>div:first-child>p{color:#d7e0e1!important}
+    .hero-kicker{color:#e3cda4!important}
+    @media(max-width:980px){.cinematic-hero{min-height:0}.hero-bg-video{opacity:.32}}
+    @media(prefers-reduced-motion:reduce){.hero-bg-video,.hero-light-sweep{display:none!important}}
+  </style>
 </head>
 
 <body>
@@ -64,7 +80,7 @@
   <main id="contenu-principal">
   <header id="accueil" class="cinematic-hero">
     <div class="hero-video-layer" aria-hidden="true">
-      <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/michel-quinones.webp">
+      <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata">
         <source src="https://cdn.coverr.co/videos/coverr-coding-on-a-laptop-rxf1hyrfkk/1080p.mp4" type="video/mp4">
       </video>
       <div class="hero-video-overlay"></div>
