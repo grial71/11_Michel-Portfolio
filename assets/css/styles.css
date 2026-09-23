@@ -1359,3 +1359,69 @@ footer{
   .event-badge{grid-column:1}
   .event-meta{font-size:.72rem}
 }
+
+
+/* =========================================================
+   LECTEUR MUSIQUE ULTRA-COMPACT — 23/09/2026
+   Réduit fortement l'emprise visuelle du lecteur flottant.
+   ========================================================= */
+.floating-player{
+  left:8px!important;
+  bottom:8px!important;
+  width:214px!important;
+  max-width:calc(100vw - 74px)!important;
+  padding:6px 7px!important;
+  border-radius:13px!important;
+  box-shadow:0 8px 22px rgba(0,0,0,.22)!important;
+}
+.floating-player-title{
+  display:none!important;
+}
+.floating-player-controls{
+  display:flex!important;
+  align-items:center!important;
+  gap:5px!important;
+  flex-wrap:nowrap!important;
+}
+.mini-audio-btn{
+  flex:0 0 auto!important;
+  min-width:0!important;
+  padding:5px 8px!important;
+  border-radius:999px!important;
+  font-size:.67rem!important;
+  line-height:1!important;
+}
+.mini-volume{
+  flex:1 1 auto!important;
+  min-width:0!important;
+  gap:4px!important;
+  font-size:.62rem!important;
+  line-height:1!important;
+}
+.mini-volume input{
+  width:100%!important;
+  min-width:0!important;
+  height:14px!important;
+  margin:0!important;
+}
+.mini-status{
+  display:none!important;
+}
+@media(max-width:640px){
+  .floating-player{
+    width:176px!important;
+    max-width:calc(100vw - 68px)!important;
+    padding:5px 6px!important;
+    border-radius:12px!important;
+  }
+  .mini-audio-btn{
+    padding:4px 7px!important;
+    font-size:.62rem!important;
+  }
+  .mini-volume{
+    font-size:.58rem!important;
+  }
+  .mini-volume input{
+    height:12px!important;
+  }
+}
