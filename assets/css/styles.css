@@ -1425,3 +1425,128 @@ footer{
     height:12px!important;
   }
 }
+
+
+/* =========================================================
+   PHASE 3 — Vitrine vivante, galerie, pro, FAQ, preuves
+   ========================================================= */
+.meet-me-link{
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(154,116,64,.18);
+  background:rgba(199,166,106,.09);
+  color:#82683f!important;
+  font-weight:850;
+}
+.meet-me-link:hover{background:rgba(199,166,106,.16)!important;color:#684f2f!important}
+
+.spotlight-section{
+  padding:58px 0;
+  background:linear-gradient(180deg,#f2f5f4,#f9f8f4);
+}
+.spotlight-head{margin-bottom:24px}
+.spotlight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.spotlight-card{
+  position:relative;
+  min-height:250px;
+  padding:22px;
+  border-radius:24px;
+  background:rgba(255,253,248,.94);
+  border:1px solid rgba(36,72,82,.12);
+  box-shadow:0 17px 46px rgba(32,49,58,.07);
+  overflow:hidden;
+  transition:.3s ease;
+}
+.spotlight-card:hover{transform:translateY(-5px);box-shadow:0 24px 58px rgba(32,49,58,.11)}
+.spotlight-card:after{
+  content:"";position:absolute;right:-55px;bottom:-70px;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(90,142,147,.13),transparent 68%);
+}
+.spotlight-label{
+  display:inline-flex;padding:6px 9px;border-radius:999px;
+  background:rgba(199,166,106,.11);color:#8d6f42;
+  font-size:.68rem;font-weight:900;letter-spacing:1px;text-transform:uppercase
+}
+.spotlight-card h3{font:600 1.25rem Georgia,"Times New Roman",serif;color:#20343b;margin:24px 0 9px}
+.spotlight-card p{color:#68787d;font-size:.9rem}
+.spotlight-card a{position:absolute;left:22px;bottom:20px;color:#315762;font-weight:850;font-size:.85rem}
+
+.portfolio-gallery{
+  background:linear-gradient(180deg,#eef3f3,#f8f7f2);
+}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.gallery-item{
+  overflow:hidden;border-radius:24px;background:#fffdf8;border:1px solid rgba(36,72,82,.12);
+  box-shadow:0 17px 46px rgba(32,49,58,.075);transition:.32s ease
+}
+.gallery-item:hover{transform:translateY(-6px);box-shadow:0 25px 64px rgba(32,49,58,.12)}
+.gallery-visual{height:190px;display:grid;place-items:center;font-size:3rem}
+.gallery-lsj{background:radial-gradient(circle,rgba(99,137,99,.20),transparent 28%),linear-gradient(145deg,#dfe9df,#f4efe3)}
+.gallery-fashion{background:radial-gradient(circle,rgba(199,166,106,.22),transparent 30%),linear-gradient(145deg,#ece2d4,#f9f3e9)}
+.gallery-video{background:radial-gradient(circle,rgba(70,112,125,.20),transparent 28%),linear-gradient(145deg,#dfe9ea,#f3f0e8)}
+.gallery-com{background:radial-gradient(circle,rgba(65,103,114,.21),transparent 30%),linear-gradient(145deg,#d9e4e5,#efe9dc)}
+.gallery-item>div:last-child{padding:16px 17px 18px}
+.gallery-item small{display:block;color:#987747;text-transform:uppercase;letter-spacing:.8px;font-weight:850;font-size:.65rem}
+.gallery-item strong{display:block;color:#21343b;font:600 1.05rem Georgia,"Times New Roman",serif;margin:5px 0 12px}
+.gallery-item>div:last-child>span{color:#45656d;font-size:.8rem;font-weight:800}
+
+.pro-audience{
+  background:
+    radial-gradient(circle at 10% 15%,rgba(199,166,106,.07),transparent 23%),
+    linear-gradient(180deg,#f8f7f2,#eef3f3);
+}
+.pro-audience-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:start}
+.pro-audience h2{font:500 clamp(2rem,4vw,3rem) Georgia,"Times New Roman",serif;color:#1e3138;margin:7px 0 13px}
+.pro-audience p{color:#68787d;max-width:700px}
+.pro-audience-list{display:grid;gap:9px}
+.pro-audience-list>div{
+  display:flex;gap:12px;align-items:center;padding:13px 14px;border-radius:16px;
+  background:rgba(255,253,248,.88);border:1px solid rgba(36,72,82,.12)
+}
+.pro-audience-list strong{color:#987747;font-size:.75rem;letter-spacing:1px}
+.pro-audience-list span{color:#344a51;font-weight:800}
+.pro-audience-cta{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap}
+
+.premium-faq{background:linear-gradient(180deg,#f3f5f4,#faf8f3)}
+.faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.faq-grid details{
+  border:1px solid rgba(36,72,82,.12);border-radius:18px;padding:16px 18px;
+  background:rgba(255,253,248,.91)
+}
+.faq-grid summary{cursor:pointer;color:#243a42;font-weight:850}
+.faq-grid p{color:#68787d;margin-top:10px;font-size:.9rem}
+
+.premium-testimonials{
+  background:linear-gradient(180deg,#f8f7f2,#eef3f3);
+}
+.premium-testimonials .offer{
+  background:linear-gradient(135deg,rgba(199,166,106,.10),rgba(90,142,147,.08))!important;
+  border-color:rgba(154,116,64,.18)!important;
+}
+.premium-testimonials h2,.premium-testimonials h3{color:#21343b}
+.premium-testimonials p,.premium-testimonials .check{color:#68787d!important}
+.testimonial-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.testimonial-mini-grid div{padding:11px;border-radius:14px;background:#f4f0e7;border:1px solid rgba(154,116,64,.13)}
+.testimonial-mini-grid strong{display:block;color:#8e7043;font-size:.78rem}
+.testimonial-mini-grid span{display:block;color:#5e7077;font-size:.73rem;margin-top:3px}
+
+.proof-strip{padding:22px 0;background:#1b343e}
+.proof-strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.proof-strip-grid div{text-align:center;padding:12px;border-right:1px solid rgba(255,255,255,.10)}
+.proof-strip-grid div:last-child{border-right:0}
+.proof-strip-grid strong{display:block;color:#e1c38c;font:600 1rem Georgia,"Times New Roman",serif}
+.proof-strip-grid span{color:#c7d4d6;font-size:.74rem}
+
+@media(max-width:980px){
+  .spotlight-grid{grid-template-columns:1fr}
+  .spotlight-card{min-height:210px}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .pro-audience-grid{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .proof-strip-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .gallery-grid{grid-template-columns:1fr}
+  .testimonial-mini-grid{grid-template-columns:1fr}
+  .proof-strip-grid{grid-template-columns:1fr 1fr}
+}

@@ -10,11 +10,11 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="Michel Quinones — Portfolio et accompagnement numérique bénévole">
   <meta property="og:description" content="Découvrez une initiative personnelle et bénévole fondée sur la transmission, l'entraide et l'autonomie numérique.">
-  <meta property="og:url" content="https://grial71.github.io/11_Michel-Portfolio/">
-  <meta property="og:image" content="https://grial71.github.io/11_Michel-Portfolio/assets/images/michel-quinones.webp">
+  <meta property="og:url" content="https://www.lenumeriquevientavous.fr/">
+  <meta property="og:image" content="https://www.lenumeriquevientavous.fr/assets/images/michel-quinones.webp">
   <meta name="twitter:card" content="summary_large_image">
   <title>Le Numérique Vient à Vous | Accompagnement numérique bénévole</title>
-  <link rel="canonical" href="https://grial71.github.io/11_Michel-Portfolio/">
+  <link rel="canonical" href="https://www.lenumeriquevientavous.fr/">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,6 +38,20 @@
     @media(max-width:980px){.cinematic-hero{min-height:0}.hero-bg-video{opacity:.32}}
     @media(prefers-reduced-motion:reduce){.hero-bg-video,.hero-light-sweep{display:none!important}}
   </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Le Numérique Vient à Vous",
+    "url":"https://www.lenumeriquevientavous.fr/",
+    "inLanguage":"fr",
+    "author":{
+      "@type":"Person",
+      "name":"Michel Quinones",
+      "url":"https://www.lenumeriquevientavous.fr/"
+    }
+  }
+  </script>
 </head>
 
 <body>
@@ -64,6 +78,7 @@
         <a href="#videos">Vidéos</a>
         <a href="#a-propos">À propos</a>
         <a href="#contact">Contact</a>
+        <a class="meet-me-link" href="#agenda">Me rencontrer</a>
         <a class="nav-cta" href="#contact">Échanger</a>
       </div>
       <div class="language-switcher" aria-label="Choisir la langue">
@@ -132,7 +147,7 @@
         </div>
       </div>
 
-      <article class="event-card event-card-featured">
+      <article class="event-card event-card-featured" data-event-date="2026-09-24">
         <div class="event-date" aria-label="24 septembre 2026">
           <span>SEP</span>
           <strong>24</strong>
@@ -150,10 +165,43 @@
         </div>
 
         <div class="event-badge">
-          <span>Demain</span>
+          <span id="nextEventStatus">24 septembre</span>
           <small>Rencontre ouverte sur place</small>
         </div>
       </article>
+    </div>
+  </section>
+
+  <section id="alaune" class="spotlight-section" aria-labelledby="spotlight-title">
+    <div class="container">
+      <div class="section-head spotlight-head">
+        <span>À la une</span>
+        <h2 id="spotlight-title">Ce qui se passe en ce moment</h2>
+        <p>Les dernières actualités, rencontres et réalisations mises en avant sur Le Numérique Vient à Vous.</p>
+      </div>
+
+      <div class="spotlight-grid">
+        <article class="spotlight-card spotlight-event">
+          <div class="spotlight-label">Rencontre</div>
+          <h3>Normandie Numérique Festival — Rouen</h3>
+          <p>Je serai présent le 24 septembre 2026 à la Halle aux Toiles. Si vous me reconnaissez et souhaitez échanger, venez simplement me parler.</p>
+          <a href="#agenda">Voir l'agenda <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="spotlight-card spotlight-video">
+          <div class="spotlight-label">Vidéo terrain</div>
+          <h3>Forum du handicap de Rouen</h3>
+          <p>Découverte d'innovations, échanges avec les exposants et essai de solutions de mobilité sur le terrain.</p>
+          <a href="#videos">Voir les vidéos <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="spotlight-card spotlight-project">
+          <div class="spotlight-label">Projet</div>
+          <h3>Communication & valorisation</h3>
+          <p>Un nouvel axe autour de la vidéo, de l'interview, du web et de l'intelligence artificielle au service des projets.</p>
+          <a href="#communication">Découvrir <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -495,6 +543,40 @@
     </div>
   </section>
 
+  <section id="galerie" class="portfolio-gallery" aria-labelledby="gallery-title">
+    <div class="container">
+      <div class="premium-intro">
+        <div>
+          <p class="premium-eyebrow">Galerie de réalisations</p>
+          <h2 id="gallery-title">Des projets visibles, concrets et évolutifs.</h2>
+        </div>
+        <p>Cette galerie rassemble quelques exemples publics. Elle sera enrichie progressivement avec les réalisations, interviews, supports et projets que je pourrai présenter avec l'accord des personnes concernées.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <a class="gallery-item" href="https://grial71.github.io/serveurs-jerusalem-benin-app/" target="_blank" rel="noopener noreferrer">
+          <div class="gallery-visual gallery-lsj"><span>🌱</span></div>
+          <div><small>Projet solidaire · Web</small><strong>Les Serveurs de Jérusalem — Bénin</strong><span>Voir le projet ↗</span></div>
+        </a>
+
+        <a class="gallery-item" href="https://grial71.github.io/fashion-larissa/" target="_blank" rel="noopener noreferrer">
+          <div class="gallery-visual gallery-fashion"><span>✦</span></div>
+          <div><small>Boutique · Identité numérique</small><strong>Fashion Larissa</strong><span>Voir le projet ↗</span></div>
+        </a>
+
+        <a class="gallery-item" href="#videos">
+          <div class="gallery-visual gallery-video"><span>🎥</span></div>
+          <div><small>Terrain · Interview</small><strong>Forum du handicap de Rouen</strong><span>Voir les vidéos →</span></div>
+        </a>
+
+        <a class="gallery-item" href="#communication">
+          <div class="gallery-visual gallery-com"><span>◉</span></div>
+          <div><small>Communication digitale</small><strong>Valorisation de projets</strong><span>Découvrir →</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section id="services" class="premium-services-existing">
     <div class="container">
       <div class="section-head">
@@ -575,6 +657,26 @@
           <ul><li>Sur rendez-vous</li><li>Rouen et alentours proches</li><li>Selon disponibilité</li></ul>
           <span class="tag">Accompagnement humain</span>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="professionnels" class="pro-audience" aria-labelledby="pro-title">
+    <div class="container pro-audience-grid">
+      <div>
+        <p class="premium-eyebrow">Entreprises · Associations · Porteurs de projet</p>
+        <h2 id="pro-title">Une communication plus claire, plus humaine et plus visible.</h2>
+        <p>J'expérimente et développe des solutions simples pour aider à présenter une activité : page web, QR code, vidéo, interview, visuels, contenus et accompagnement autour de l'intelligence artificielle.</p>
+      </div>
+      <div class="pro-audience-list">
+        <div><strong>01</strong><span>Présenter une activité</span></div>
+        <div><strong>02</strong><span>Créer des supports</span></div>
+        <div><strong>03</strong><span>Valoriser un savoir-faire</span></div>
+        <div><strong>04</strong><span>Préparer une communication terrain</span></div>
+      </div>
+      <div class="pro-audience-cta">
+        <a class="btn btn-primary" href="#communication">Voir les possibilités</a>
+        <a class="btn btn-secondary" href="#contact">Parler d'un projet</a>
       </div>
     </div>
   </section>
@@ -964,7 +1066,7 @@
     </div>
   </section>
 
-  <section id="temoignages">
+  <section id="temoignages" class="premium-testimonials">
     <div class="container offer">
       <div>
         <div class="badge"><span class="pulse"></span> Témoignages vidéo bienvenus</div>
@@ -981,6 +1083,11 @@
         <div class="icon">🎥</div>
         <h3>Pourquoi je demande des témoignages ?</h3>
         <p>Ces retours permettent de montrer concrètement l'utilité du projet et d'améliorer progressivement ma démarche bénévole.</p>
+        <div class="testimonial-mini-grid">
+          <div><strong>Clarté</strong><span>Comprendre ce qui était compliqué</span></div>
+          <div><strong>Autonomie</strong><span>Apprendre à refaire soi-même</span></div>
+          <div><strong>Confiance</strong><span>Avancer progressivement</span></div>
+        </div>
         <div class="video-request">
           <p><strong>Exemple :</strong> “Michel m'a aidé à comprendre comment créer une page, utiliser ChatGPT ou préparer ma communication.”</p>
         </div>
@@ -989,6 +1096,22 @@
     </div>
   </section>
 
+
+  <section id="faq" class="premium-faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head">
+        <span>Questions fréquentes</span>
+        <h2 id="faq-title">Avant de prendre contact</h2>
+        <p>Quelques réponses simples pour comprendre l'esprit de la démarche.</p>
+      </div>
+      <div class="faq-grid">
+        <details><summary>Est-ce réservé aux personnes déjà à l'aise avec le numérique ?</summary><p>Non. L'accompagnement est justement pensé pour avancer progressivement, avec des explications simples et adaptées au niveau de chacun.</p></details>
+        <details><summary>Peut-on échanger à distance ?</summary><p>Oui. Selon le besoin et les disponibilités, certains échanges peuvent se faire à distance par téléphone, visioconférence ou partage d'écran.</p></details>
+        <details><summary>Puis-je venir vous parler lors d'un événement ?</summary><p>Oui. Lorsque ma présence à un événement public est indiquée dans l'agenda, vous pouvez venir me saluer si je suis disponible.</p></details>
+        <details><summary>Les projets présentés sont-ils tous publics ?</summary><p>Non. Certaines réalisations restent volontairement discrètes ou privées afin de respecter les personnes accompagnées et leurs choix de communication.</p></details>
+      </div>
+    </div>
+  </section>
 
   <section id="a-propos" class="about-premium" aria-labelledby="about-title">
     <div class="container about-premium-grid">
@@ -1023,13 +1146,22 @@
     </div>
   </section>
 
+  <section class="proof-strip" aria-label="Repères du projet">
+    <div class="container proof-strip-grid">
+      <div><strong>Web</strong><span>Pages et portfolios</span></div>
+      <div><strong>Vidéo</strong><span>Interviews et terrain</span></div>
+      <div><strong>IA</strong><span>Outils et accompagnement</span></div>
+      <div><strong>Transmission</strong><span>Ateliers et autonomie</span></div>
+    </div>
+  </section>
+
   <section id="contact" class="premium-contact-section">
     <div class="container contact-box">
       <div>
         <div class="section-head" style="text-align:left;margin-bottom:10px">
           <span>Contact</span>
         </div>
-        <h2>Échangeons sur votre besoin</h2>
+        <h2>Vous avez une idée, un besoin ou simplement envie d’échanger ?</h2>
         <p class="small">Contact concernant la démarche bénévole uniquement. Présentez brièvement la difficulté numérique rencontrée. L'aide reste gratuite et dépend de mes disponibilités.</p>
       </div>
 
