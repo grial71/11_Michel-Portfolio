@@ -1425,3 +1425,68 @@ footer{
     height:12px!important;
   }
 }
+
+
+/* =========================================================
+   AGENDA — FESTIVAL DE POÉSIE / FRANCISCO BALLOVERA
+   ========================================================= */
+.event-card-poetry{
+  margin-top:16px;
+  background:
+    radial-gradient(circle at 92% 12%,rgba(226,70,42,.08),transparent 22%),
+    linear-gradient(145deg,#fffdf8,#f8f1e6);
+}
+.event-card-poetry .event-date{
+  background:linear-gradient(145deg,#141414,#2b2b2b);
+}
+.event-card-poetry .event-date span{color:#f1b80d}
+.event-card-poetry .event-meta span:first-child{color:#8b6d42}
+.event-personal-note{
+  margin-top:10px;
+  padding:12px 14px;
+  border-left:3px solid #b78d45;
+  background:rgba(199,166,106,.08);
+  border-radius:0 12px 12px 0;
+}
+.event-time-note{
+  margin-top:10px;
+  font-size:.86rem;
+  color:#6c7579!important;
+}
+.event-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:14px;
+}
+.event-link-primary,
+.event-link-secondary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:9px 13px;
+  border-radius:999px;
+  font-size:.78rem;
+  font-weight:850;
+}
+.event-link-primary{
+  background:linear-gradient(135deg,#203f49,#3f6973);
+  color:#fff8ec;
+}
+.event-link-secondary{
+  background:#f2eadc;
+  color:#7d6037;
+  border:1px solid rgba(154,116,64,.16);
+}
+.event-badge-free{
+  background:linear-gradient(145deg,#f4e5bd,#fff8e7);
+}
+.event-badge-free span{color:#8b6628}
+@media(max-width:820px){
+  .event-card-poetry .event-badge{grid-column:2}
+}
+@media(max-width:560px){
+  .event-card-poetry .event-badge{grid-column:1}
+  .event-links{align-items:stretch;flex-direction:column}
+  .event-link-primary,.event-link-secondary{width:100%}
+}
