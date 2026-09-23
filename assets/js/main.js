@@ -423,3 +423,21 @@ try {
   // Le questionnaire reste consultable si le stockage du navigateur est bloqué.
 }
 loadSurveyStats();
+
+
+// Statut automatique du prochain événement.
+(() => {
+  const card = document.querySelector('[data-event-date]');
+  const status = document.getElementById('nextEventStatus');
+  if (!card || !status) return;
+  const parts = card.dataset.eventDate.split('-').map(Number);
+  const eventDate = new Date(parts[0], parts[1]-1, parts[2]);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  eventDate.setHours(0,0,0,0);
+  const diff = Math.round((eventDate - today) / 86400000);
+  if (diff === 0) status.textContent = "Aujourd'hui";
+  else if (diff === 1) status.textContent = "Demain";
+  else if (diff > 1) status.textContent = eventDate.toLocaleDateString('fr-FR',{day:'numeric',month:'long'});
+  else status.textContent = "Événement passé";
+})();
