@@ -1230,3 +1230,132 @@ footer{
     display:none!important;
   }
 }
+
+
+/* =========================================================
+   AGENDA & RENCONTRES — 24/09/2026
+   ========================================================= */
+.event-agenda{
+  padding:52px 0;
+  background:
+    radial-gradient(circle at 92% 5%,rgba(199,166,106,.10),transparent 22%),
+    linear-gradient(180deg,#f7f8f6,#eef3f3);
+  border-bottom:1px solid rgba(36,72,82,.12);
+}
+.event-agenda-head{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  align-items:end;
+  margin-bottom:22px;
+}
+.event-agenda-head h2{
+  margin:4px 0 8px;
+  color:#1e3138;
+  font:500 clamp(1.8rem,3.3vw,2.8rem) Georgia,"Times New Roman",serif;
+  letter-spacing:-1px;
+}
+.event-agenda-head>div>p:last-child{
+  max-width:760px;
+  color:#66777d;
+}
+.event-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:112px 1fr auto;
+  gap:24px;
+  align-items:center;
+  padding:24px;
+  border-radius:28px;
+  overflow:hidden;
+  background:rgba(255,253,248,.94);
+  border:1px solid rgba(132,111,75,.16);
+  box-shadow:0 20px 58px rgba(32,49,58,.09);
+}
+.event-card:after{
+  content:"";
+  position:absolute;
+  right:-80px;top:-100px;
+  width:260px;height:260px;border-radius:50%;
+  background:radial-gradient(circle,rgba(90,142,147,.12),transparent 68%);
+  pointer-events:none;
+}
+.event-date{
+  min-height:122px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  border-radius:22px;
+  background:linear-gradient(145deg,#18323c,#315560);
+  color:#fff8ed;
+  box-shadow:0 14px 34px rgba(24,50,60,.17);
+}
+.event-date span{
+  color:#dfc28d;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:2px;
+}
+.event-date strong{
+  font:500 2.6rem Georgia,"Times New Roman",serif;
+  line-height:1;
+  margin:4px 0;
+}
+.event-date small{color:#cbd7d9;font-weight:700}
+.event-content{position:relative;z-index:1}
+.event-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 14px;
+  color:#7f6b49;
+  font-size:.78rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+.event-content h3{
+  margin:8px 0 8px;
+  color:#21353c;
+  font:600 clamp(1.3rem,2.2vw,1.8rem) Georgia,"Times New Roman",serif;
+}
+.event-content p{
+  color:#68787e;
+  line-height:1.67;
+}
+.event-invite{margin-top:8px}
+.event-invite strong{color:#294f59}
+.event-badge{
+  position:relative;
+  z-index:1;
+  min-width:150px;
+  padding:14px 16px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#f0e7d7,#faf6ed);
+  border:1px solid rgba(154,116,64,.17);
+  text-align:center;
+}
+.event-badge span{
+  display:block;
+  color:#8f6e3f;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1.4px;
+}
+.event-badge small{
+  display:block;
+  color:#66777d;
+  margin-top:3px;
+}
+@media(max-width:820px){
+  .event-card{grid-template-columns:92px 1fr}
+  .event-badge{grid-column:2;justify-self:start;min-width:0}
+  .event-date{min-height:110px}
+}
+@media(max-width:560px){
+  .event-agenda{padding:38px 0}
+  .event-card{grid-template-columns:1fr;padding:18px}
+  .event-date{width:94px;min-height:100px}
+  .event-badge{grid-column:1}
+  .event-meta{font-size:.72rem}
+}
