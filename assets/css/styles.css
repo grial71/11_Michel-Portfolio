@@ -1024,3 +1024,149 @@ footer{
   .about-values{grid-template-columns:1fr}
   .about-signature{left:12px;right:12px}
 }
+
+
+/* =========================================================
+   PHASE 2B — Harmonisation globale premium
+   ========================================================= */
+.premium-section-surface{
+  background:
+    radial-gradient(circle at 12% 10%,rgba(199,166,106,.055),transparent 24%),
+    linear-gradient(180deg,#f7f8f6,#edf2f2)!important;
+}
+.premium-section-surface .section-head h2,
+.premium-services-existing .section-head h2,
+.premium-contact-section h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:500;
+  color:#1e3138;
+  letter-spacing:-1.15px;
+}
+.premium-section-surface .section-head p,
+.premium-services-existing .section-head p{color:#67777d}
+
+#videos .featured-video-card{
+  background:rgba(255,253,248,.94)!important;
+  border:1px solid rgba(132,111,75,.14)!important;
+  box-shadow:0 18px 50px rgba(32,49,58,.08)!important;
+}
+#videos .featured-video-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 25px 64px rgba(32,49,58,.12)!important;
+}
+#videos .video-copy h3{color:#20343b}
+#videos .video-copy p{color:#69787d!important}
+#videos .video-frame{
+  border-color:rgba(132,111,75,.15);
+  box-shadow:0 14px 36px rgba(32,49,58,.12);
+}
+#videos .forum-participants{border-top-color:rgba(36,72,82,.12)}
+#videos .forum-participants>summary{color:#28434c}
+#videos .forum-org-card,
+#videos .forum-all-stands{
+  background:rgba(244,242,235,.82);
+  border-color:rgba(132,111,75,.13);
+}
+#videos .forum-org-head strong,
+#videos .forum-stand-list b{color:#233840}
+#videos .forum-org-head span{color:#4f7379;background:rgba(90,142,147,.09);border-color:rgba(90,142,147,.16)}
+#videos .forum-all-stands>summary{color:#8e7043}
+
+#realisations .project-card{
+  background:linear-gradient(160deg,rgba(255,253,248,.97),rgba(239,244,244,.97))!important;
+  border-color:rgba(36,72,82,.13)!important;
+  box-shadow:0 21px 58px rgba(32,49,58,.085)!important;
+}
+#realisations .project-card:hover{
+  border-color:rgba(154,116,64,.30)!important;
+  box-shadow:0 28px 70px rgba(32,49,58,.13)!important;
+}
+#realisations .project-visual{
+  background:radial-gradient(circle at 50% 55%,rgba(90,142,147,.16),transparent 29%),linear-gradient(135deg,rgba(47,107,122,.07),rgba(199,166,106,.07))!important;
+}
+#realisations .project-card-fashion .project-visual{
+  background:radial-gradient(circle at 50% 55%,rgba(199,166,106,.18),transparent 29%),linear-gradient(135deg,rgba(151,125,84,.07),rgba(90,142,147,.05))!important;
+}
+#realisations .project-body h3{color:#20343b}
+#realisations .project-body>p:not(.project-kicker){color:#68787e!important}
+#realisations .project-meta{color:#517865}
+#realisations .project-tags li{
+  color:#4d6b73;
+  border-color:rgba(47,107,122,.14);
+  background:rgba(90,142,147,.07);
+}
+#realisations .project-link{color:#2a4f59;border-bottom-color:#b08b54}
+#realisations .project-link span{color:#9a7440}
+#realisations .confidential-note{
+  background:rgba(247,243,233,.86);
+  border-color:rgba(154,116,64,.17);
+}
+#realisations .confidential-note p{color:#65767c}
+#realisations .confidential-note strong{color:#263a41}
+#realisations .timeline-stage{
+  background:rgba(255,253,248,.88)!important;
+  border-color:rgba(36,72,82,.13)!important;
+}
+#realisations .timeline-stage h3{color:#243840}
+#realisations .timeline-stage>p:last-child{color:#68787d!important}
+
+.premium-services-existing{
+  background:linear-gradient(180deg,#f9f8f4,#f1f4f3);
+}
+.premium-services-existing .card{
+  background:rgba(255,253,248,.92)!important;
+  border-color:rgba(36,72,82,.13)!important;
+  box-shadow:0 16px 45px rgba(32,49,58,.07)!important;
+}
+.premium-services-existing .card:hover{
+  border-color:rgba(154,116,64,.27)!important;
+  box-shadow:0 22px 58px rgba(32,49,58,.11)!important;
+}
+.premium-services-existing .card h3{color:#21343b;font-family:Georgia,"Times New Roman",serif}
+.premium-services-existing .card p,
+.premium-services-existing .card li{color:#68787d!important}
+.premium-services-existing .tag{
+  color:#8b6d40!important;
+  background:rgba(199,166,106,.10)!important;
+  border-color:rgba(199,166,106,.20)!important;
+}
+.premium-services-existing .icon{
+  background:linear-gradient(145deg,#e9e2d4,#f5f1e8)!important;
+  border-color:rgba(154,116,64,.14)!important;
+}
+
+.premium-contact-section{
+  background:linear-gradient(180deg,#edf2f2,#e7eded);
+}
+.premium-contact-section .contact-box{
+  background:
+    radial-gradient(circle at 85% 10%,rgba(225,193,139,.18),transparent 24%),
+    linear-gradient(135deg,#18323c,#2d515c)!important;
+  border-color:rgba(225,193,139,.20)!important;
+  box-shadow:0 25px 70px rgba(25,48,57,.15)!important;
+}
+.premium-contact-section .section-head span{color:#dfc28d!important}
+.premium-contact-section h2{color:#fff8ed!important}
+.premium-contact-section .small{color:#c8d5d6!important}
+.premium-contact-section .contact-btn{
+  border-color:rgba(255,255,255,.16)!important;
+  box-shadow:none!important;
+}
+.premium-contact-section .mail{background:linear-gradient(135deg,#526f7a,#6e9198)!important}
+.premium-contact-section .rdv{background:linear-gradient(135deg,#5b7667,#789382)!important}
+.premium-contact-section .telegram{background:linear-gradient(135deg,#4a737b,#6c999d)!important;color:#fff!important}
+.premium-contact-section .paypal{background:linear-gradient(135deg,#9b7a46,#c0a06a)!important;color:#fff!important}
+.premium-contact-section .paypal-note{color:#ced9da!important}
+
+.cinematic-hero h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:500;
+  letter-spacing:-2.3px;
+  max-width:760px;
+}
+.cinematic-hero .highlight{font-style:normal}
+.cinematic-hero .hero-actions .btn{border-radius:999px}
+
+@media(max-width:640px){
+  .cinematic-hero h1{letter-spacing:-1.25px}
+}
