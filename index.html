@@ -1286,35 +1286,59 @@
   </section>
 
 
-  <section id="meditation">
-    <div class="container grid-2">
-      <div class="card">
-        <div class="icon">🧘</div>
-        <h2>Un espace calme pour apprendre avec moins de pression</h2>
-        <p>En plus de l'accompagnement numérique, je souhaite proposer une approche humaine et pédagogique : apprendre à avancer plus calmement, reprendre confiance et mieux gérer les émotions quand la technique paraît compliquée.</p>
-        <div class="check-list">
-          <div class="check"><b>✓</b><span>Respirer, ralentir et reprendre confiance avant d'apprendre.</span></div>
-          <div class="check"><b>✓</b><span>Comprendre que l'erreur fait partie de l'apprentissage.</span></div>
-          <div class="check"><b>✓</b><span>Utiliser des outils simples pour organiser ses idées et ses émotions.</span></div>
-          <div class="check"><b>✓</b><span>Avancer pas à pas, sans jugement et selon le niveau de chacun.</span></div>
-        </div>
-        <p class="notice">Je ne me présente pas comme professionnel de santé. Cette démarche est seulement un soutien pédagogique, humain et bienveillant, basé sur mon expérience personnelle et ma façon d'accompagner les personnes.</p>
+  <section id="meditation" aria-labelledby="meditation-title">
+    <div class="container">
+      <div class="section-head">
+        <span>🧘 Méditation · Conscience · Bien-être</span>
+        <h2 id="meditation-title">Méditation, conscience & neurosciences</h2>
+        <p>Un espace de découverte pour ralentir, mieux comprendre l'attention et explorer certaines pratiques intérieures avec curiosité et discernement.</p>
       </div>
 
-      <div class="card">
-        <div class="icon">🎵</div>
-        <h2>Musique de méditation</h2>
-        <p>Vous pouvez lancer une musique douce pendant la lecture ou pendant certains moments d'apprentissage, si cela vous aide à vous concentrer et à rester calme. Le lecteur reste aussi disponible en bas de l'écran, même lorsque vous faites défiler la page.</p>
-        <div class="audio-box">
-          <div class="audio-controls">
-            <button class="audio-btn" type="button" id="playPauseBtn">▶️ Play</button>
-            <label class="volume-wrap" for="volumeControl">🔊 Volume
-              <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.55">
-            </label>
+      <div class="grid-2">
+        <div class="card">
+          <div class="icon">🧘</div>
+          <h2>Un espace calme pour apprendre avec moins de pression</h2>
+          <p>En plus de l'accompagnement numérique, je souhaite proposer une approche humaine et pédagogique : apprendre à avancer plus calmement, reprendre confiance et mieux gérer les émotions quand la technique paraît compliquée.</p>
+          <div class="check-list">
+            <div class="check"><b>✓</b><span>Respirer, ralentir et reprendre confiance avant d'apprendre.</span></div>
+            <div class="check"><b>✓</b><span>Comprendre que l'erreur fait partie de l'apprentissage.</span></div>
+            <div class="check"><b>✓</b><span>Utiliser des outils simples pour organiser ses idées et ses émotions.</span></div>
+            <div class="check"><b>✓</b><span>Avancer pas à pas, sans jugement et selon le niveau de chacun.</span></div>
           </div>
-          <p class="audio-status" id="audioStatus">Musique prête. Le lecteur reste aussi permanent en bas de l’écran. Placez le fichier MP3 dans un dossier nommé <strong>musique</strong> à côté de votre fichier index.html.</p>
+          <p class="notice">Je ne me présente pas comme professionnel de santé. Cette démarche est seulement un soutien pédagogique, humain et bienveillant, basé sur mon expérience personnelle et ma façon d'accompagner les personnes.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎵</div>
+          <h2>Musique de méditation</h2>
+          <p>Vous pouvez lancer une musique douce pendant la lecture ou pendant certains moments d'apprentissage, si cela vous aide à vous concentrer et à rester calme. Le lecteur reste aussi disponible en bas de l'écran, même lorsque vous faites défiler la page.</p>
+          <div class="audio-box">
+            <div class="audio-controls">
+              <button class="audio-btn" type="button" id="playPauseBtn">▶️ Play</button>
+              <label class="volume-wrap" for="volumeControl">🔊 Volume
+                <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.55">
+              </label>
+            </div>
+            <p class="audio-status" id="audioStatus">Musique prête. Le lecteur reste aussi permanent en bas de l’écran. Placez le fichier MP3 dans un dossier nommé <strong>musique</strong> à côté de votre fichier index.html.</p>
+          </div>
         </div>
       </div>
+
+      <article class="featured-video-card" style="margin-top:2rem;">
+        <div class="video-copy">
+          <p class="project-kicker">Conscience · Attention · États modifiés</p>
+          <h3>Comprendre les états modifiés de conscience</h3>
+          <p>Comment certaines personnes entrent-elles dans un état de concentration si profond que la perception du temps semble disparaître ? Cette vidéo de Damien Maya explore les états modifiés de conscience, le flow, le rôle du cerveau et différentes expériences d'absorption ou de méditation.</p>
+          <p>Une ressource de découverte pour mieux comprendre les liens entre attention, perception et pratiques intérieures.</p>
+          <p class="notice"><strong>À regarder avec discernement :</strong> certaines interprétations autour de la conscience, de la méditation ou du fonctionnement cérébral peuvent dépasser ce qui est aujourd'hui solidement établi par la recherche scientifique.</p>
+          <div class="event-links" style="margin-top:1rem;">
+            <a class="event-link-primary" href="https://youtu.be/RuwfWsBBSdY" target="_blank" rel="noopener noreferrer">Voir la vidéo sur YouTube ↗</a>
+          </div>
+        </div>
+        <div class="video-frame video-frame-wide">
+          <iframe src="https://www.youtube-nocookie.com/embed/RuwfWsBBSdY" title="Comment entrer en états modifiés de conscience sur commande ? — Damien Maya" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </article>
     </div>
   </section>
 
