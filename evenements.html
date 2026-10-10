@@ -24,6 +24,29 @@
     .event-card-featured .video-frame{width:100%;max-width:1100px;aspect-ratio:16/9;min-height:0;margin-top:1.25rem!important;overflow:hidden;border-radius:22px;background:#000}
     .event-card-featured .video-frame iframe{display:block;width:100%;height:100%;min-height:0;border:0}
     @media(max-width:700px){.event-card-featured .video-frame{border-radius:14px}}
+
+    .event-search-panel{margin:-1.2rem auto 2.2rem;position:relative;z-index:3}
+    .event-search-box{background:#fffdf8;border:1px solid rgba(42,66,73,.14);border-radius:22px;padding:1.15rem;box-shadow:0 18px 45px rgba(32,49,58,.09)}
+    .event-search-title{display:flex;align-items:center;gap:.65rem;margin:0 0 .85rem;color:#20313a;font-size:1.15rem}
+    .event-search-controls{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:.8rem}
+    .event-search-input-wrap{position:relative}
+    .event-search-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.15rem;pointer-events:none}
+    #eventSearch{width:100%;padding:.95rem 1rem .95rem 3rem;border:1px solid #cfd7da;border-radius:14px;background:#fff;color:#20313a;font:inherit}
+    #eventSort{width:100%;padding:.95rem 1rem;border:1px solid #cfd7da;border-radius:14px;background:#fff;color:#20313a;font:inherit}
+    #eventSearch:focus,#eventSort:focus{outline:3px solid rgba(33,150,243,.18);border-color:#5c8fa3}
+    .event-search-meta{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:.8rem;color:#68767d;font-size:.9rem}
+    .event-index{margin-top:1rem;border-top:1px solid #e7ecee;padding-top:.85rem}
+    .event-index-list{display:grid;gap:.45rem;margin:0;padding:0;list-style:none}
+    .event-index-list a{display:grid;grid-template-columns:125px 1fr;gap:.8rem;align-items:center;padding:.65rem .75rem;border-radius:10px;text-decoration:none;color:#20313a;background:#f7f9f9}
+    .event-index-list a:hover{background:#eef4f5}
+    .event-index-date{font-weight:800;color:#6e7f86;font-size:.82rem}
+    .event-index-name{font-weight:700}
+    .event-card[hidden]{display:none!important}
+    .event-no-results{padding:1rem;border-radius:12px;background:#fff5e8;color:#754d1c;font-weight:700}
+    @media(max-width:700px){
+      .event-search-controls{grid-template-columns:1fr}
+      .event-index-list a{grid-template-columns:1fr;gap:.15rem}
+    }
   </style>
 </head>
 <body>
@@ -42,6 +65,7 @@
         <a href="index.html#accueil">Accueil</a>
         <a href="index.html#agenda">À venir</a>
         <a href="evenements.html" aria-current="page">🗂️ Événements passés</a>
+        <a href="#recherche-evenements">🔎 Rechercher</a>
         <a href="formations.html">🎥 Formations vidéo</a>
         <a href="index.html#interviews">🎤 Interviews</a>
         <a href="index.html#a-propos">À propos</a>
@@ -58,6 +82,34 @@
         <a class="archive-back" href="index.html">← Retour à la page principale</a>
       </div>
     </header>
+
+    <section id="recherche-evenements" class="event-search-panel" aria-labelledby="event-search-title">
+      <div class="container">
+        <div class="event-search-box">
+          <h2 id="event-search-title" class="event-search-title">🔎 Rechercher dans les événements passés</h2>
+          <div class="event-search-controls">
+            <div class="event-search-input-wrap">
+              <span class="event-search-icon" aria-hidden="true">🔎</span>
+              <input id="eventSearch" type="search" placeholder="Nom, lieu, thème, date…" autocomplete="off" aria-label="Rechercher un événement">
+            </div>
+            <select id="eventSort" aria-label="Trier les événements">
+              <option value="date-desc">Date : plus récent d’abord</option>
+              <option value="date-asc">Date : plus ancien d’abord</option>
+              <option value="name-asc">Nom : A → Z</option>
+              <option value="name-desc">Nom : Z → A</option>
+            </select>
+          </div>
+          <div class="event-search-meta">
+            <span id="eventResultCount">Chargement des événements…</span>
+            <span>Recherche instantanée dans les titres, lieux, thèmes et descriptions.</span>
+          </div>
+          <div class="event-index" aria-live="polite">
+            <ul id="eventIndexList" class="event-index-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
   <section id="evenements-passes" class="event-agenda" aria-labelledby="evenements-passes-title">
     <div class="container">
       <div class="event-agenda-head">
@@ -262,6 +314,79 @@
       <p class="small">Initiative personnelle et bénévole · Archives des événements réalisés</p>
     </div>
   </footer>
+
+  <script>
+    (function(){
+      const container=document.querySelector('#evenements-passes .container');
+      const search=document.getElementById('eventSearch');
+      const sort=document.getElementById('eventSort');
+      const list=document.getElementById('eventIndexList');
+      const count=document.getElementById('eventResultCount');
+      if(!container||!search||!sort||!list||!count) return;
+
+      const monthMap={
+        janvier:0, février:1, fevrier:1, mars:2, avril:3, mai:4, juin:5,
+        juillet:6, août:7, aout:7, septembre:8, octobre:9, novembre:10, décembre:11, decembre:11
+      };
+      const normalize=s=>(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+
+      const cards=[...container.querySelectorAll('.event-card')].map((card,i)=>{
+        const title=card.querySelector('h3')?.textContent.trim() || 'Événement';
+        const dateLabel=card.querySelector('.event-date')?.getAttribute('aria-label') || '';
+        const m=dateLabel.toLowerCase().match(/(\d{1,2})\s+([a-zàâäéèêëîïôöùûüç]+)\s+(\d{4})/i);
+        let date=new Date(0);
+        if(m){
+          const month=monthMap[normalize(m[2])];
+          if(month!==undefined) date=new Date(Number(m[3]),month,Number(m[1]));
+        }
+        const id='evenement-'+String(i+1).padStart(2,'0');
+        card.id=id;
+        return {card,title,date,dateLabel,id,text:normalize(card.textContent)};
+      });
+
+      function render(){
+        const q=normalize(search.value);
+        const mode=sort.value;
+        const filtered=cards.filter(x=>!q || x.text.includes(q) || normalize(x.dateLabel).includes(q));
+
+        filtered.sort((a,b)=>{
+          if(mode==='date-asc') return a.date-b.date;
+          if(mode==='name-asc') return a.title.localeCompare(b.title,'fr',{sensitivity:'base'});
+          if(mode==='name-desc') return b.title.localeCompare(a.title,'fr',{sensitivity:'base'});
+          return b.date-a.date;
+        });
+
+        cards.forEach(x=>x.card.hidden=!filtered.includes(x));
+        filtered.forEach(x=>container.appendChild(x.card));
+
+        count.textContent=filtered.length+' événement'+(filtered.length>1?'s':'')+' trouvé'+(filtered.length>1?'s':'');
+        list.innerHTML='';
+        if(!filtered.length){
+          const li=document.createElement('li');
+          li.className='event-no-results';
+          li.textContent='Aucun événement ne correspond à cette recherche.';
+          list.appendChild(li);
+          return;
+        }
+        filtered.forEach(x=>{
+          const li=document.createElement('li');
+          const a=document.createElement('a');
+          a.href='#'+x.id;
+          const d=document.createElement('span');
+          d.className='event-index-date';
+          d.textContent=x.dateLabel || 'Date non indiquée';
+          const n=document.createElement('span');
+          n.className='event-index-name';
+          n.textContent=x.title;
+          a.append(d,n); li.appendChild(a); list.appendChild(li);
+        });
+      }
+      search.addEventListener('input',render);
+      sort.addEventListener('change',render);
+      render();
+    })();
+  </script>
+
   <script src="assets/js/main.js"></script>
 </body>
 </html>
