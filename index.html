@@ -104,6 +104,20 @@
     @media(max-width:900px){.travel-partner-wrap{grid-template-columns:1fr}.travel-proof{grid-template-columns:1fr}.travel-partner-main{padding:1.45rem}.travel-partner-side{padding:1.35rem}}
   </style>
 
+  <style id="security-guides-20261013">
+    #securite-numerique{padding:5.5rem 0;background:linear-gradient(180deg,#f7fafb,#eef4f5)}
+    .security-intro{max-width:850px;margin-bottom:2rem}
+    .security-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+    .security-card{background:#fff;border:1px solid rgba(42,66,73,.14);border-radius:22px;padding:1.4rem;box-shadow:0 12px 32px rgba(32,49,58,.07)}
+    .security-card h3{margin:.35rem 0 .7rem;color:#20313a}
+    .security-card p,.security-card li{color:#58636a;line-height:1.65}
+    .security-card ul{padding-left:1.2rem}
+    .security-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .7rem;border-radius:999px;background:#e7f3ec;color:#245c3b;font-weight:800;font-size:.78rem}
+    .security-steps{counter-reset:step;display:grid;gap:.8rem;margin-top:1rem}
+    .security-step{position:relative;padding:1rem 1rem 1rem 3.1rem;border-radius:14px;background:#f7faf9;border:1px solid #e1ece6}
+    .security-step:before{counter-increment:step;content:counter(step);position:absolute;left:1rem;top:1rem;width:1.45rem;height:1.45rem;border-radius:50%;display:grid;place-items:center;background:#20313a;color:#fff;font-size:.78rem;font-weight:800}
+    .security-note{margin-top:1rem;padding:.9rem 1rem;border-left:4px solid #d4af37;background:#fffaf0;border-radius:10px;color:#5c513c}
+  </style>
 </head>
 
 <body>
@@ -126,6 +140,7 @@
         <a href="#realisations">Projets</a>
         <a href="#services">Services</a>
         <a href="#openai-academy">🎓 Formation IA</a>
+        <a href="#securite-numerique">🛡️ Sécurité numérique</a>
         <a href="#communication">Communication</a>
         <a href="#agenda">À venir</a>
         <a href="#interviews">🎤 Interviews</a>
@@ -1093,6 +1108,47 @@
   </section>
 
 
+
+  <section id="securite-numerique" aria-labelledby="security-title">
+    <div class="container">
+      <div class="section-head security-intro">
+        <span>🛡️ Conseils & tutoriels</span>
+        <h2 id="security-title">Sécurité numérique au quotidien</h2>
+        <p>Un espace pratique pour apprendre à mieux protéger son téléphone, ses comptes et ses données. Les conseils seront ajoutés progressivement, avec des explications simples et des étapes faciles à suivre.</p>
+      </div>
+
+      <div class="security-grid">
+        <article class="security-card">
+          <span class="security-badge">📱 Tutoriel n°1 · Android</span>
+          <h3>Que faire si quelqu’un arrache votre téléphone déverrouillé ?</h3>
+          <p>Sur les appareils Android compatibles, plusieurs protections peuvent réduire les risques après un vol : verrouillage en cas de détection de vol, verrouillage hors ligne et verrouillage à distance.</p>
+
+          <div class="security-steps">
+            <div class="security-step"><strong>Ouvrez les Paramètres</strong><br>Accédez aux réglages de votre téléphone.</div>
+            <div class="security-step"><strong>Ouvrez les services Google</strong><br>Selon votre appareil : Paramètres → Google → Tous les services.</div>
+            <div class="security-step"><strong>Ouvrez « Protection contre le vol »</strong><br>Le nom ou l’emplacement peut varier selon la version d’Android et le fabricant.</div>
+            <div class="security-step"><strong>Activez les protections disponibles</strong><br>Détection de vol, verrouillage hors ligne et verrouillage à distance lorsqu’ils sont proposés.</div>
+          </div>
+
+          <p class="security-note"><strong>Important :</strong> ces fonctions complètent, mais ne remplacent pas, un code de verrouillage solide, la biométrie, la double authentification et la sauvegarde régulière de vos données.</p>
+        </article>
+
+        <article class="security-card">
+          <span class="security-badge">🔐 À venir</span>
+          <h3>Prochains conseils</h3>
+          <ul>
+            <li>Protéger son compte Google après la perte d’un téléphone.</li>
+            <li>Reconnaître un faux SMS ou un faux e-mail.</li>
+            <li>Créer de bons mots de passe sans les oublier.</li>
+            <li>Activer la double authentification.</li>
+            <li>Sécuriser WhatsApp et les réseaux sociaux.</li>
+          </ul>
+          <p>Cette rubrique évoluera progressivement avec de nouveaux tutoriels illustrés et des conseils de prévention.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="meditation" aria-labelledby="meditation-title">
     <div class="container">
       <div class="section-head">
@@ -1232,6 +1288,7 @@
     <div class="container secondary-explore-inner">
       <span>Explorer aussi</span>
       <a href="#apprendre">Apprendre</a>
+      <a href="#securite-numerique">Sécurité</a>
       <a href="handicap.html">Handicap & autonomie</a>
       <a href="#offre">Bénévolat</a>
       <a href="#methode">Méthode</a>
