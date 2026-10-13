@@ -117,6 +117,14 @@
     .security-step{position:relative;padding:1rem 1rem 1rem 3.1rem;border-radius:14px;background:#f7faf9;border:1px solid #e1ece6}
     .security-step:before{counter-increment:step;content:counter(step);position:absolute;left:1rem;top:1rem;width:1.45rem;height:1.45rem;border-radius:50%;display:grid;place-items:center;background:#20313a;color:#fff;font-size:.78rem;font-weight:800}
     .security-note{margin-top:1rem;padding:.9rem 1rem;border-left:4px solid #d4af37;background:#fffaf0;border-radius:10px;color:#5c513c}
+    .security-news-card{grid-column:1/-1;background:linear-gradient(135deg,#0f2730,#173f4c);color:#fff;border-color:rgba(255,255,255,.14)}
+    .security-news-card h3{color:#fff;font-size:clamp(1.45rem,3vw,2rem)}
+    .security-news-card p,.security-news-card li{color:#e6eff1}
+    .security-news-card .security-badge{background:#f5c65f;color:#26353b}
+    .security-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:1.1rem 0}
+    .security-stat{padding:1rem;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+    .security-stat strong{display:block;color:#ffd879;font-size:1.25rem;margin-bottom:.25rem}
+    .security-news-card a{color:#ffe0a3;font-weight:800}
   </style>
 </head>
 
@@ -1131,6 +1139,38 @@
           </div>
 
           <p class="security-note"><strong>Important :</strong> ces fonctions complètent, mais ne remplacent pas, un code de verrouillage solide, la biométrie, la double authentification et la sauvegarde régulière de vos données.</p>
+        </article>
+
+        <article class="security-card security-news-card">
+          <span class="security-badge">🌍 Actualité sécurité · 13 octobre 2026</span>
+          <h3>Cybercriminalité mondiale : la coopération internationale passe à la vitesse supérieure</h3>
+          <p>Le ministère américain de la Justice a annoncé les résultats d’une opération internationale baptisée <strong>« Joint Disruption Week »</strong>, menée avec plusieurs services de police, autorités judiciaires et entreprises du numérique contre des réseaux d’escroquerie transnationaux opérant notamment depuis l’Afrique de l’Ouest.</p>
+
+          <div class="security-stats" aria-label="Résultats annoncés par le ministère américain de la Justice">
+            <div class="security-stat"><strong>+ de 3,7 millions</strong><span>de comptes, Pages et Groupes frauduleux supprimés selon les partenaires privés.</span></div>
+            <div class="security-stat"><strong>28 arrestations</strong><span>annoncées au Ghana et au Nigeria dans le cadre des opérations décrites.</span></div>
+            <div class="security-stat"><strong>117 victimes</strong><span>de traite identifiées au Ghana et en attente de rapatriement vers le Nigeria.</span></div>
+            <div class="security-stat"><strong>+ de 11 M$</strong><span>de fonds potentiellement gelables identifiés par les partenaires privés.</span></div>
+          </div>
+
+          <p><strong>Comment fonctionnent ces arnaques ?</strong> Les réseaux criminels peuvent utiliser de faux profils, l’usurpation d’identité, de fausses relations sentimentales ou professionnelles, de prétendus investissements très rentables, ainsi que des techniques de manipulation visant à obtenir de l’argent, des données personnelles ou des codes de sécurité. Certaines campagnes peuvent aussi s’appuyer sur des contenus générés par intelligence artificielle.</p>
+
+          <p><strong>Pourquoi cette opération est importante ?</strong> La lutte ne repose plus uniquement sur les arrestations : les autorités travaillent aussi avec les plateformes et les entreprises technologiques pour désactiver des comptes, partager des renseignements, identifier des infrastructures frauduleuses et suivre certains flux financiers.</p>
+
+          <p><strong>Pour vous protéger :</strong></p>
+          <ul>
+            <li>Ne communiquez jamais vos mots de passe ni vos codes de validation.</li>
+            <li>Activez la double authentification lorsque c’est possible.</li>
+            <li>Méfiez-vous des promesses de gains rapides ou garantis.</li>
+            <li>Vérifiez l’identité des personnes qui vous contactent, même si elles utilisent le nom ou la photo d’un proche.</li>
+            <li>N’ouvrez pas les liens suspects reçus par SMS, WhatsApp ou e-mail.</li>
+            <li>En cas d’escroquerie, conservez les preuves et contactez rapidement votre banque si un paiement est concerné.</li>
+          </ul>
+
+          <p class="security-note"><strong>À retenir :</strong> ces résultats ne signifient pas que les réseaux d’escroquerie ont disparu. Ils montrent surtout que la coopération internationale et la prévention des citoyens deviennent complémentaires.</p>
+
+          <p><strong>Source officielle :</strong> U.S. Department of Justice — communiqué du 13 octobre 2026 sur l’opération « Joint Disruption Week ».</p>
+          <p><a href="https://www.justice.gov/opa/pr/department-justice-announces-results-law-enforcement-and-private-industry-joint-disruption" target="_blank" rel="noopener noreferrer">Consulter le communiqué officiel du DOJ ↗</a></p>
         </article>
 
         <article class="security-card">
