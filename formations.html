@@ -34,23 +34,80 @@
     @media(max-width:700px){.training-hero{padding-top:6.5rem}.training-main{padding-top:2.5rem}}
   </style>
 
-<style id="global-language-switcher-20261015">
-  .global-language-switcher{position:fixed;top:12px;right:12px;z-index:99999;display:flex;gap:6px;align-items:center;padding:6px;border-radius:999px;background:rgba(20,31,38,.92);box-shadow:0 8px 24px rgba(0,0,0,.22);backdrop-filter:blur(10px)}
-  .global-language-switcher button{border:1px solid rgba(255,255,255,.22);background:#fff;color:#20313a;border-radius:999px;padding:7px 10px;font:700 12px/1 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer}
-  .global-language-switcher button:hover{transform:translateY(-1px)}
-  #google_translate_element_global{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+
+<style id="unified-language-switcher-20261015">
+  .global-language-switcher,
+  .language-switcher.global-language-switcher,
+  .pro-language-switcher.global-language-switcher{
+    position:fixed!important;
+    top:12px!important;
+    right:12px!important;
+    left:auto!important;
+    bottom:auto!important;
+    z-index:99999!important;
+    display:flex!important;
+    flex-direction:row!important;
+    gap:6px!important;
+    align-items:center!important;
+    width:auto!important;
+    margin:0!important;
+    padding:6px!important;
+    border:1px solid rgba(255,255,255,.16)!important;
+    border-radius:999px!important;
+    background:rgba(20,31,38,.94)!important;
+    box-shadow:0 8px 24px rgba(0,0,0,.22)!important;
+    backdrop-filter:blur(10px)!important;
+  }
+  .global-language-switcher button,
+  .language-switcher.global-language-switcher button,
+  .pro-language-switcher.global-language-switcher button{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:5px!important;
+    min-width:58px!important;
+    width:auto!important;
+    height:auto!important;
+    margin:0!important;
+    padding:7px 10px!important;
+    border:1px solid rgba(255,255,255,.24)!important;
+    border-radius:999px!important;
+    background:#fff!important;
+    color:#20313a!important;
+    box-shadow:none!important;
+    font:700 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+    letter-spacing:0!important;
+    text-transform:none!important;
+    cursor:pointer!important;
+    transition:transform .18s ease,background .18s ease!important;
+  }
+  .global-language-switcher button:hover,
+  .language-switcher.global-language-switcher button:hover,
+  .pro-language-switcher.global-language-switcher button:hover{
+    transform:translateY(-1px)!important;
+    background:#f2f6f7!important;
+  }
+  .global-language-switcher .flag{font-size:14px!important;line-height:1!important}
+  .global-language-switcher .lang-label{display:inline!important}
   .goog-te-banner-frame.skiptranslate,.goog-te-gadget-icon{display:none!important}
   body{top:0!important}
-  @media(max-width:700px){.global-language-switcher{top:8px;right:8px}.global-language-switcher button{padding:6px 8px;font-size:11px}}
+  @media(max-width:700px){
+    .global-language-switcher,
+    .language-switcher.global-language-switcher,
+    .pro-language-switcher.global-language-switcher{top:8px!important;right:8px!important;padding:5px!important;gap:4px!important}
+    .global-language-switcher button,
+    .language-switcher.global-language-switcher button,
+    .pro-language-switcher.global-language-switcher button{min-width:50px!important;padding:6px 8px!important;font-size:11px!important}
+  }
 </style>
 </head>
 <body>
 
 <div id="google_translate_element_global" aria-hidden="true"></div>
-<div class="global-language-switcher notranslate" translate="no" aria-label="Traduire la page">
-  <button type="button" onclick="changeGlobalLanguage('fr')" title="Français">🇫🇷 FR</button>
-  <button type="button" onclick="changeGlobalLanguage('es')" title="Español">🇪🇸 ES</button>
-  <button type="button" onclick="changeGlobalLanguage('en')" title="English">🇬🇧 EN</button>
+<div class="global-language-switcher notranslate" translate="no" aria-label="Choisir la langue">
+  <button type="button" onclick="changeGlobalLanguage('fr')" title="Français"><span class="flag">🇫🇷</span><span class="lang-label">FR</span></button>
+  <button type="button" onclick="changeGlobalLanguage('es')" title="Español"><span class="flag">🇪🇸</span><span class="lang-label">ES</span></button>
+  <button type="button" onclick="changeGlobalLanguage('en')" title="English"><span class="flag">🇬🇧</span><span class="lang-label">EN</span></button>
 </div>
   <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
   <nav>
