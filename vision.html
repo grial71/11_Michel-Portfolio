@@ -20,8 +20,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+
+<style id="global-language-switcher-20261015">
+  .global-language-switcher{position:fixed;top:12px;right:12px;z-index:99999;display:flex;gap:6px;align-items:center;padding:6px;border-radius:999px;background:rgba(20,31,38,.92);box-shadow:0 8px 24px rgba(0,0,0,.22);backdrop-filter:blur(10px)}
+  .global-language-switcher button{border:1px solid rgba(255,255,255,.22);background:#fff;color:#20313a;border-radius:999px;padding:7px 10px;font:700 12px/1 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer}
+  .global-language-switcher button:hover{transform:translateY(-1px)}
+  #google_translate_element_global{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+  .goog-te-banner-frame.skiptranslate,.goog-te-gadget-icon{display:none!important}
+  body{top:0!important}
+  @media(max-width:700px){.global-language-switcher{top:8px;right:8px}.global-language-switcher button{padding:6px 8px;font-size:11px}}
+</style>
 </head>
 <body class="internal-page vision-page">
+
+<div id="google_translate_element_global" aria-hidden="true"></div>
+<div class="global-language-switcher notranslate" translate="no" aria-label="Traduire la page">
+  <button type="button" onclick="changeGlobalLanguage('fr')" title="Français">🇫🇷 FR</button>
+  <button type="button" onclick="changeGlobalLanguage('es')" title="Español">🇪🇸 ES</button>
+  <button type="button" onclick="changeGlobalLanguage('en')" title="English">🇬🇧 EN</button>
+</div>
   <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a><div class="site-bg" aria-hidden="true"></div>
   <nav><div class="container nav-inner">
     <a class="logo" href="index.html" aria-label="Retour à l'accueil"><span class="logo-mark">MQ</span><span>MICHEL QUINONES<br><small>portfolio professionnel</small></span></a>
@@ -59,5 +76,22 @@
   </main>
   <footer><div class="container"><p>© 2026 Michel Quinones — Le Numérique Vient à Vous</p><p class="small">Vision future · Transmission · Entraide · Développement progressif</p></div></footer>
   <script src="assets/js/main.js"></script>
+
+<script id="global-language-switcher-script-20261015">
+  function googleTranslateElementInitGlobal(){
+    new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'fr,es,en',autoDisplay:false},'google_translate_element_global');
+  }
+  function changeGlobalLanguage(lang){
+    var value=lang==='fr'?'/fr/fr':'/fr/'+lang;
+    document.cookie='googtrans='+value+'; path=/';
+    if(window.location.hostname){
+      document.cookie='googtrans='+value+'; path=/; domain='+window.location.hostname;
+    }
+    var select=document.querySelector('.goog-te-combo');
+    if(select){select.value=lang;select.dispatchEvent(new Event('change'));}
+    setTimeout(function(){window.location.reload();},250);
+  }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInitGlobal" async></script>
 </body>
 </html>
