@@ -13,8 +13,25 @@
 @media(max-width:620px){.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:1/-1}.hero{padding:18px}.wrap{padding:10px 10px 72px}.card{padding:14px}.row.mobile-stack>*{flex:1 1 100%}}
 @media print{body{background:#fff}.hero,nav,.stats,.no-print,.footer-note{display:none!important}.wrap{max-width:none;padding:0}.section{display:none!important}.print-sheet{display:block!important}.card{box-shadow:none;border:0}.print-sheet h1{color:#991b1b}.print-sheet h2{margin-top:22px}}
 </style>
+
+<style id="global-language-switcher-20261015">
+  .global-language-switcher{position:fixed;top:12px;right:12px;z-index:99999;display:flex;gap:6px;align-items:center;padding:6px;border-radius:999px;background:rgba(20,31,38,.92);box-shadow:0 8px 24px rgba(0,0,0,.22);backdrop-filter:blur(10px)}
+  .global-language-switcher button{border:1px solid rgba(255,255,255,.22);background:#fff;color:#20313a;border-radius:999px;padding:7px 10px;font:700 12px/1 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer}
+  .global-language-switcher button:hover{transform:translateY(-1px)}
+  #google_translate_element_global{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+  .goog-te-banner-frame.skiptranslate,.goog-te-gadget-icon{display:none!important}
+  body{top:0!important}
+  @media(max-width:700px){.global-language-switcher{top:8px;right:8px}.global-language-switcher button{padding:6px 8px;font-size:11px}}
+</style>
 </head>
 <body>
+
+<div id="google_translate_element_global" aria-hidden="true"></div>
+<div class="global-language-switcher notranslate" translate="no" aria-label="Traduire la page">
+  <button type="button" onclick="changeGlobalLanguage('fr')" title="Français">🇫🇷 FR</button>
+  <button type="button" onclick="changeGlobalLanguage('es')" title="Español">🇪🇸 ES</button>
+  <button type="button" onclick="changeGlobalLanguage('en')" title="English">🇬🇧 EN</button>
+</div>
 <div class="wrap" id="app">
 <header class="hero"><h1>Aoua • Coach Formation</h1><p>Réviser simplement, s'entraîner, refaire ses erreurs et préparer les examens.</p><span class="pill">Semaine du 31 août au 4 septembre 2026</span><div class="row install no-print"><button id="installBtn" class="btn secondary hidden" type="button">📱 Installer sur le téléphone</button><button id="fontBtn" class="btn secondary" type="button">A+ Texte plus grand</button></div></header>
 <div class="grid stats no-print"><div class="card stat"><b id="progressPct">0%</b><span>progression</span></div><div class="card stat"><b id="bestScore">—</b><span>meilleur examen</span></div><div class="card stat"><b id="mistakeCount">0</b><span>questions à revoir</span></div></div>
@@ -45,5 +62,22 @@ function shuffle(a){return a.map(v=>({v,r:Math.random()})).sort((x,y)=>x.r-y.r).
 function renderErrors(){const e=store.get('errors',{}),items=Object.values(e);if(!items.length){$('#errorBox').innerHTML='<div class="callout okcall" style="margin-top:12px">🎉 Aucune question en attente. Continue comme ça !</div>';return}$('#errorBox').innerHTML=items.map((x,n)=>{const q=modules[x.mi].questions[x.qi];return `<div class="feedback"><div class="small">${modules[x.mi].day} • erreur(s) : ${x.count}</div><b>${n+1}. ${esc(q.q)}</b><div class="answers" style="margin-top:8px">${q.a.map((a,i)=>`<button class="answer error-answer" data-mi="${x.mi}" data-qi="${x.qi}" data-a="${i}" type="button">${esc(a)}</button>`).join('')}</div><div class="error-feedback"></div></div>`}).join('');$$('.error-answer').forEach(b=>b.addEventListener('click',()=>{const mi=+b.dataset.mi,qi=+b.dataset.qi,a=+b.dataset.a,q=modules[mi].questions[qi],box=b.closest('.feedback'),fb=box.querySelector('.error-feedback');box.querySelectorAll('.answer').forEach(x=>x.disabled=true);if(a===q.ok){removeError(mi,qi);fb.innerHTML='<p>✅ Correct. Cette erreur est retirée de la liste.</p><button class="btn primary" type="button">Continuer</button>';fb.querySelector('button').addEventListener('click',renderErrors)}else{addError(mi,qi);fb.innerHTML=`<p>❌ Pas encore. ${esc(q.e)}</p><button class="btn secondary" type="button">Réessayer plus tard</button>`;fb.querySelector('button').addEventListener('click',renderErrors)}}))}$('#clearErrors').addEventListener('click',()=>{if(confirm('Effacer toutes les erreurs enregistrées ?')){store.set('errors',{});renderErrors();updateStats()}});$('#fontBtn').addEventListener('click',()=>{document.documentElement.classList.toggle('bigfont');const on=document.documentElement.classList.contains('bigfont');store.set('bigfont',on);$('#fontBtn').textContent=on?'A− Texte normal':'A+ Texte plus grand'});if(store.get('bigfont',false)){document.documentElement.classList.add('bigfont');$('#fontBtn').textContent='A− Texte normal'}window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();state.installPrompt=e;$('#installBtn').classList.remove('hidden')});$('#installBtn').addEventListener('click',async()=>{if(!state.installPrompt)return;state.installPrompt.prompt();await state.installPrompt.userChoice;state.installPrompt=null;$('#installBtn').classList.add('hidden')});if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{}));updateStats();renderHistory();
 })();
 </script>
+
+<script id="global-language-switcher-script-20261015">
+  function googleTranslateElementInitGlobal(){
+    new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'fr,es,en',autoDisplay:false},'google_translate_element_global');
+  }
+  function changeGlobalLanguage(lang){
+    var value=lang==='fr'?'/fr/fr':'/fr/'+lang;
+    document.cookie='googtrans='+value+'; path=/';
+    if(window.location.hostname){
+      document.cookie='googtrans='+value+'; path=/; domain='+window.location.hostname;
+    }
+    var select=document.querySelector('.goog-te-combo');
+    if(select){select.value=lang;select.dispatchEvent(new Event('change'));}
+    setTimeout(function(){window.location.reload();},250);
+  }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInitGlobal" async></script>
 </body>
 </html>
