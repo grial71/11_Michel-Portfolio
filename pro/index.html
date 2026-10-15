@@ -18,6 +18,71 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="translate.css">
+<style id="unified-language-switcher-20261015">
+  .global-language-switcher,
+  .language-switcher.global-language-switcher,
+  .pro-language-switcher.global-language-switcher{
+    position:fixed!important;
+    top:12px!important;
+    right:12px!important;
+    left:auto!important;
+    bottom:auto!important;
+    z-index:99999!important;
+    display:flex!important;
+    flex-direction:row!important;
+    gap:6px!important;
+    align-items:center!important;
+    width:auto!important;
+    margin:0!important;
+    padding:6px!important;
+    border:1px solid rgba(255,255,255,.16)!important;
+    border-radius:999px!important;
+    background:rgba(20,31,38,.94)!important;
+    box-shadow:0 8px 24px rgba(0,0,0,.22)!important;
+    backdrop-filter:blur(10px)!important;
+  }
+  .global-language-switcher button,
+  .language-switcher.global-language-switcher button,
+  .pro-language-switcher.global-language-switcher button{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:5px!important;
+    min-width:58px!important;
+    width:auto!important;
+    height:auto!important;
+    margin:0!important;
+    padding:7px 10px!important;
+    border:1px solid rgba(255,255,255,.24)!important;
+    border-radius:999px!important;
+    background:#fff!important;
+    color:#20313a!important;
+    box-shadow:none!important;
+    font:700 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+    letter-spacing:0!important;
+    text-transform:none!important;
+    cursor:pointer!important;
+    transition:transform .18s ease,background .18s ease!important;
+  }
+  .global-language-switcher button:hover,
+  .language-switcher.global-language-switcher button:hover,
+  .pro-language-switcher.global-language-switcher button:hover{
+    transform:translateY(-1px)!important;
+    background:#f2f6f7!important;
+  }
+  .global-language-switcher .flag{font-size:14px!important;line-height:1!important}
+  .global-language-switcher .lang-label{display:inline!important}
+  .goog-te-banner-frame.skiptranslate,.goog-te-gadget-icon{display:none!important}
+  body{top:0!important}
+  @media(max-width:700px){
+    .global-language-switcher,
+    .language-switcher.global-language-switcher,
+    .pro-language-switcher.global-language-switcher{top:8px!important;right:8px!important;padding:5px!important;gap:4px!important}
+    .global-language-switcher button,
+    .language-switcher.global-language-switcher button,
+    .pro-language-switcher.global-language-switcher button{min-width:50px!important;padding:6px 8px!important;font-size:11px!important}
+  }
+</style>
 </head>
 <body>
   <div id="google_translate_element" aria-hidden="true"></div>
@@ -32,11 +97,11 @@
       <a href="#contact">Contact</a>
       <a class="nav-home" href="../index.html">Le Numérique vient à Vous</a>
     </nav>
-    <div class="pro-language-switcher notranslate" translate="no" aria-label="Choisir la langue">
-      <button class="pro-lang-btn" type="button" data-pro-lang="fr" onclick="changeProLanguage('fr')"><strong>FR</strong><span class="pro-lang-label">Français</span></button>
-      <button class="pro-lang-btn" type="button" data-pro-lang="es" onclick="changeProLanguage('es')"><strong>ES</strong><span class="pro-lang-label">Español</span></button>
-      <button class="pro-lang-btn" type="button" data-pro-lang="en" onclick="changeProLanguage('en')"><strong>GB</strong><span class="pro-lang-label">English</span></button>
-    </div>
+    <div class="global-language-switcher notranslate" translate="no" aria-label="Choisir la langue">
+  <button type="button" onclick="changeProLanguage('fr')" title="Français"><span class="flag">🇫🇷</span><span class="lang-label">FR</span></button>
+  <button type="button" onclick="changeProLanguage('es')" title="Español"><span class="flag">🇪🇸</span><span class="lang-label">ES</span></button>
+  <button type="button" onclick="changeProLanguage('en')" title="English"><span class="flag">🇬🇧</span><span class="lang-label">EN</span></button>
+</div>
   </header>
 
   <main>
