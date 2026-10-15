@@ -10,8 +10,25 @@
 <style>
 :root{--red:#b91c1c;--red2:#dc2626;--bg:#f6f7f9;--card:#fff;--text:#1f2937;--muted:#6b7280;--line:#e5e7eb;--ok:#15803d;--bad:#b91c1c}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}.wrap{max-width:980px;margin:auto;padding:14px 14px 70px}.hero{background:linear-gradient(135deg,#991b1b,#dc2626);color:#fff;border-radius:22px;padding:22px}.hero h1{margin:0 0 6px;font-size:clamp(1.8rem,5vw,3rem)}.pill{display:inline-block;background:#ffffff24;border:1px solid #ffffff35;border-radius:999px;padding:6px 10px;font-size:.84rem}.grid{display:grid;gap:12px}.stats{grid-template-columns:repeat(3,1fr);margin:14px 0}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 3px 14px #0000000a}.stat b{display:block;font-size:1.45rem}.stat span,.small{font-size:.87rem;color:var(--muted)}nav{display:flex;gap:8px;overflow:auto;padding:4px 0 10px;position:sticky;top:0;background:#f6f7f9f2;backdrop-filter:blur(8px);z-index:20}.tab,.btn{border:0;border-radius:12px;min-height:44px;padding:10px 14px;cursor:pointer;font:inherit}.tab{background:#fff;border:1px solid var(--line);white-space:nowrap}.tab.active,.primary{background:var(--red);color:#fff}.secondary{background:#fff;color:var(--text);border:1px solid var(--line)}.danger{background:#fff;color:var(--bad);border:1px solid #fecaca}.section{display:none}.section.active{display:block}.modules{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}.module-card h3{margin:4px 0}.select,.note{width:100%;padding:11px;border-radius:12px;border:1px solid var(--line);background:#fff;font:inherit}.note{min-height:120px}.label{font-size:.85rem;font-weight:700;margin:8px 0 5px;display:block}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.space{justify-content:space-between}.vocab{display:grid;gap:8px}.vocab div{padding:10px;border-left:4px solid var(--red);background:#fafafa;border-radius:8px}.question{font-size:1.15rem;font-weight:700;margin:8px 0 14px}.answers{display:grid;gap:9px}.answer{width:100%;text-align:left;background:#fff;border:1px solid var(--line);padding:13px;border-radius:12px;cursor:pointer;min-height:48px;font:inherit}.answer.correct{border-color:#86efac;background:#f0fdf4}.answer.wrong{border-color:#fca5a5;background:#fef2f2}.feedback{margin-top:12px;padding:12px;border-radius:12px;background:#f9fafb;border:1px solid var(--line)}.flashcard{min-height:220px;display:grid;place-items:center;text-align:center;padding:28px;border:2px dashed #d1d5db;border-radius:18px;background:#fff;cursor:pointer}.hidden{display:none!important}.history{width:100%;border-collapse:collapse}.history th,.history td{text-align:left;padding:9px;border-bottom:1px solid var(--line);font-size:.9rem}.callout{border-left:4px solid #d97706;background:#fffbeb;padding:12px;border-radius:10px}.footer{font-size:.8rem;color:var(--muted);margin-top:24px}.timer{font-variant-numeric:tabular-nums;font-weight:800}.score{font-size:2.3rem;font-weight:800}.bigfont{font-size:18px}@media(max-width:620px){.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:1/-1}.hero{padding:18px}.wrap{padding:10px 10px 70px}.card{padding:14px}}@media print{.hero,nav,.stats,.no-print,.footer{display:none!important}.section{display:none!important}body{background:#fff}.wrap{max-width:none;padding:0}.card{border:0;box-shadow:none}}
 </style>
+
+<style id="global-language-switcher-20261015">
+  .global-language-switcher{position:fixed;top:12px;right:12px;z-index:99999;display:flex;gap:6px;align-items:center;padding:6px;border-radius:999px;background:rgba(20,31,38,.92);box-shadow:0 8px 24px rgba(0,0,0,.22);backdrop-filter:blur(10px)}
+  .global-language-switcher button{border:1px solid rgba(255,255,255,.22);background:#fff;color:#20313a;border-radius:999px;padding:7px 10px;font:700 12px/1 system-ui,-apple-system,Segoe UI,sans-serif;cursor:pointer}
+  .global-language-switcher button:hover{transform:translateY(-1px)}
+  #google_translate_element_global{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
+  .goog-te-banner-frame.skiptranslate,.goog-te-gadget-icon{display:none!important}
+  body{top:0!important}
+  @media(max-width:700px){.global-language-switcher{top:8px;right:8px}.global-language-switcher button{padding:6px 8px;font-size:11px}}
+</style>
 </head>
 <body>
+
+<div id="google_translate_element_global" aria-hidden="true"></div>
+<div class="global-language-switcher notranslate" translate="no" aria-label="Traduire la page">
+  <button type="button" onclick="changeGlobalLanguage('fr')" title="Français">🇫🇷 FR</button>
+  <button type="button" onclick="changeGlobalLanguage('es')" title="Español">🇪🇸 ES</button>
+  <button type="button" onclick="changeGlobalLanguage('en')" title="English">🇬🇧 EN</button>
+</div>
 <div class="wrap" id="app">
 <header class="hero"><h1>Hawa • Coach Formation</h1><p>Réviser simplement, s'entraîner, refaire ses erreurs et préparer les examens.</p><span class="pill">Semaine du 31 août au 4 septembre 2026</span><div class="row" style="margin-top:10px"><button id="installBtn" class="btn secondary hidden" type="button">📱 Installer</button><button id="fontBtn" class="btn secondary" type="button">A+ Texte plus grand</button></div></header>
 <div class="grid stats no-print"><div class="card stat"><b id="progressPct">0%</b><span>progression</span></div><div class="card stat"><b id="bestScore">—</b><span>meilleur examen</span></div><div class="card stat"><b id="mistakeCount">0</b><span>questions à revoir</span></div></div>
@@ -57,4 +74,21 @@ $('#fontBtn').onclick=()=>document.body.classList.toggle('bigfont');let deferred
 cards();renderReview();renderFlash();stats();renderHistory();
 })();
 </script>
+
+<script id="global-language-switcher-script-20261015">
+  function googleTranslateElementInitGlobal(){
+    new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'fr,es,en',autoDisplay:false},'google_translate_element_global');
+  }
+  function changeGlobalLanguage(lang){
+    var value=lang==='fr'?'/fr/fr':'/fr/'+lang;
+    document.cookie='googtrans='+value+'; path=/';
+    if(window.location.hostname){
+      document.cookie='googtrans='+value+'; path=/; domain='+window.location.hostname;
+    }
+    var select=document.querySelector('.goog-te-combo');
+    if(select){select.value=lang;select.dispatchEvent(new Event('change'));}
+    setTimeout(function(){window.location.reload();},250);
+  }
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInitGlobal" async></script>
 </body></html>
