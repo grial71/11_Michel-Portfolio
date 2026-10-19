@@ -204,6 +204,26 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
 }
 @media(max-width:420px){nav .global-language-switcher button{min-width:43px!important;padding:6px!important}}
 </style>
+  <style id="book-promotion-20261019">
+    #mon-livre{padding:5rem 0;background:linear-gradient(135deg,#f9f5eb,#edf3f3);scroll-margin-top:130px}
+    .book-feature{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.5fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+    .book-cover{margin:0;text-align:center}
+    .book-cover img{display:block;width:100%;max-width:300px;height:auto;margin:auto;border-radius:4px;box-shadow:12px 18px 40px rgba(32,49,58,.22)}
+    .book-eyebrow{color:#806032;font-size:.8rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800}
+    .book-copy h2{color:#20313a;font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.08;margin:.7rem 0}
+    .book-subtitle{color:#385963;font-weight:600;font-size:1.15rem;line-height:1.6}
+    .book-copy>p{max-width:680px;line-height:1.75}
+    .book-facts{display:flex;flex-wrap:wrap;gap:.6rem;padding:0;margin:1.3rem 0;list-style:none}
+    .book-facts li{padding:.4rem .75rem;background:#fffdf8;border:1px solid #ddd6c7;border-radius:999px;font-size:.85rem;color:#38505a}
+    .book-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.5rem 0 1rem}
+    #mon-livre .book-buy{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.2rem;border-radius:12px;font-weight:750;text-decoration:none;line-height:1.4}
+    #mon-livre .book-buy-paper{background:#203e49;color:#fff}
+    #mon-livre .book-buy-kindle{background:#fffdf8;color:#203e49;border:1px solid #99aeb5}
+    #mon-livre .book-buy:hover{filter:brightness(.92)}
+    #mon-livre a:focus-visible{outline:3px solid #a37225;outline-offset:5px}
+    .book-copy .book-purchase-note{font-size:.85rem;color:#53636a;line-height:1.65}
+    @media(max-width:700px){#mon-livre{padding:3rem 0}.book-feature{grid-template-columns:minmax(0,1fr)}.book-cover img{max-width:220px}.book-actions{flex-direction:column}.book-copy h2{font-size:2.2rem}}
+  </style>
 </head>
 
 <body>
@@ -224,6 +244,7 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
       <div class="nav-links" id="navigation-principale">
         <a href="#accueil">Accueil</a>
         <a href="#realisations">Projets</a>
+        <a href="#mon-livre">Mon livre</a>
         <a href="#services">Services</a><a href="#collaborations">Collaborations</a>
         <a href="#openai-academy">🎓 Formation IA</a>
         <a href="#securite-numerique">🛡️ Sécurité numérique</a>
@@ -263,6 +284,7 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
         <p>Un accompagnement humain et créatif pour transformer une idée en présence numérique élégante, accessible et utile : web, intelligence artificielle, vidéo, communication et transmission.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#realisations">Découvrir mes projets</a>
+          <a class="btn btn-secondary" href="#mon-livre">Découvrir mon livre</a>
           <a class="btn btn-secondary" href="#communication">Communication & valorisation</a>
           <a class="btn btn-secondary" href="#contact">Me contacter</a>
         </div>
@@ -292,6 +314,30 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
       </div>
     </div>
   </header>
+
+  <section id="mon-livre" aria-labelledby="book-title">
+    <div class="container book-feature">
+      <figure class="book-cover">
+        <img src="assets/images/l-ia-a-vos-cotes-couverture.webp" width="729" height="1134" loading="lazy" alt="Couverture de L’IA à vos côtés, de Michel Quinones : un guide court et illustré">
+      </figure>
+      <div class="book-copy">
+        <p class="book-eyebrow">Le livre de Michel Quinones · Disponible sur Amazon</p>
+        <h2 id="book-title">L’IA à vos côtés</h2>
+        <p class="book-subtitle">Le numérique vient à vous : comprendre, apprendre et agir au quotidien</p>
+        <p>Et si l’intelligence artificielle devenait un appui pour vos idées et vos projets du quotidien ? J’ai écrit ce guide court et illustré pour aider les débutants et les autodidactes à découvrir l’IA, pas à pas, avec des mots simples.</p>
+        <p>Dialoguer avec une IA, apprendre, créer et organiser ses idées : dix chapitres pour explorer ses usages, tout en gardant son jugement et en prenant soin de ses données personnelles.</p>
+        <ul class="book-facts" aria-label="Caractéristiques du livre">
+          <li>En français</li><li>30 pages en broché</li><li>10 chapitres illustrés</li><li>Pour débutants et autodidactes</li>
+        </ul>
+        <div class="book-actions">
+          <a class="book-buy book-buy-paper" href="https://www.amazon.fr/dp/B0HN7YC4JV" target="_blank" rel="noopener noreferrer">Acheter le livre papier sur Amazon ↗</a>
+          <a class="book-buy book-buy-kindle" href="https://www.amazon.fr/dp/B0HN5TMYBQ" target="_blank" rel="noopener noreferrer">Choisir la version Kindle ↗</a>
+        </div>
+        <p class="book-purchase-note"><strong>Deux formats distincts :</strong> le broché est un livre papier livré à votre adresse ; la version Kindle se lit sur écran. Les prix et les frais de livraison sont indiqués sur Amazon.</p>
+        <p class="book-purchase-note">L’achat du livre est facultatif. Mon accompagnement bénévole reste gratuit, selon mes disponibilités.</p>
+      </div>
+    </div>
+  </section>
 
   <section id="agenda" class="event-agenda" aria-labelledby="agenda-title">
     <div class="container">
