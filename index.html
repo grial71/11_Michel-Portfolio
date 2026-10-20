@@ -224,6 +224,19 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
     .book-copy .book-purchase-note{font-size:.85rem;color:#53636a;line-height:1.65}
     @media(max-width:700px){#mon-livre{padding:3rem 0}.book-feature{grid-template-columns:minmax(0,1fr)}.book-cover img{max-width:220px}.book-actions{flex-direction:column}.book-copy h2{font-size:2.2rem}}
   </style>
+
+  <style id="prochain-livre-20261020">
+    #prochain-livre{padding:5rem 0;background:linear-gradient(135deg,#eff7f5,#fdf8eb);scroll-margin-top:125px}
+    #prochain-livre .next-book-grid{display:grid;grid-template-columns:minmax(200px,.7fr) minmax(0,1.3fr);gap:clamp(1.7rem,5vw,4.5rem);align-items:center}
+    #prochain-livre .next-book-cover{margin:0;text-align:center}
+    #prochain-livre .next-book-cover img{display:block;width:100%;max-width:315px;height:auto;margin:auto;border-radius:8px;box-shadow:14px 20px 38px rgba(32,49,58,.22)}
+    #prochain-livre .next-book-tag{color:#27665d;font-size:.85rem;letter-spacing:.09em;font-weight:800;text-transform:uppercase;margin-bottom:.8rem}
+    #prochain-livre h2{color:#20313a;line-height:1.12;font-size:clamp(1.7rem,3.6vw,2.7rem);margin:.4rem 0 1rem}
+    #prochain-livre p{color:#42535a;line-height:1.75;margin:.8rem 0}
+    #prochain-livre .next-book-subtitle{font-weight:750;color:#22574f}
+    #prochain-livre .next-book-motto{font-weight:800;color:#27665d}
+    @media(max-width:760px){#prochain-livre .next-book-grid{grid-template-columns:1fr}#prochain-livre .next-book-cover img{max-width:250px}}
+  </style>
 </head>
 
 <body>
@@ -335,6 +348,23 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
         </div>
         <p class="book-purchase-note"><strong>Deux formats distincts :</strong> le broché est un livre papier livré à votre adresse ; la version Kindle se lit sur écran. Les prix et les frais de livraison sont indiqués sur Amazon.</p>
         <p class="book-purchase-note">L’achat du livre est facultatif. Mon accompagnement bénévole reste gratuit, selon mes disponibilités.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="prochain-livre" aria-labelledby="prochain-livre-titre">
+    <div class="container next-book-grid">
+      <figure class="next-book-cover">
+        <img src="assets/images/reinventer-education-humanite-avant-premiere.svg" width="620" height="930" loading="lazy" alt="Visuel provisoire : Réinventer l’éducation pour réinventer l’humanité, prochain livre de Michel Quinones">
+      </figure>
+      <div>
+        <p class="next-book-tag">📖 Avant-première · Livre en préparation</p>
+        <h2 id="prochain-livre-titre">Réinventer l’éducation pour réinventer l’humanité</h2>
+        <p class="next-book-subtitle">Vers une civilisation où l’humain, la nature et l’intelligence artificielle évoluent ensemble.</p>
+        <p>Et si l’éducation devenait le point de départ d’une société plus humaine ? Dans mon prochain ouvrage, j’explore une éducation ouverte à tous les âges, fondée sur la coopération entre générations, le respect de la nature, la pensée critique et un usage responsable de l’intelligence artificielle.</p>
+        <p>Je présente aussi une vision d’écoles-universités de la vie, de la nature et de l’innovation, ainsi que des pistes de solidarité concrète entre les communautés.</p>
+        <p class="next-book-motto">Éduquer · Prévenir · Protéger · Préparer</p>
+        <p><em>Écriture en cours — couverture définitive et date de publication à venir.</em></p>
       </div>
     </div>
   </section>
