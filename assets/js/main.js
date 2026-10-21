@@ -198,12 +198,17 @@ const navigation = document.getElementById('navigation-principale');
   const style = document.createElement('style');
   style.textContent = `
     .library-sessions-section{padding:72px 0;position:relative}
-    .library-sessions-card{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,.7fr);gap:28px;align-items:center;padding:34px;border:1px solid rgba(110,168,255,.24);border-radius:26px;background:linear-gradient(135deg,rgba(10,31,58,.94),rgba(8,18,34,.94));box-shadow:0 24px 70px rgba(0,0,0,.24)}
-    .library-sessions-card h2{margin:16px 0 12px;font-size:clamp(1.8rem,4vw,2.7rem)}
-    .library-sessions-card p{line-height:1.7}
+    .library-sessions-card{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,.7fr);gap:28px;align-items:center;padding:34px;border:1px solid rgba(110,168,255,.24);border-radius:26px;background:linear-gradient(135deg,rgba(10,31,58,.96),rgba(8,18,34,.96));box-shadow:0 24px 70px rgba(0,0,0,.24);color:#f4f8fa}
+    .library-sessions-card h2{margin:16px 0 12px;font-size:clamp(1.8rem,4vw,2.7rem);color:#fff}
+    .library-sessions-card p{line-height:1.7;color:#d9e6eb}
+    .library-sessions-card .check{color:#d9e6eb}
+    .library-sessions-card .check b{color:#73c995}
+    .library-sessions-card .badge{color:#a7eee4;border-color:rgba(128,226,215,.35);background:rgba(18,54,64,.72)}
     .library-sessions-actions{display:flex;flex-direction:column;gap:12px}
     .library-sessions-actions .btn{text-align:center;justify-content:center}
-    .library-privacy{margin-top:18px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.055);font-size:.92rem}
+    .library-sessions-actions .btn-secondary{background:rgba(255,255,255,.92);color:#20313a;border-color:rgba(255,255,255,.28)}
+    .library-sessions-actions .btn-secondary:hover{background:#fff;color:#20313a}
+    .library-privacy{margin-top:18px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.07);font-size:.92rem;color:#c8d8de!important}
     @media (max-width:780px){.library-sessions-card{grid-template-columns:1fr;padding:24px}.library-sessions-section{padding:52px 0}}
   `;
   document.head.appendChild(style);
