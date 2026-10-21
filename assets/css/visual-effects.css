@@ -13,7 +13,8 @@
 .portfolio-reveal.is-waiting{opacity:0;transform:translateY(24px)}
 .portfolio-reveal.is-visible{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 @media(hover:hover) and (pointer:fine){
-  .premium-services-existing .card:hover,.security-card:hover{background-image:radial-gradient(circle at 20% 20%,rgba(105,181,167,.10),transparent 60%);border-color:rgba(71,126,133,.4)}
+  .premium-services-existing .card:hover,.security-card:not(.security-news-card):hover{background-image:radial-gradient(circle at 20% 20%,rgba(105,181,167,.10),transparent 60%);border-color:rgba(71,126,133,.4)}
+  .security-news-card:hover{background:linear-gradient(135deg,#0f2730,#173f4c)!important;border-color:rgba(255,255,255,.20)!important}
   .book-cover img{transition:transform .35s ease,box-shadow .35s ease}
   .book-cover:hover img{transform:translateY(-6px);box-shadow:14px 24px 44px rgba(32,49,58,.26)}
 }
