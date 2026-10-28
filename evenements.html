@@ -164,6 +164,7 @@
   <button type="button" onclick="changeGlobalLanguage('fr')" title="Français"><span class="flag">🇫🇷</span><span class="lang-label">FR</span></button>
   <button type="button" onclick="changeGlobalLanguage('es')" title="Español"><span class="flag">🇪🇸</span><span class="lang-label">ES</span></button>
   <button type="button" onclick="changeGlobalLanguage('en')" title="English"><span class="flag">🇬🇧</span><span class="lang-label">EN</span></button>
+  <button type="button" onclick="changeGlobalLanguage('ca')" title="Català"><span class="flag">🇦🇩</span><span class="lang-label">CA</span></button>
 </div>
     </div>
   </nav>
@@ -503,7 +504,7 @@
 
 <script id="global-language-switcher-script-20261015">
   function googleTranslateElementInitGlobal(){
-    new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'fr,es,en',autoDisplay:false},'google_translate_element_global');
+    new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages: 'fr,es,en,ca',autoDisplay:false},'google_translate_element_global');
   }
   function changeGlobalLanguage(lang){
     var value=lang==='fr'?'/fr/fr':'/fr/'+lang;
