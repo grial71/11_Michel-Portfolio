@@ -17,7 +17,7 @@
     if (!match) return 'fr';
     const value = decodeURIComponent(match[1]);
     const lang = value.split('/').filter(Boolean).pop();
-    return ['fr', 'es', 'en'].includes(lang) ? lang : 'fr';
+    return ['fr', 'es', 'en', 'ca'].includes(lang) ? lang : 'fr';
   }
 
   function updateActiveLanguage() {
@@ -34,14 +34,14 @@
     if (!window.google || !google.translate) return;
     new google.translate.TranslateElement({
       pageLanguage: 'fr',
-      includedLanguages: 'fr,es,en',
+      includedLanguages: 'fr,es,en,ca',
       autoDisplay: false
     }, 'google_translate_element');
     updateActiveLanguage();
   };
 
   window.changeProLanguage = function (lang) {
-    if (!['fr', 'es', 'en'].includes(lang)) return;
+    if (!['fr', 'es', 'en', 'ca'].includes(lang)) return;
     setTranslateCookie(lang);
     const select = document.querySelector('.goog-te-combo');
     if (select) {
