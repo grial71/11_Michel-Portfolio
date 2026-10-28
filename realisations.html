@@ -91,6 +91,7 @@
   <button type="button" onclick="changeGlobalLanguage('fr')" title="Français"><span class="flag">🇫🇷</span><span class="lang-label">FR</span></button>
   <button type="button" onclick="changeGlobalLanguage('es')" title="Español"><span class="flag">🇪🇸</span><span class="lang-label">ES</span></button>
   <button type="button" onclick="changeGlobalLanguage('en')" title="English"><span class="flag">🇬🇧</span><span class="lang-label">EN</span></button>
+  <button type="button" onclick="changeGlobalLanguage('ca')" title="Català"><span class="flag">🇦🇩</span><span class="lang-label">CA</span></button>
 </div>
 <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a><div class="site-bg" aria-hidden="true"></div>
 <nav><div class="container nav-inner"><a class="logo" href="index.html" aria-label="Retour à l'accueil"><span class="logo-mark">MQ</span><span>MICHEL QUINONES<br><small>portfolio professionnel</small></span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation-principale"><span class="menu-toggle-icon" aria-hidden="true"></span><span class="menu-toggle-label">Menu</span></button><div class="nav-links" id="navigation-principale"><a href="index.html">Accueil</a><a href="realisations.html" aria-current="page">Réalisations</a><a href="vision.html">Vision</a><a href="index.html#services">Services</a><a class="nav-cta" href="index.html#contact">Prendre RDV</a></div></div></nav>
@@ -108,7 +109,7 @@
 
 <script id="global-language-switcher-script-20261015">
   function googleTranslateElementInitGlobal(){
-    new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages:'fr,es,en',autoDisplay:false},'google_translate_element_global');
+    new google.translate.TranslateElement({pageLanguage:'fr',includedLanguages: 'fr,es,en,ca',autoDisplay:false},'google_translate_element_global');
   }
   function changeGlobalLanguage(lang){
     var value=lang==='fr'?'/fr/fr':'/fr/'+lang;
