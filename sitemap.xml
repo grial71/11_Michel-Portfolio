@@ -17,4 +17,11 @@
     <priority>0.9</priority>
   </url>
   <url><loc>https://www.lenumeriquevientavous.fr/quiz-arnaques.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.lenumeriquevientavous.fr/artistes.html</loc></url>
+  <url><loc>https://www.lenumeriquevientavous.fr/galerie-artistes.html</loc></url>
+  <url><loc>https://www.lenumeriquevientavous.fr/evenements-artistes.html</loc></url>
+  <url><loc>https://www.lenumeriquevientavous.fr/recherche-artistes.html</loc></url>
+  <url><loc>https://www.lenumeriquevientavous.fr/proposer-publication.html</loc></url>
+  <url><loc>https://www.lenumeriquevientavous.fr/demande-publication.html</loc></url>
+  <url><loc>https://www.lenumeriquevientavous.fr/conditions-publication.html</loc></url>
 </urlset>
