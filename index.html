@@ -70,7 +70,17 @@
     .site-visits-counter .visits-copy strong{color:#20313a;font-size:1rem}
     .site-visits-counter .visits-copy span{color:#6b7378;font-size:.82rem;line-height:1.4}
     .site-visits-counter .visits-badge{display:block;min-width:120px;max-width:220px;height:auto}
-    @media(max-width:700px){.site-visits-counter .visits-card{flex-direction:column;text-align:center}.site-visits-counter .visits-badge{max-width:200px}}
+    /* Compteur permanent, compact et accessible */
+    .site-visits-counter{position:fixed;right:14px;bottom:92px;z-index:8500;padding:0;background:transparent;max-width:235px;pointer-events:none}
+    .site-visits-counter .container{padding:0;margin:0;width:auto;max-width:none}
+    .site-visits-counter .visits-card{display:flex;flex-direction:column;gap:3px;padding:8px 10px;border-radius:14px;background:rgba(255,253,248,.96);box-shadow:0 5px 20px rgba(0,0,0,.18);pointer-events:auto}
+    .site-visits-counter .visits-copy{display:block;text-align:center}
+    .site-visits-counter .visits-copy strong{font-size:12px}
+    .site-visits-counter .visits-copy span{display:none}
+    .site-visits-counter .visits-badge{width:175px;max-width:100%;min-width:0;height:auto}
+    @media(max-width:700px){.site-visits-counter{right:8px;bottom:78px;max-width:160px}.site-visits-counter .visits-card{padding:5px 7px;gap:1px;flex-direction:column;text-align:center;border-radius:10px}.site-visits-counter .visits-copy strong{font-size:10px}.site-visits-counter .visits-badge{width:145px;max-width:100%}}
+    @media(max-width:360px){.site-visits-counter{right:5px;bottom:74px;max-width:135px}.site-visits-counter .visits-badge{width:125px}}
+    @media print{.site-visits-counter{display:none}}
   </style>
 
 
