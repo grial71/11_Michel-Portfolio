@@ -247,6 +247,12 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
     #prochain-livre .next-book-motto{font-weight:800;color:#27665d}
     #prochain-livre .next-book-buy{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.3rem;margin-top:.7rem;border-radius:9px;background:#22574f;color:#fff;font-weight:800;text-decoration:none;box-shadow:0 6px 16px rgba(22,60,54,.2)}
     #prochain-livre .next-book-buy:hover,#prochain-livre .next-book-buy:focus-visible{background:#173d36;color:#fff;transform:translateY(-1px)}
+    #prochain-livre .universa-audio-video{margin-top:1.8rem}
+    #prochain-livre .universa-audio-video h3{font-size:1.22rem;color:#20313a;margin:0 0 .65rem}
+    #prochain-livre .universa-video-frame{position:relative;aspect-ratio:16/9;width:100%;max-width:680px;border-radius:10px;overflow:hidden;background:#14252b;box-shadow:0 10px 25px rgba(32,49,58,.18)}
+    #prochain-livre .universa-video-frame iframe{display:block;width:100%;height:100%;border:0}
+    #prochain-livre .universa-audio-video a{font-weight:750;color:#22574f;text-decoration:underline}
+
     @media(max-width:760px){#prochain-livre .next-book-grid{grid-template-columns:1fr}#prochain-livre .next-book-cover img{max-width:250px}}
   </style>
   <link rel="stylesheet" href="assets/css/visual-effects.css?v=20261020">
@@ -388,7 +394,14 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
         <p class="next-book-motto">Éduquer · Prévenir · Protéger · Préparer</p>
         <p><strong>UNIVERSA est indiqué « En ligne » dans Amazon KDP.</strong> Prix affiché sur KDP : 12,23 € · ASIN : B0HPPD35DQ. La disponibilité peut varier selon la marketplace et les mises à jour en cours.</p>
         <a class="next-book-buy" href="https://www.amazon.fr/dp/B0HPPD35DQ" target="_blank" rel="noopener noreferrer" aria-label="Acheter UNIVERSA sur Amazon France (nouvel onglet)">Acheter le livre sur Amazon</a>
-        <p><small>La version audio intégrale sera présentée ici après sa mise en ligne sur YouTube.</small></p>
+        <div class="universa-audio-video">
+          <h3>Écouter UNIVERSA — version audio en vidéo</h3>
+          <p>Découvrez la lecture du livre en vidéo, accompagnée de sa couverture.</p>
+          <div class="universa-video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/6UtTmXrvLcQ" title="UNIVERSA — lecture audio du livre de Michel Quinones sur YouTube" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <p><a href="https://www.youtube.com/watch?v=6UtTmXrvLcQ" target="_blank" rel="noopener noreferrer">Regarder et écouter sur YouTube</a></p>
+        </div>
       </div>
     </div>
   </section>
