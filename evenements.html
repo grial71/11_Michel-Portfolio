@@ -41,6 +41,15 @@
     .event-index-list a:hover{background:#eef4f5}
     .event-index-date{font-weight:800;color:#6e7f86;font-size:.82rem}
     .event-index-name{font-weight:700}
+    /* Alerte douce: activation automatique à J-7, sans clignotement rapide. */
+    #evenements-a-venir .event-soon-notice{display:flex;align-items:center;gap:.75rem;padding:.85rem 1.1rem;margin:0 0 1.25rem;border:2px solid #a3e635;border-radius:14px;background:#f7fee7;color:#294b11;font-weight:800;box-shadow:0 0 18px rgba(163,230,53,.27)}
+    #evenements-a-venir .event-soon-notice[hidden]{display:none!important}
+    #evenements-a-venir .event-soon-light{display:inline-block;flex:0 0 16px;width:16px;height:16px;border-radius:50%;background:#a3e635;box-shadow:0 0 8px #84cc16,0 0 18px rgba(132,204,22,.6);animation:upcoming-light-pulse 2.4s ease-in-out infinite}
+    #evenements-a-venir .event-card.event-approaching{border:2px solid #a3e635;box-shadow:0 0 18px rgba(132,204,22,.25)}
+    #evenements-a-venir .event-card.event-imminent{border-color:#facc15;box-shadow:0 0 20px rgba(250,204,21,.34)}
+    #evenements-a-venir .event-imminent .event-soon-light{background:#facc15}
+    @keyframes upcoming-light-pulse{0%,100%{opacity:1;box-shadow:0 0 8px #84cc16,0 0 18px rgba(132,204,22,.6)}50%{opacity:.55;box-shadow:0 0 3px #84cc16,0 0 8px rgba(132,204,22,.25)}}
+    @media(prefers-reduced-motion:reduce){#evenements-a-venir .event-soon-light{animation:none}}
     .event-card[hidden]{display:none!important}
     .event-no-results{padding:1rem;border-radius:12px;background:#fff5e8;color:#754d1c;font-weight:700}
     @media(max-width:700px){
@@ -187,7 +196,8 @@
             <p>Informations relayées depuis les annonces publiques des organisateurs.</p>
           </div>
         </div>
-        <article class="event-card" aria-labelledby="marigot-soiree-titre">
+        <div class="event-soon-notice" id="event-soon-marigot" role="status" hidden><span class="event-soon-light" aria-hidden="true"></span><span class="event-soon-text"></span></div>
+        <article class="event-card" data-event-date="2026-12-05" data-event-alert="event-soon-marigot" aria-labelledby="marigot-soiree-titre">
           <div class="event-date" aria-label="5 décembre 2026">
             <span>DÉC</span><strong>05</strong><small>2026</small>
           </div>
@@ -527,6 +537,34 @@
       search.addEventListener('input',render);
       sort.addEventListener('change',render);
       render();
+    })();
+  </script>
+
+  <script id="evenements-alertes-automatiques">
+    (function(){
+      function mettreAJourAlertes(){
+        var aujourdHui=new Date();
+        var jourLocal=new Date(aujourdHui.getFullYear(),aujourdHui.getMonth(),aujourdHui.getDate());
+        document.querySelectorAll('#evenements-a-venir [data-event-date]').forEach(function(carte){
+          var morceaux=(carte.dataset.eventDate||'').split('-').map(Number);
+          if(morceaux.length!==3||morceaux.some(function(n){return !Number.isInteger(n);})) return;
+          var jourEvenement=new Date(morceaux[0],morceaux[1]-1,morceaux[2]);
+          if(jourEvenement.getFullYear()!==morceaux[0]||jourEvenement.getMonth()!==morceaux[1]-1||jourEvenement.getDate()!==morceaux[2]) return;
+          var jours=Math.round((Date.UTC(morceaux[0],morceaux[1]-1,morceaux[2])-Date.UTC(jourLocal.getFullYear(),jourLocal.getMonth(),jourLocal.getDate()))/86400000);
+          var alerte=document.getElementById(carte.dataset.eventAlert);
+          if(!alerte) return;
+          var actif=jours>=0&&jours<=7;
+          alerte.hidden=!actif;
+          carte.classList.toggle('event-approaching',actif);
+          carte.classList.toggle('event-imminent',actif&&jours<=2);
+          if(actif){
+            var annonce=jours===0?"C'est aujourd'hui !":jours===1?"C'est demain !":"Plus que "+jours+" jours !";
+            alerte.querySelector('.event-soon-text').textContent="✨ Événement à venir — "+annonce+" Pensez à consulter les informations et à réserver.";
+          }
+        });
+      }
+      mettreAJourAlertes();
+      window.setInterval(mettreAJourAlertes,60*60*1000);
     })();
   </script>
 
