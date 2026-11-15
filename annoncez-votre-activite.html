@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Faites connaître votre activité locale sur Le Numérique vient à vous : artisans, commerçants, créateurs et associations à Rouen et autour.">
+<title>Faites connaître votre activité | Le Numérique vient à vous</title>
+<link rel="canonical" href="https://www.lenumeriquevientavous.fr/annoncez-votre-activite.html">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:light;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#20313a;background:#f6f9f7}
+*{box-sizing:border-box}body{margin:0;line-height:1.6}
+a{color:#175f57}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #82d5c5;outline-offset:3px}
+header{background:#15363c;color:white;padding:1.1rem max(1rem,calc((100% - 1000px)/2));display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+header a{color:white}header strong{font-size:1.1rem}
+main{max-width:950px;margin:auto;padding:3rem 1rem 7rem}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.12;margin:.3rem 0 1.2rem}h2{font-size:1.45rem}
+.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#23766c;font-size:.85rem}
+.lead{font-size:1.16rem;max-width:720px}
+.intro{padding:1.5rem 0 2rem}
+.panel{background:white;border:1px solid #d7e5e1;border-radius:20px;padding:clamp(1.1rem,3vw,2.4rem);box-shadow:0 12px 35px rgba(23,60,54,.06)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.field label{font-weight:750}
+.field input,.field textarea,.field select{width:100%;min-height:45px;padding:.7rem .75rem;border:1px solid #aabfbb;border-radius:9px;background:#fff;font:inherit;color:#20313a}
+.field textarea{min-height:110px;resize:vertical}
+.hint{font-size:.9rem;color:#54666d}
+.note{background:#eff8f4;border-left:4px solid #298478;padding:1rem;margin:1.2rem 0;border-radius:5px}
+button{font:inherit;font-weight:800;padding:.85rem 1.3rem;background:#176e62;color:white;border:0;border-radius:10px;cursor:pointer}
+button:hover{background:#0f5149}
+#messageEtat{font-weight:700}
+footer{text-align:center;padding:1.8rem 1rem;color:#58696d}
+@media(max-width:640px){.grid{grid-template-columns:1fr}main{padding-top:1.5rem}}
+</style>
+</head>
+<body>
+<header>
+  <strong>Le Numérique vient à vous</strong>
+  <a href="index.html">← Retour au portfolio</a>
+</header>
+<main>
+  <div class="intro">
+    <p class="eyebrow">Communication locale · Rouen et environs</p>
+    <h1>Faites connaître votre activité !</h1>
+    <p class="lead">Artisan, commerçant, créateur ou responsable d'association ? Proposez une annonce pour présenter votre activité, une exposition, une ouverture ou un prochain événement.</p>
+    <p>Au lancement, le relais d'une annonce simple est <strong>gratuit</strong>, selon les possibilités du site et après validation. L'envoi d'une demande ne garantit pas sa publication.</p>
+  </div>
+  <section class="panel" aria-labelledby="titre-formulaire">
+    <h2 id="titre-formulaire">Proposer une annonce</h2>
+    <p class="hint">Les champs marqués d'un astérisque sont obligatoires. Le formulaire prépare un e-mail : rien n'est publié automatiquement.</p>
+    <form id="annonceForm">
+      <div class="grid">
+        <div class="field"><label for="nom">Nom de l'activité ou de l'association *</label><input id="nom" name="nom" required maxlength="120" autocomplete="organization"></div>
+        <div class="field"><label for="categorie">Votre activité *</label><select id="categorie" name="categorie" required><option value="">Choisir</option><option>Artisanat / création</option><option>Commerce</option><option>Restaurant / restauration</option><option>Association</option><option>Culture / événement</option><option>Autre</option></select></div>
+        <div class="field"><label for="ville">Ville ou secteur *</label><input id="ville" name="ville" required maxlength="120" placeholder="Ex. : Le Petit-Quevilly"></div>
+        <div class="field"><label for="contact">E-mail de contact *</label><input id="contact" name="contact" type="email" required maxlength="200" autocomplete="email"></div>
+      </div>
+      <div class="field"><label for="typeAnnonce">Quel type d'annonce ? *</label><select id="typeAnnonce" required><option value="">Choisir</option><option>Présentation d'activité</option><option>Prochain événement</option><option>Marché / exposition</option><option>Ouverture / nouveauté</option><option>Autre</option></select></div>
+      <div class="grid">
+        <div class="field"><label for="dateEvenement">Date de l'événement (si applicable)</label><input id="dateEvenement" type="date"></div>
+        <div class="field"><label for="lien">Site ou publication publique (facultatif)</label><input id="lien" type="url" maxlength="350" placeholder="https://..."></div>
+      </div>
+      <div class="field"><label for="description">Décrivez votre activité ou votre événement *</label><textarea id="description" required maxlength="1800" placeholder="Présentez l'activité, les informations pratiques, les horaires si connus, et ce que vous souhaitez annoncer."></textarea><span class="hint">Maximum 1 800 caractères. Ne communiquez pas de données sensibles.</span></div>
+      <div class="field"><label for="telephone">Téléphone professionnel à afficher (facultatif)</label><input id="telephone" type="tel" maxlength="50"></div>
+      <div class="note">📌 <strong>Validation préalable :</strong> les informations seront examinées avant publication. Aucune annonce n'est mise en ligne automatiquement, et les coordonnées ne seront publiées que si vous l'autorisez explicitement.</div>
+      <div class="field"><label><input id="accord" type="checkbox" required style="width:auto;min-height:auto"> J'autorise Michel à examiner les informations transmises pour me répondre et étudier cette demande. *</label></div>
+      <div class="field"><label><input id="autorisation" type="checkbox" style="width:auto;min-height:auto"> J'autorise la publication des coordonnées professionnelles indiquées dans ma demande si l'annonce est acceptée.</label></div>
+      <button type="submit">Préparer ma demande par e-mail</button>
+      <p id="messageEtat" role="status" aria-live="polite"></p>
+      <p class="hint">L'e-mail s'ouvrira dans votre messagerie habituelle. Vérifiez-le puis cliquez sur « Envoyer » dans votre messagerie. Si aucune application ne s'ouvre, écrivez directement à <a href="mailto:quinones.michel@yahoo.fr">quinones.michel@yahoo.fr</a>.</p>
+    </form>
+  </section>
+</main>
+<footer>© 2026 Le Numérique vient à vous · Communication locale et accompagnement numérique</footer>
+<script>
+(function(){
+  const form=document.getElementById('annonceForm');
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(!form.reportValidity())return;
+    const get=id=>document.getElementById(id).value.trim();
+    const lines=[
+      'Demande de parution - Le Numérique vient à vous',
+      '',
+      'Activité : '+get('nom'),
+      'Catégorie : '+get('categorie'),
+      'Ville : '+get('ville'),
+      'E-mail de réponse : '+get('contact'),
+      'Type : '+get('typeAnnonce'),
+      'Date : '+(get('dateEvenement')||'Sans objet'),
+      'Site / publication : '+(get('lien')||'Non fourni'),
+      'Téléphone professionnel : '+(get('telephone')||'Non fourni'),
+      '',
+      'Présentation :',
+      get('description'),
+      '',
+      'Accord pour examen de la demande : Oui',
+      'Autorisation de publier les coordonnées professionnelles : '+(document.getElementById('autorisation').checked?'Oui':'Non'),
+      '',
+      'Cette demande reste soumise à validation avant publication.'
+    ];
+    const subject='Proposition annonce locale - '+get('nom');
+    const url='mailto:quinones.michel@yahoo.fr?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
+    if(url.length>7500){
+      document.getElementById('messageEtat').textContent='Le texte est trop long pour un e-mail préparé automatiquement. Raccourcissez votre description.';
+      return;
+    }
+    document.getElementById('messageEtat').textContent='Votre messagerie va s’ouvrir. Pensez à envoyer l’e-mail pour transmettre votre demande.';
+    window.location.href=url;
+  });
+})();
+</script>
+<script defer src="assets/js/event-alert-global.js"></script>
+</body>
+</html>
