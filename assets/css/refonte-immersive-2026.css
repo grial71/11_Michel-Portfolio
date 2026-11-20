@@ -1,0 +1,107 @@
+/*
+  Refonte immersive – prototype du 20 novembre 2026
+  Prévisualisation uniquement : aucun changement de statut ni de prestations.
+  Photo d'ambiance Unsplash (licence : https://unsplash.com/license).
+  Remplacer le chargement distant par un fichier local optimisé avant mise en ligne.
+  Les personnes photographiées ne sont pas des bénéficiaires de l'initiative.
+*/
+:root {
+  --imm-ink:#142f34;
+  --imm-teal:#153f40;
+  --imm-gold:#efd19a;
+  --imm-paper:#f7f6ef;
+  --imm-line:rgba(20,47,52,.15);
+}
+html { scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce) {html {scroll-behavior:auto!important;}}
+/* Accueil : une vraie photographie derrière la vidéo existante, avec repli lisible. */
+#accueil.cinematic-hero {
+  min-height:min(850px, 96svh)!important;
+  background:#153f40!important;
+  overflow:hidden;
+}
+#accueil .hero-video-layer {background:#153f40!important;}
+#accueil .hero-video-layer::before {
+  content:""; position:absolute; inset:0; z-index:0;
+  background-image:
+    linear-gradient(90deg,rgba(8,31,37,.90) 0%,rgba(8,31,37,.70) 46%,rgba(8,31,37,.35) 100%),
+    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1920&q=82");
+  background-size:cover;
+  background-position:center 48%;
+  transform:scale(1.035);
+  animation:imm-scene 17s ease-out both;
+}
+#accueil .hero-bg-video {opacity:.12!important;mix-blend-mode:screen;}
+#accueil .hero-video-overlay {
+  background:linear-gradient(90deg,rgba(9,29,34,.79) 0%,rgba(9,29,34,.46) 56%,rgba(9,29,34,.16) 100%)!important;
+}
+#accueil .hero-grid-glow{opacity:.06!important}
+#accueil .hero-light-sweep{opacity:.12}
+#accueil .hero {gap:clamp(1.5rem,4vw,4rem);}
+#accueil .hero-kicker {letter-spacing:.12em;text-transform:uppercase;font-size:.83rem;}
+#accueil h1 {
+  font-size:clamp(2.5rem,5.2vw,5.6rem)!important;
+  line-height:1.04!important;
+  text-wrap:balance;
+  letter-spacing:-.045em;
+  text-shadow:0 8px 35px rgba(0,0,0,.2);
+}
+#accueil .hero p {max-width:680px;line-height:1.7}
+#accueil .hero-visual .portrait-card,
+#accueil .hero-visual .visual-card {
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 24px 65px rgba(5,21,25,.25);
+}
+#accueil .hero-actions a {transition:transform .22s ease,box-shadow .22s ease;}
+#accueil .hero-actions a:hover,#accueil .hero-actions a:focus-visible {
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(0,0,0,.2);
+}
+#accueil a:focus-visible, #services a:focus-visible {
+  outline:3px solid var(--imm-gold)!important;
+  outline-offset:4px;
+}
+/* Sections : relief mesuré, sans masquer le contenu historique. */
+#services.premium-services-existing {
+  background:
+    radial-gradient(circle at 96% 5%,rgba(228,202,148,.18),transparent 32%),
+    linear-gradient(180deg,var(--imm-paper),#eef5f1);
+}
+#services .card {
+  border:1px solid var(--imm-line);
+  border-radius:24px;
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+#services .card:hover,#services .card:focus-within {
+  transform:translateY(-5px);
+  border-color:rgba(26,91,83,.36);
+  box-shadow:0 18px 44px rgba(21,63,64,.13);
+}
+#services .section-head h2 {text-wrap:balance}
+#contact.premium-contact-section {
+  background:
+    radial-gradient(circle at 85% 10%,rgba(239,209,154,.18),transparent 31%),
+    linear-gradient(135deg,#ecf3ed,#f8f6ef);
+}
+@keyframes imm-scene { from {transform:scale(1.09)} to {transform:scale(1.035)} }
+@media(max-width:900px){
+  #accueil.cinematic-hero{min-height:auto!important}
+  #accueil .hero-video-layer::before {
+    background-position:65% center;
+    background-image:linear-gradient(180deg,rgba(8,31,37,.86),rgba(8,31,37,.67)),url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1100&q=78");
+  }
+  #accueil .hero {padding-top:clamp(3rem,8vw,5rem);padding-bottom:clamp(3rem,8vw,5rem);}
+}
+@media(max-width:600px){
+  #accueil h1 {font-size:clamp(2.15rem,9vw,3.5rem)!important}
+  #accueil .hero-visual .portrait-card,#accueil .hero-visual .visual-card{backdrop-filter:none;-webkit-backdrop-filter:none}
+  #services .card:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  #accueil .hero-video-layer::before{animation:none!important;transform:none!important}
+  #accueil .hero-bg-video,#accueil .hero-light-sweep{display:none!important}
+  #accueil .hero-actions a,#services .card{transition:none!important}
+  #accueil .hero-actions a:hover,#services .card:hover{transform:none!important}
+}
