@@ -107,7 +107,8 @@
       min-height:520px;border-radius:34px;position:relative;overflow:hidden;border:1px solid rgba(56,189,248,.28);box-shadow:var(--shadow);
       background:
         linear-gradient(135deg,rgba(2,6,23,.82),rgba(6,16,31,.42)),
-        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80") center/cover;
+        var(--hero-visual-photo,url("../images/immersive-accueil.webp")) center/cover,
+        #153f40;
     }
     .portrait-card{
       position:absolute;top:26px;left:26px;right:26px;

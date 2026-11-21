@@ -56,7 +56,7 @@
   }
 }
 html {
-  scroll-behavior:smooth;
+  scroll-behavior:auto;
   scroll-padding-top:var(--portfolio-header-offset,0px);
 }
 @media (prefers-reduced-motion: reduce) {html {scroll-behavior:auto!important;}}
@@ -179,6 +179,7 @@ html.portfolio-effects-paused #accueil .hero-video-layer::before{animation-play-
 #contact .contact-box{background:linear-gradient(145deg,#123735,#173d46)}
 @keyframes imm-scene { from {transform:scale(1.06)} to {transform:scale(1.035)} }
 @media(max-width:900px){
+  #accueil .hero-visual {--hero-visual-photo:url("../images/immersive-accueil-mobile.webp")}
   #accueil.cinematic-hero{min-height:auto!important}
   #accueil .hero-video-layer::before {
     background-position:65% center;
@@ -194,15 +195,7 @@ html.portfolio-effects-paused #accueil .hero-video-layer::before{animation-play-
     min-height:76px;
     padding-block:8px;
   }
-  #site-visits-counter {
-    position:static;
-    max-width:none;
-    padding:1rem 0;
-  }
-  #site-visits-counter .container {
-    width:min(100% - 26px,1180px);
-    margin-inline:auto;
-  }
+  #accueil .hero-bg-video {display:none}
   .floating-player {
     position:static;
     width:min(100% - 26px,24rem)!important;

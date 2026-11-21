@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260923-premium-3">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261121-preview-1">
 
 
   <style id="festival-video-fix-20260926">
@@ -70,16 +70,8 @@
     .site-visits-counter .visits-copy strong{color:#20313a;font-size:1rem}
     .site-visits-counter .visits-copy span{color:#6b7378;font-size:.82rem;line-height:1.4}
     .site-visits-counter .visits-badge{display:block;min-width:120px;max-width:220px;height:auto}
-    /* Compteur permanent, compact et accessible */
-    .site-visits-counter{position:fixed;right:14px;bottom:92px;z-index:8500;padding:0;background:transparent;max-width:235px;pointer-events:none}
-    .site-visits-counter .container{padding:0;margin:0;width:auto;max-width:none}
-    .site-visits-counter .visits-card{display:flex;flex-direction:column;gap:3px;padding:8px 10px;border-radius:14px;background:rgba(255,253,248,.96);box-shadow:0 5px 20px rgba(0,0,0,.18);pointer-events:auto}
-    .site-visits-counter .visits-copy{display:block;text-align:center}
-    .site-visits-counter .visits-copy strong{font-size:12px}
-    .site-visits-counter .visits-copy span{display:none}
-    .site-visits-counter .visits-badge{width:175px;max-width:100%;min-width:0;height:auto}
-    @media(max-width:700px){.site-visits-counter{right:8px;bottom:78px;max-width:160px}.site-visits-counter .visits-card{padding:5px 7px;gap:1px;flex-direction:column;text-align:center;border-radius:10px}.site-visits-counter .visits-copy strong{font-size:10px}.site-visits-counter .visits-badge{width:145px;max-width:100%}}
-    @media(max-width:360px){.site-visits-counter{right:5px;bottom:74px;max-width:135px}.site-visits-counter .visits-badge{width:125px}}
+    .site-visits-counter .container{max-width:42rem}
+    @media(min-width:981px){.site-visits-counter .container{max-width:min(42rem,calc(100vw - 30rem))}}
     @media print{.site-visits-counter{display:none}}
   </style>
 
@@ -265,7 +257,7 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
   </style>
   <link rel="stylesheet" href="assets/css/visual-effects.css?v=20261020">
   <link rel="stylesheet" href="assets/css/communaute.css?v=20261020">
-  <link rel="stylesheet" href="assets/css/refonte-immersive-2026.css?v=preview-20261120-2">
+  <link rel="stylesheet" href="assets/css/refonte-immersive-2026.css?v=preview-20261121-1">
   <noscript>
     <style>
       @media(max-width:1320px){
@@ -328,8 +320,8 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
       <span class="portfolio-orb portfolio-orb-three"></span>
     </div>
     <div class="hero-video-layer" aria-hidden="true">
-      <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata">
-        <source src="https://cdn.coverr.co/videos/coverr-coding-on-a-laptop-rxf1hyrfkk/1080p.mp4" type="video/mp4">
+      <video class="hero-bg-video" autoplay muted loop playsinline preload="none">
+        <source data-src="https://cdn.coverr.co/videos/coverr-coding-on-a-laptop-rxf1hyrfkk/1080p.mp4" type="video/mp4">
       </video>
       <div class="hero-video-overlay"></div>
       <div class="hero-light-sweep"></div>
@@ -1653,7 +1645,7 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
 
   <!-- Cloudflare Web Analytics : sans cookies -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"610d6428cb3e46f2a766706e9c2edb67"}'></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=20261121-preview-1"></script>
   <script src="assets/js/visual-effects.js?v=20261020"></script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
   <!-- publication-interviews-punjab-et-archives-evenements-2026-10-05 -->

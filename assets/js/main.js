@@ -283,6 +283,24 @@ if (menuToggle && navigation) {
   });
 }
 
+// Le fond photo est disponible avant tout chargement de la vidéo décorative.
+const heroVideo = document.querySelector('#accueil .hero-bg-video');
+const heroVideoSource = heroVideo?.querySelector('source[data-src]');
+if (heroVideoSource) {
+  const videoAllowed = window.matchMedia('(min-width: 981px) and (prefers-reduced-motion: no-preference)');
+  const updateHeroVideo = () => {
+    if (videoAllowed.matches && !heroVideo.hasAttribute('src')) {
+      heroVideo.src = heroVideoSource.dataset.src;
+    } else if (!videoAllowed.matches && heroVideo.hasAttribute('src')) {
+      heroVideo.pause();
+      heroVideo.removeAttribute('src');
+      heroVideo.load();
+    }
+  };
+  updateHeroVideo();
+  videoAllowed.addEventListener('change', updateHeroVideo);
+}
+
 // Animation légère des cartes au défilement, sans dépendance externe.
 const animatedElements = document.querySelectorAll('.card,.step,.offer,.contact-box,.proof-box,.audio-box,.video-request,.project-card,.confidential-note,.timeline-stage,.case-study,.privacy-panel,.vision-step,.pillar,.support-use-panel,.library-sessions-card');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
