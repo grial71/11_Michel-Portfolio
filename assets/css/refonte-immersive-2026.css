@@ -1,9 +1,7 @@
 /*
   Refonte immersive – prototype du 20 novembre 2026
   Prévisualisation uniquement : aucun changement de statut ni de prestations.
-  Photo d'ambiance Unsplash (licence : https://unsplash.com/license).
-  Remplacer le chargement distant par un fichier local optimisé avant mise en ligne.
-  Les personnes photographiées ne sont pas des bénéficiaires de l'initiative.
+  Photographies d'illustration locales. Voir assets/images/SOURCES-REFONTE.md.
 */
 :root {
   --imm-ink:#142f34;
@@ -11,8 +9,56 @@
   --imm-gold:#efd19a;
   --imm-paper:#f7f6ef;
   --imm-line:rgba(20,47,52,.15);
+  --imm-sand:#eee3ce;
+  --imm-ivory:#fff8e9;
 }
-html { scroll-behavior:smooth; }
+#securite-numerique .security-note {
+  background:var(--imm-ivory);
+  color:#23352e;
+  border-left-color:#9c7332;
+}
+#securite-numerique .security-note strong {color:inherit}
+#realisations .confidential-note {
+  background:var(--imm-ivory);
+  border-color:#d9cdb1;
+}
+#realisations .confidential-note p,
+#realisations .confidential-note strong {color:#23352e}
+.portfolio-reveal.is-waiting {opacity:1;transform:none}
+@media(prefers-reduced-motion:no-preference) {
+  .portfolio-reveal.is-visible {animation:imm-arrive .38s ease-out}
+}
+@keyframes imm-arrive {from{transform:translateY(8px)}to{transform:none}}
+/* La hauteur de la navigation suit ses rangées, y compris les liens ajoutés par JS. */
+@media (min-width:1321px) {
+  nav .nav-inner {
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr);
+    height:auto;
+    min-height:76px;
+    padding-block:12px;
+    gap:8px 20px;
+  }
+  nav .logo { align-self:start; }
+  nav .nav-links {
+    grid-column:2;
+    grid-row:1 / span 2;
+    min-width:0;
+    flex-wrap:wrap;
+    gap:6px 14px;
+  }
+  nav .nav-links a { overflow-wrap:anywhere; }
+  nav .global-language-switcher {
+    grid-column:1;
+    grid-row:2;
+    justify-self:start;
+    margin-left:0!important;
+  }
+}
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:var(--portfolio-header-offset,0px);
+}
 @media (prefers-reduced-motion: reduce) {html {scroll-behavior:auto!important;}}
 /* Accueil : une vraie photographie derrière la vidéo existante, avec repli lisible. */
 #accueil.cinematic-hero {
@@ -24,13 +70,14 @@ html { scroll-behavior:smooth; }
 #accueil .hero-video-layer::before {
   content:""; position:absolute; inset:0; z-index:0;
   background-image:
-    linear-gradient(90deg,rgba(8,31,37,.90) 0%,rgba(8,31,37,.70) 46%,rgba(8,31,37,.35) 100%),
-    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1920&q=82");
+    linear-gradient(90deg,rgba(8,31,37,.89) 0%,rgba(8,31,37,.64) 49%,rgba(8,31,37,.26) 100%),
+    url("../images/immersive-accueil.webp");
   background-size:cover;
   background-position:center 48%;
   transform:scale(1.035);
-  animation:imm-scene 17s ease-out both;
+  animation:imm-scene 22s ease-out both;
 }
+html.portfolio-effects-paused #accueil .hero-video-layer::before{animation-play-state:paused}
 #accueil .hero-bg-video {opacity:.12!important;mix-blend-mode:screen;}
 #accueil .hero-video-overlay {
   background:linear-gradient(90deg,rgba(9,29,34,.79) 0%,rgba(9,29,34,.46) 56%,rgba(9,29,34,.16) 100%)!important;
@@ -63,15 +110,18 @@ html { scroll-behavior:smooth; }
   outline:3px solid var(--imm-gold)!important;
   outline-offset:4px;
 }
+#services a:focus-visible {outline-color:#7b511e!important}
 /* Sections : relief mesuré, sans masquer le contenu historique. */
 #services.premium-services-existing {
   background:
     radial-gradient(circle at 96% 5%,rgba(228,202,148,.18),transparent 32%),
-    linear-gradient(180deg,var(--imm-paper),#eef5f1);
+    linear-gradient(180deg,var(--imm-paper),#f2eadc);
 }
 #services .card {
-  border:1px solid var(--imm-line);
+  background-color:#fffdf5;
+  border:1px solid #d8cbb7;
   border-radius:24px;
+  box-shadow:0 5px 22px rgba(21,63,64,.06);
   transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
 }
 #services .card:hover,#services .card:focus-within {
@@ -80,19 +130,101 @@ html { scroll-behavior:smooth; }
   box-shadow:0 18px 44px rgba(21,63,64,.13);
 }
 #services .section-head h2 {text-wrap:balance}
+#services .card h3 {color:var(--imm-ink)}
+#services .card p,#services .card li {color:#354940!important}
+#services .card .tag {background:#eee3ce;color:#47391f}
+.immersive-photo {
+  margin:0;
+  color:#354940;
+  background:var(--imm-sand);
+  border:1px solid var(--imm-line);
+  border-radius:20px;
+  overflow:hidden;
+}
+.immersive-photo img {
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  background:#d8cfbd;
+}
+.immersive-photo figcaption{padding:.55rem .85rem;font-size:.83rem}
+.immersive-photo-services{margin:0 0 1.5rem}
+.immersive-photo-services img{max-height:clamp(8rem,22vw,17rem)}
+#offre {background:var(--imm-paper)}
+#offre .offer {background:var(--imm-teal);color:#fff8e9}
+#offre .offer h2,#offre .offer p,#offre .offer .check{color:#fff8e9}
+#offre .offer .card {min-width:0;background:#fff8e9;color:var(--imm-ink)}
+#offre .offer .card p,#offre .offer .card h3 {color:var(--imm-ink)}
+.immersive-photo-accompagnement {margin:1rem 0 0}
+#realisations .immersive-project-preview {
+  height:auto;
+  aspect-ratio:768 / 488;
+  isolation:isolate;
+}
+.immersive-project-preview img {
+  display:block;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:2;
+}
 #contact.premium-contact-section {
   background:
     radial-gradient(circle at 85% 10%,rgba(239,209,154,.18),transparent 31%),
     linear-gradient(135deg,#ecf3ed,#f8f6ef);
 }
-@keyframes imm-scene { from {transform:scale(1.09)} to {transform:scale(1.035)} }
+#contact .contact-box{background:linear-gradient(145deg,#123735,#173d46)}
+@keyframes imm-scene { from {transform:scale(1.06)} to {transform:scale(1.035)} }
 @media(max-width:900px){
   #accueil.cinematic-hero{min-height:auto!important}
   #accueil .hero-video-layer::before {
     background-position:65% center;
-    background-image:linear-gradient(180deg,rgba(8,31,37,.86),rgba(8,31,37,.67)),url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1100&q=78");
+    background-image:linear-gradient(180deg,rgba(8,31,37,.67),rgba(8,31,37,.51)),url("../images/immersive-accueil-mobile.webp");
   }
+  #accueil .hero-video-overlay {background:linear-gradient(180deg,rgba(8,31,37,.60),rgba(8,31,37,.32))!important}
   #accueil .hero {padding-top:clamp(3rem,8vw,5rem);padding-bottom:clamp(3rem,8vw,5rem);}
+}
+/* Sur écran étroit, les commandes restent accessibles dans le flux du document. */
+@media(max-width:980px){
+  nav .nav-inner {
+    height:auto;
+    min-height:76px;
+    padding-block:8px;
+  }
+  #site-visits-counter {
+    position:static;
+    max-width:none;
+    padding:1rem 0;
+  }
+  #site-visits-counter .container {
+    width:min(100% - 26px,1180px);
+    margin-inline:auto;
+  }
+  .floating-player {
+    position:static;
+    width:min(100% - 26px,24rem)!important;
+    max-width:none!important;
+    margin:1rem auto;
+    padding:.65rem .8rem!important;
+  }
+  .floating-player-title {
+    display:flex!important;
+    flex-wrap:wrap;
+  }
+  .floating-player .mini-audio-btn {min-height:44px}
+  .floating-telegram {
+    position:static;
+    margin:1rem auto;
+  }
+}
+/* Le bandeau daté reste consultable sans masquer un bouton d’accueil. */
+#alerte-evenement-globale {
+  position:static!important;
+  width:min(100% - 26px,760px);
+  margin:1rem auto!important;
 }
 @media(max-width:600px){
   #accueil h1 {font-size:clamp(2.15rem,9vw,3.5rem)!important}

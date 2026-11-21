@@ -229,6 +229,45 @@ function closeMenu() {
   navigation.classList.remove('is-open');
 }
 
+const portfolioHeader = document.querySelector('#accueil.cinematic-hero')
+  ? navigation?.closest('nav')
+  : null;
+if (portfolioHeader) {
+  let headerOffset = 0;
+  let viewportWidth = window.innerWidth;
+  let viewportHeight = window.innerHeight;
+  let alignedTarget = null;
+
+  const rememberAlignedAnchor = () => {
+    if (viewportWidth !== window.innerWidth || viewportHeight !== window.innerHeight) return;
+    const target = document.querySelector(':target');
+    const margin = target ? parseFloat(getComputedStyle(target).scrollMarginTop) || 0 : 0;
+    alignedTarget = target && Math.abs(target.getBoundingClientRect().top - headerOffset - margin) <= 2
+      ? target
+      : null;
+  };
+  const updateAnchorOffset = () => {
+    const offset = Math.ceil(portfolioHeader.getBoundingClientRect().height) + 12;
+    if (offset === headerOffset && viewportWidth === window.innerWidth
+        && viewportHeight === window.innerHeight) return;
+    const target = alignedTarget === document.querySelector(':target') ? alignedTarget : null;
+    headerOffset = offset;
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
+    document.documentElement.style.setProperty('--portfolio-header-offset', `${offset}px`);
+    if (target) target.scrollIntoView({ block: 'start', behavior: 'instant' });
+    rememberAlignedAnchor();
+  };
+  updateAnchorOffset();
+  window.addEventListener('scroll', rememberAlignedAnchor, { passive: true });
+  window.addEventListener('hashchange', rememberAlignedAnchor);
+  window.addEventListener('resize', updateAnchorOffset);
+  if ('ResizeObserver' in window) {
+    const headerObserver = new ResizeObserver(updateAnchorOffset);
+    headerObserver.observe(portfolioHeader);
+  }
+}
+
 if (menuToggle && navigation) {
   menuToggle.addEventListener('click', () => {
     const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
@@ -246,25 +285,24 @@ if (menuToggle && navigation) {
 
 // Animation légère des cartes au défilement, sans dépendance externe.
 const animatedElements = document.querySelectorAll('.card,.step,.offer,.contact-box,.proof-box,.audio-box,.video-request,.project-card,.confidential-note,.timeline-stage,.case-study,.privacy-panel,.vision-step,.pillar,.support-use-panel,.library-sessions-card');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-if (!reduceMotion && 'IntersectionObserver' in window) {
+if (!reduceMotion.matches && 'IntersectionObserver' in window && 'animate' in Element.prototype) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.animate([
-          { opacity: 0, transform: 'translateY(26px)' },
-          { opacity: 1, transform: 'translateY(0)' }
-        ], { duration: 650, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+        if (!reduceMotion.matches) {
+          entry.target.animate([
+            { transform: 'translateY(8px)' },
+            { transform: 'translateY(0)' }
+          ], { duration: 360, easing: 'ease-out' });
+        }
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: .12 });
 
-  animatedElements.forEach(el => {
-    el.style.opacity = 0;
-    observer.observe(el);
-  });
+  animatedElements.forEach(el => observer.observe(el));
 }
 
 // Questionnaire bénévole : navigation accessible et conservation locale uniquement.
@@ -370,7 +408,7 @@ const closeSurvey = document.getElementById('closeSurvey');
 if (openSurvey && surveyPanel) openSurvey.addEventListener('click', () => {
   surveyPanel.hidden = false;
   showSurveyQuestion(0);
-  surveyPanel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  surveyPanel.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
 });
 if (closeSurvey && surveyPanel) closeSurvey.addEventListener('click', () => {
   surveyPanel.hidden = true;

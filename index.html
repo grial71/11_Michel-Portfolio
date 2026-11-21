@@ -265,7 +265,16 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
   </style>
   <link rel="stylesheet" href="assets/css/visual-effects.css?v=20261020">
   <link rel="stylesheet" href="assets/css/communaute.css?v=20261020">
-  <link rel="stylesheet" href="assets/css/refonte-immersive-2026.css?v=preview-20261120">
+  <link rel="stylesheet" href="assets/css/refonte-immersive-2026.css?v=preview-20261120-2">
+  <noscript>
+    <style>
+      @media(max-width:1320px){
+        nav .nav-inner{height:auto}
+        nav .menu-toggle{display:none}
+        nav .nav-links{display:flex;position:static;max-height:none;box-shadow:none;flex-basis:100%}
+      }
+    </style>
+  </noscript>
 </head>
 
 <body>
@@ -801,7 +810,8 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
 
       <div class="project-grid">
         <article class="project-card project-card-lsj">
-          <div class="project-visual" aria-hidden="true">
+          <div class="project-visual immersive-project-preview" aria-hidden="true">
+            <img src="assets/images/realisation-lsj.webp" width="768" height="488" loading="lazy" decoding="async" alt="">
             <span class="project-symbol">🌱</span>
             <span class="orbit orbit-one"></span><span class="orbit orbit-two"></span>
           </div>
@@ -820,7 +830,8 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
         </article>
 
         <article class="project-card project-card-fashion">
-          <div class="project-visual" aria-hidden="true">
+          <div class="project-visual immersive-project-preview" aria-hidden="true">
+            <img src="assets/images/realisation-fashion-larissa.webp" width="768" height="488" loading="lazy" decoding="async" alt="">
             <span class="project-symbol">✦</span>
             <span class="fashion-ring"></span>
           </div>
@@ -880,6 +891,10 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
         <h2>Ce que je peux faire avec vous</h2>
         <p>Je ne cherche pas seulement à faire à votre place. Mon objectif est aussi de vous apprendre à comprendre, créer et devenir plus autonome.</p>
       </div>
+      <figure class="immersive-photo immersive-photo-services">
+        <img src="assets/images/immersive-services.webp" width="960" height="350" loading="lazy" decoding="async" alt="Une personne travaille sur un ordinateur portable à côté d’un carnet.">
+        <figcaption>Photo d’illustration · The Connected Narrative / Unsplash</figcaption>
+      </figure>
 
       <div class="grid">
         <article class="card">
@@ -1094,6 +1109,10 @@ nav .global-language-switcher{position:static!important;inset:auto!important;z-i
         <div class="icon">💡</div>
         <h3>Pourquoi cette démarche ?</h3>
         <p>Elle me permet de partager ce que j'ai appris, de créer une relation de confiance et de mieux comprendre les besoins numériques du terrain. Aucun paiement n'est demandé pour l'accompagnement bénévole.</p>
+        <figure class="immersive-photo immersive-photo-accompagnement">
+          <img src="assets/images/immersive-accompagnement.webp" width="820" height="540" loading="lazy" decoding="async" alt="Plusieurs personnes regardent ensemble un ordinateur portable.">
+          <figcaption>Photo d’illustration · Surface / Unsplash</figcaption>
+        </figure>
       </div>
     </div>
   </section>
