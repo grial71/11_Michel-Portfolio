@@ -1,0 +1,110 @@
+/* Couche commune, chargée après les styles propres à chaque page. */
+.premium-v3 {
+  --v3-night:#0b1028;
+  --v3-panel:#141d3f;
+  --v3-paper:#f3f4ff;
+  --v3-text:#f3f5ff;
+  --v3-violet:#c8b7ff;
+  --v3-accent:#654ce0;
+}
+.premium-v3 :focus-visible {
+  outline:3px solid #a67aff!important;
+  outline-offset:3px;
+  box-shadow:0 0 0 2px #151832;
+}
+.premium-v3 :is(.skip-link,.skip):focus {z-index:2500}
+
+/* Un fond opaque et une couleur explicite pour chaque état du menu. */
+.premium-v3 :is(body > nav, .artist-nav, .site-header nav, header nav, nav.no-print) {
+  background:var(--v3-night)!important;
+  color:var(--v3-text)!important;
+}
+.premium-v3 nav :is(.nav-links,.global-language-switcher) {background:#141d3f!important}
+.premium-v3 nav :is(a,button),
+.premium-v3 nav :is(a,button) :is(span,small) {
+  color:#f3f5ff!important;
+  -webkit-text-fill-color:currentColor!important;
+  text-shadow:none!important;
+}
+.premium-v3 nav a {background:#172244!important;opacity:1!important}
+.premium-v3 nav a:is(:hover,:focus-visible,[aria-current]) {background:#38286a!important;color:white!important}
+.premium-v3 nav :is(.nav-cta,.pro-featured-nav) {background:#4053c7!important}
+.premium-v3 nav :is(button,.nav-links a) {line-height:1.35}
+.premium-v3 nav button {background:#243363!important}
+.premium-v3 nav a,.premium-v3 nav button {overflow-wrap:anywhere}
+.premium-v3 nav .nav-links {max-width:100%}
+.premium-v3.nuit-numerique nav .nav-links a,
+.premium-v3.nuit-numerique nav .nav-links a:visited,
+.premium-v3.nuit-numerique nav .logo {color:#f3f5ff!important}
+.premium-v3.nuit-numerique nav .nav-links a:is(:hover,:focus-visible) {color:white!important;background:#38286a!important}
+.premium-v3.premium-accueil #contenu-principal > :is(section,header)[id] {scroll-margin-top:1.2rem}
+
+/* Les rubriques à thème gardent leurs documents et leurs commandes. */
+body.premium-v3:not(.premium-accueil,.premium-pro) {background:var(--v3-paper)}
+.premium-v3:not(.premium-accueil) :is(.archive-hero,.training-hero,.handicap-hero,.internal-hero,.hero-art,main > .hero,body.premium-cours > header.hero) {
+  background:
+    radial-gradient(ellipse at 94% 5%,#5740a16e,transparent 56%),
+    linear-gradient(128deg,#0a112b,#1f2c5c 65%,#2d2453)!important;
+  color:var(--v3-text)!important;
+  border-color:#4b4d87;
+}
+.premium-v3:not(.premium-accueil) :is(.archive-hero,.training-hero,.handicap-hero,.internal-hero,.hero-art,main > .hero,body.premium-cours > header.hero) :is(h1,h2,p) {
+  color:var(--v3-text)!important;
+}
+.premium-v3:not(.premium-accueil) h1 {
+  font-family:Georgia,"Times New Roman",serif;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+.premium-v3.premium-information main > h1,
+.premium-v3.premium-information main > :first-child > h1 {color:#1c2251}
+.premium-v3.premium-artistes .hero-art {box-shadow:0 22px 55px #18153433}
+.premium-v3.premium-pro .site-header {background:var(--v3-night)!important;color:var(--v3-text)!important}
+.premium-v3.premium-pro {background:linear-gradient(155deg,#0b1028,#151c3b 55%,#180f30)}
+.premium-v3.premium-pro .site-header a {color:var(--v3-text)!important}
+.premium-v3.premium-pro .hero h1 {font-size:clamp(2.35rem,6vw,6rem);line-height:1.02}
+.premium-v3.premium-pro .hero h1 em {color:var(--v3-violet)}
+.premium-v3.premium-pro :is(.hero-card,.feature-card) {border-color:#8275b5;box-shadow:0 16px 38px #15183220}
+.premium-v3.premium-pro .hero-card:after {inset:.55rem;border-color:#897ab360}
+.premium-v3.premium-pro :is(.muted-section,.partnership)::before {left:0;width:100%;transform:none}
+.premium-v3 .training-grid {grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.premium-v3:not(.premium-accueil) :is(.card,.artist-card,.event-card,.project-card) {
+  box-shadow:0 12px 32px #24204d20;
+  border-color:#8981b273;
+}
+.premium-v3 :is(h1,h2,h3,summary,figcaption) {overflow-wrap:anywhere}
+.premium-v3 :is(main,article,figure,.container,.nav-inner,.hero,.grid) {min-width:0}
+.premium-v3 :is(img,video,iframe) {max-width:100%}
+.premium-v3 :is(input,select,textarea,table) {max-width:100%}
+.premium-v3 :is(main,header,footer) {overflow-wrap:break-word}
+.premium-v3.premium-cours header.hero {padding-inline:clamp(.8rem,4vw,2.5rem)}
+.premium-v3.premium-cours nav button.active {background:#5544b1!important;text-decoration:underline;text-underline-offset:.25em}
+.premium-v3.premium-artistes .portfolio-home-button {background:#252350}
+
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .premium-v3 nav a {transition:background-color .18s}
+  .premium-v3:not(.premium-accueil) :is(.card,.artist-card,.event-card,.project-card) {
+    transition:box-shadow .22s,border-color .22s;
+  }
+  .premium-v3:not(.premium-accueil) :is(.card,.artist-card,.event-card,.project-card):is(:hover,:focus-within) {
+    box-shadow:0 16px 36px #4a357c36;
+    border-color:#7b66c2;
+  }
+}
+@media (max-width:780px) {
+  .premium-v3 :is(.artist-nav,.site-header nav,nav.no-print) {flex-wrap:wrap}
+  .premium-v3 :is(.artist-nav,.site-header nav,nav.no-print) a {min-width:0;max-width:100%}
+}
+@media (max-width:980px) {
+  .premium-v3.premium-pro .site-header {position:relative;flex-wrap:wrap;gap:.7rem}
+  .premium-v3.premium-pro .site-header nav {display:flex;flex-wrap:wrap;gap:.4rem}
+  .premium-v3.premium-pro .site-header nav a {padding:.35rem .55rem;border-radius:.4rem}
+}
+@media (prefers-reduced-motion:reduce) {
+  .premium-v3 *, .premium-v3 *::before, .premium-v3 *::after {
+    animation:none!important;transition:none!important;scroll-behavior:auto!important;
+  }
+}
+@media print {
+  body.premium-v3:not(.premium-accueil) {background:white}
+}

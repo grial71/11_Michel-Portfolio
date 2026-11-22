@@ -9,9 +9,9 @@
   <title>Handicap & autonomie | Le Numérique Vient à Vous</title>
   <link rel="canonical" href="https://www.lenumeriquevientavous.fr/handicap.html">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  
+  
   <link rel="stylesheet" href="assets/css/styles.css">
   <style>
     .handicap-page{min-height:100vh}
@@ -122,8 +122,8 @@
     .pro-language-switcher.global-language-switcher button{min-width:50px!important;padding:6px 8px!important;font-size:11px!important}
   }
 </style>
-</head>
-<body class="handicap-page">
+<link rel="stylesheet" href="assets/css/premium-v3.css"><link rel="stylesheet" href="assets/css/conformite-v3.css"><meta name="v3-google-translate-callback" content="googleTranslateElementInitGlobal"></head>
+<body class="premium-v3 premium-information handicap-page">
 
 <div id="google_translate_element_global" aria-hidden="true"></div>
 <div class="global-language-switcher notranslate" translate="no" aria-label="Choisir la langue">
@@ -320,7 +320,7 @@
       <p>© 2026 Michel Quinones — Le Numérique Vient à Vous</p>
       <p class="small">Espace d'information et d'orientation · Sources officielles · Aucun diagnostic médical</p>
     </div>
-  </footer>
+  <nav class="v3-legal-links" aria-label="Informations légales"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><a href="mailto:quinones.michel@yahoo.fr">Contact</a></nav></footer>
 
   <script>
     (() => {
@@ -390,9 +390,9 @@
     }
     var select=document.querySelector('.goog-te-combo');
     if(select){select.value=lang;select.dispatchEvent(new Event('change'));}
-    setTimeout(function(){window.location.reload();},250);
+    /* Changement de langue sans rechargement. */
   }
 </script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInitGlobal" async></script>
-</body>
+
+<script src="assets/js/conformite-v3.js" defer></script></body>
 </html>
