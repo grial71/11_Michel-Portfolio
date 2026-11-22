@@ -9,3 +9,8 @@
 .v3-external-container{position:relative;min-height:170px;isolation:isolate}
 .v3-external-container iframe:not([src]){visibility:hidden}
 .v3-translation-note{font:500 .79rem/1.4 system-ui,sans-serif;color:#d2c5f2;margin:.3rem 0}
+
+/* Masque le widget et sa bannière sans empêcher le moteur de créer son sélecteur. */
+#google_translate_element, #google_translate_element_global,
+iframe.goog-te-banner-frame, iframe.VIpgJd-ZVi9od-ORHb-OEVmcd{display:none!important}
+body{top:0!important}
