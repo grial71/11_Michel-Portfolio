@@ -1,33 +1,6 @@
-// Traduction Google : boutons FR / ES / EN avec drapeaux.
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'fr',
-    includedLanguages: 'fr,es,en,ca',
-    autoDisplay: false
-  }, 'google_translate_element');
-}
-
-function setTranslateCookie(lang) {
-  const value = lang === 'fr' ? '/fr/fr' : '/fr/' + lang;
-  const hostname = window.location.hostname;
-  document.cookie = 'googtrans=' + value + '; path=/';
-  if (hostname) {
-    document.cookie = 'googtrans=' + value + '; path=/; domain=' + hostname;
-    const parts = hostname.split('.');
-    if (parts.length > 2) {
-      document.cookie = 'googtrans=' + value + '; path=/; domain=.' + parts.slice(-2).join('.');
-    }
-  }
-}
-
+// Boutons historiques : délégation au contrôleur unique V3.
 function changeLanguage(lang) {
-  setTranslateCookie(lang);
-  const select = document.querySelector('.goog-te-combo');
-  if (select) {
-    select.value = lang;
-    select.dispatchEvent(new Event('change'));
-  }
-  setTimeout(() => window.location.reload(), 300);
+  if (typeof window.v3SelectLanguage === 'function') window.v3SelectLanguage(lang);
 }
 
 // Lecteur musique méditation permanent : Play / Pause / Volume synchronisés.
