@@ -25,143 +25,119 @@
       parent.appendChild(curtain);
     });
   }
-  // V3.2 : un seul controleur de traduction pour toutes les pages.
-  // Le choix de langue provoque UN rechargement, jamais des traductions
-  // concurrentes sur le meme DOM (source des melanges ES / EN).
-  var supported = ['fr', 'es', 'en', 'ca'];
-  var storageKey = 'v3_traduction_choisie';
-  var initialized = false;
+  // Traduction V3 : un controleur unique, chargement Google apres choix volontaire.
+  // Les pages chargent le document en francais avant toute traduction.
+  var LANGS = ['fr', 'es', 'en', 'ca'];
+  var KEY = 'v3_lang_choice';
+  var googleStarted = false;
+  var navigationPending = false;
 
-  function readChoice() {
+  function getChoice() {
     try {
-      var stored = window.sessionStorage.getItem(storageKey);
-      return supported.indexOf(stored) !== -1 ? stored : 'fr';
-    } catch (_) { return 'fr'; }
+      var value = sessionStorage.getItem(KEY);
+      return LANGS.indexOf(value) >= 0 ? value : 'fr';
+    } catch (e) { return 'fr'; }
   }
-
-  function writeChoice(lang) {
-    try { window.sessionStorage.setItem(storageKey, lang); } catch (_) {}
+  function rememberChoice(lang) {
+    try { sessionStorage.setItem(KEY, lang); } catch (e) { /* cookies suffisent */ }
   }
-
-  function cookieDomainVariants() {
-    var hostname = window.location.hostname;
-    var list = [''];
-    if (hostname && hostname.indexOf('.') !== -1) {
-      list.push(hostname);
-      list.push('.' + hostname);
-      if (hostname.indexOf('www.') === 0) {
-        list.push(hostname.substring(4));
-        list.push('.' + hostname.substring(4));
+  function cookieScopes() {
+    var host = location.hostname;
+    var scopes = [''];
+    if (host && host.indexOf('.') !== -1) {
+      scopes.push(host, '.' + host);
+      if (host.slice(0, 4) === 'www.') {
+        scopes.push(host.slice(4), '.' + host.slice(4));
       }
     }
-    return Array.from(new Set(list));
+    return Array.from(new Set(scopes));
   }
-
-  function clearTranslateCookies() {
-    cookieDomainVariants().forEach(function (domain) {
-      var suffix = domain ? '; domain=' + domain : '';
-      document.cookie = 'googtrans=; Max-Age=0; path=/' + suffix + '; SameSite=Lax';
+  function syncGoogleCookie(lang) {
+    cookieScopes().forEach(function (domain) {
+      var domainAttr = domain ? '; domain=' + domain : '';
+      document.cookie = 'googtrans=; Max-Age=0; path=/' + domainAttr + '; SameSite=Lax';
+    });
+    if (lang !== 'fr') {
+      document.cookie = 'googtrans=/fr/' + lang + '; path=/; SameSite=Lax';
+    }
+  }
+  function getButtonLang(button) {
+    var attr = button.getAttribute('onclick') || '';
+    var found = attr.match(/\(['"](fr|es|en|ca)['"]\)/);
+    return found ? found[1] : null;
+  }
+  var selector = 'button[onclick*="changeLanguage"],button[onclick*="changeArtistLanguage"],' +
+    'button[onclick*="changeProLanguage"],button[onclick*="changeGlobalLanguage"]';
+  function syncButtonState() {
+    var lang = getChoice();
+    document.querySelectorAll(selector).forEach(function (button) {
+      var value = getButtonLang(button);
+      if (value) button.setAttribute('aria-pressed', String(value === lang));
     });
   }
-
-  function setTranslateCookie(lang) {
-    clearTranslateCookies();
-    if (lang === 'fr') return;
-    document.cookie = 'googtrans=/fr/' + lang + '; path=/; SameSite=Lax';
-  }
-
-  function languageFromButton(button) {
-    var match = (button.getAttribute('onclick') || '').match(/\(['"](fr|es|en|ca)['"]\)/);
-    return match ? match[1] : null;
-  }
-
-  function updateButtonState(lang) {
-    document.querySelectorAll(
-      'button[onclick*="changeLanguage"],button[onclick*="changeArtistLanguage"],' +
-      'button[onclick*="changeProLanguage"],button[onclick*="changeGlobalLanguage"]'
-    ).forEach(function (button) {
-      var choice = languageFromButton(button);
-      if (choice) button.setAttribute('aria-pressed', String(choice === lang));
-    });
-  }
-
-  function getTranslateHolder() {
-    return document.getElementById('google_translate_element_global') ||
-           document.getElementById('google_translate_element');
-  }
-
-  function initSelectedLanguage(lang) {
-    if (initialized || lang === 'fr') return;
-    var holder = getTranslateHolder();
+  // Le chargement externe n'a lieu qu'apres une demande explicite de traduction.
+  function startGoogle() {
+    if (googleStarted || getChoice() === 'fr') return;
+    var holder = document.getElementById('google_translate_element_global') ||
+                 document.getElementById('google_translate_element');
     if (!holder) return;
-    var meta = document.querySelector('meta[name="v3-google-translate-callback"]');
-    // Ignore les callbacks anciens de chacune des pages.
-    // Un seul callback commun garantit une initialisation coherente.
-    window.v3TranslateInit = function () {
-      if (initialized) return;
-      if (!(window.google && window.google.translate && window.google.translate.TranslateElement)) return;
-      initialized = true;
-      new window.google.translate.TranslateElement({
+    googleStarted = true;
+    window.v3GoogleTranslationInit = function () {
+      if (!(window.google && google.translate && google.translate.TranslateElement)) return;
+      new google.translate.TranslateElement({
         pageLanguage: 'fr',
         includedLanguages: 'fr,es,en,ca',
         autoDisplay: false
       }, holder.id);
-      // Le cookie a ete defini AVANT le chargement et Google le lit au demarrage.
-      // Si le widget ne prend pas encore le choix, un seul changement est effectue.
-      var attempts = 0;
-      var timer = setInterval(function () {
-        var combo = holder.querySelector('.goog-te-combo') ||
-                    document.querySelector('.goog-te-combo');
-        if (!combo || !combo.options || !combo.options.length) {
-          if (++attempts > 80) clearInterval(timer);
-          return;
-        }
-        clearInterval(timer);
-        setTimeout(function () {
-          if (readChoice() !== lang) return;
-          if (combo.value !== lang) {
-            combo.value = lang;
-            combo.dispatchEvent(new Event('change', { bubbles: true }));
-          }
-        }, 500);
-      }, 100);
+      // Google applique la langue memorisee dans le cookie au chargement.
+      // Ne JAMAIS ajouter un evenement change ici : deux traductions
+      // simultanees melangent le contenu de la page.
     };
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=v3TranslateInit';
-    script.onerror = function () {
-      console.warn('La traduction externe est momentanement indisponible.');
+    var tag = document.createElement('script');
+    tag.src = 'https://translate.google.com/translate_a/element.js?cb=v3GoogleTranslationInit';
+    tag.async = true;
+    tag.onerror = function () {
+      googleStarted = false;
+      console.warn('Service de traduction temporairement indisponible');
     };
-    document.head.appendChild(script);
+    document.head.appendChild(tag);
   }
-
-  // Capture avant les onclick historiques, qui provoquent des rechargements
-  // ou des changements de langue concurrents.
+  // Capturer avant tout onclick historique de l'accueil, Artistes et Pro.
   document.addEventListener('click', function (event) {
-    var button = event.target.closest(
-      'button[onclick*="changeLanguage"],button[onclick*="changeArtistLanguage"],' +
-      'button[onclick*="changeProLanguage"],button[onclick*="changeGlobalLanguage"]'
-    );
+    var button = event.target.closest(selector);
     if (!button) return;
-    var lang = languageFromButton(button);
+    var lang = getButtonLang(button);
     if (!lang) return;
     event.preventDefault();
     event.stopImmediatePropagation();
-    // Enregistrer le choix de facon synchrone avant de naviguer.
-    writeChoice(lang);
-    setTranslateCookie(lang);
-    updateButtonState(lang);
-    // Un seul chargement sur une page francaise neuve empeche ES/EN de se melanger.
-    window.location.reload();
+    if (navigationPending) return;
+    navigationPending = true;
+    rememberChoice(lang);
+    syncGoogleCookie(lang);
+    // Le rechargement repart du contenu FR d'origine, jamais d'un DOM deja traduit.
+    location.reload();
   }, true);
 
-  function startTranslation() {
-    var lang = readChoice();
-    updateButtonState(lang);
-    if (lang !== 'fr') {
-      setTranslateCookie(lang);
-      initSelectedLanguage(lang);
+  function initLanguage() {
+    syncButtonState();
+    var choice = getChoice();
+    if (choice !== 'fr') {
+      syncGoogleCookie(choice);
+      startGoogle();
     }
+  }
+  // Compatibilite si une ancienne page appelle directement une fonction.
+  window.v3SelectLanguage = function (lang) {
+    if (LANGS.indexOf(lang) < 0 || navigationPending) return;
+    navigationPending = true;
+    rememberChoice(lang);
+    syncGoogleCookie(lang);
+    location.reload();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLanguage);
+  } else {
+    initLanguage();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', startTranslation);
