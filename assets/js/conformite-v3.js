@@ -25,48 +25,97 @@
       parent.appendChild(curtain);
     });
   }
-  // Traduction à la demande : ne jamais provoquer de rechargement de page.
-  var translationLoading = false;
+  // Traduction a la demande : un seul clic, aucun rechargement pour ES/EN/CA.
+  // Capture TOUS les clics pour neutraliser les anciens onclick et leurs reload().
+  var loadingPromise = null;
+  var requestId = 0;
   function languageFromButton(button) {
-    var attr = button.getAttribute('onclick') || '';
-    var match = attr.match(/\(['"](fr|es|en|ca)['"]\)/);
+    var match = (button.getAttribute('onclick') || '').match(/\(['"](fr|es|en|ca)['"]\)/);
     return match ? match[1] : null;
   }
-  function applyLanguage(lang) {
+  function selectReady() {
     var select = document.querySelector('.goog-te-combo');
-    if (!select) return false;
+    return select && select.options && select.options.length ? select : null;
+  }
+  function waitForSelect() {
+    return new Promise(function (resolve, reject) {
+      var attempts = 0;
+      var poll = setInterval(function () {
+        var select = selectReady();
+        if (select && ['es', 'en', 'ca'].every(function (lang) {
+          return Array.from(select.options).some(function (option) { return option.value === lang; });
+        })) {
+          clearInterval(poll);
+          // Google peut ajouter ses ecouteurs apres les options : attendre sa fin.
+          setTimeout(function () { resolve(select); }, 400);
+        } else if (++attempts >= 100) {
+          clearInterval(poll);
+          reject(new Error('Google Traduction indisponible'));
+        }
+      }, 100);
+    });
+  }
+  function startTranslator() {
+    if (loadingPromise) return loadingPromise;
+    if (selectReady()) return waitForSelect();
+    loadingPromise = new Promise(function (resolve, reject) {
+      var ready = !!(window.google && window.google.translate && window.google.translate.TranslateElement);
+      if (ready) { resolve(); return; }
+      var meta = document.querySelector('meta[name="v3-google-translate-callback"]');
+      var callbackName = meta ? meta.content : 'googleTranslateElementInit';
+      var script = document.createElement('script');
+      script.src = 'https://translate.google.com/translate_a/element.js?cb=' + encodeURIComponent(callbackName);
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = function () { reject(new Error('Chargement de traduction impossible')); };
+      document.head.appendChild(script);
+    }).then(waitForSelect).catch(function (error) {
+      loadingPromise = null;
+      throw error;
+    });
+    return loadingPromise;
+  }
+  function setTranslateCookie(lang) {
+    var value = lang === 'fr' ? '/fr/fr' : '/fr/' + lang;
+    document.cookie = 'googtrans=' + value + '; path=/; SameSite=Lax';
+    var host = window.location.hostname;
+    if (host && host.includes('.')) {
+      document.cookie = 'googtrans=' + value + '; path=/; domain=' + host + '; SameSite=Lax';
+    }
+  }
+  function applyLanguage(select, lang) {
+    if (!select.isConnected) select = selectReady();
+    if (!select) return;
     select.value = lang;
     select.dispatchEvent(new Event('change', { bubbles: true }));
-    return true;
   }
   document.addEventListener('click', function (event) {
     var button = event.target.closest('button[onclick*="changeLanguage"], button[onclick*="changeArtistLanguage"], button[onclick*="changeProLanguage"], button[onclick*="changeGlobalLanguage"]');
     if (!button) return;
     var lang = languageFromButton(button);
     if (!lang) return;
-    var serviceReady = !!(window.google && google.translate && google.translate.TranslateElement);
-    if (serviceReady && document.querySelector('.goog-te-combo')) return; // les fonctions existantes prennent le relais
     event.preventDefault();
     event.stopImmediatePropagation();
-    if (translationLoading) return;
-    translationLoading = true;
-    var callbackMeta = document.querySelector('meta[name="v3-google-translate-callback"]');
-    var cb = callbackMeta ? callbackMeta.content : 'googleTranslateElementInit';
-    function finish() {
-      var attempts = 0;
-      var poll = setInterval(function () {
-        attempts++;
-        if (applyLanguage(lang)) { clearInterval(poll); translationLoading = false; }
-        else if (attempts >= 50) { clearInterval(poll); translationLoading = false; console.warn('Google Traduction indisponible'); }
-      }, 100);
-    }
-    if (serviceReady) { finish(); return; }
-    var script = document.createElement('script');
-    script.src = 'https://translate.google.com/translate_a/element.js?cb=' + encodeURIComponent(cb);
-    script.async = true;
-    script.onload = finish;
-    script.onerror = function () { translationLoading = false; alert('Traduction indisponible. Réessayez plus tard.'); };
-    document.head.appendChild(script);
+    var ownRequest = ++requestId;
+    setTranslateCookie(lang);
+    // Le contenu source est en francais ; on le restaure sans appel externe.
+    if (lang === 'fr') { window.location.reload(); return; }
+    button.setAttribute('aria-busy', 'true');
+    startTranslator().then(function (select) {
+      if (ownRequest !== requestId) return;
+      applyLanguage(select, lang);
+      // Rattrapage si le service a fini son initialisation apres le 1er change.
+      setTimeout(function () {
+        if (ownRequest !== requestId) return;
+        var translated = document.documentElement.classList.contains('translated-ltr') ||
+                         document.documentElement.classList.contains('translated-rtl');
+        if (!translated) applyLanguage(select, lang);
+        button.removeAttribute('aria-busy');
+      }, 850);
+    }).catch(function () {
+      button.removeAttribute('aria-busy');
+      alert('Traduction indisponible pour le moment. Veuillez reessayer plus tard.');
+    });
   }, true);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', prepareEmbeds);
   else prepareEmbeds();
