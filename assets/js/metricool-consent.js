@@ -41,15 +41,16 @@
   function init() {
     var style = document.createElement('style');
     style.textContent =
-      '.lnvv-consent-manage{position:fixed;left:12px;bottom:12px;z-index:9998;padding:8px 12px;border:1px solid #556277;border-radius:10px;background:#fff;color:#152735;font:600 13px system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 12px #0003}' +
-      '.lnvv-consent-box{position:fixed;left:12px;bottom:62px;z-index:9999;box-sizing:border-box;width:min(410px,calc(100vw - 24px));padding:18px;border:1px solid #8795a7;border-radius:14px;background:#fff;color:#152735;box-shadow:0 12px 34px #0004;font:15px/1.5 system-ui,sans-serif}' +
+      '.lnvv-consent-manage{position:fixed;right:12px;bottom:12px;z-index:9998;padding:8px 12px;border:1px solid #556277;border-radius:10px;background:#fff;color:#152735;font:600 13px system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 12px #0003}' +
+      '.lnvv-consent-box{position:fixed;left:12px;bottom:62px;z-index:9999;box-sizing:border-box;width:min(410px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow-y:auto;padding:18px;border:1px solid #8795a7;border-radius:14px;background:#fff;color:#152735;box-shadow:0 12px 34px #0004;font:15px/1.5 system-ui,sans-serif}' +
       '.lnvv-consent-box p{margin:8px 0 14px;color:#243746}' +
       '.lnvv-consent-box a{color:#174b8b;text-decoration:underline}' +
       '.lnvv-consent-actions{display:flex;flex-wrap:wrap;gap:8px}' +
       '.lnvv-consent-actions button{padding:10px 12px;border:2px solid #20313a;border-radius:9px;font:700 14px system-ui,sans-serif;cursor:pointer}' +
       '.lnvv-consent-reject{background:#fff;color:#20313a}' +
       '.lnvv-consent-accept{background:#20313a;color:#fff}' +
-      '.lnvv-consent-box button:focus-visible,.lnvv-consent-manage:focus-visible{outline:3px solid #ffbd38;outline-offset:3px}';
+      '.lnvv-consent-box button:focus-visible,.lnvv-consent-manage:focus-visible{outline:3px solid #ffbd38;outline-offset:3px}' +
+      '@media(max-width:600px){.lnvv-consent-manage{right:10px;bottom:10px;padding:8px 10px;font-size:12px}.lnvv-consent-box{left:10px;bottom:10px;width:calc(100vw - 20px);padding:16px;max-height:calc(100dvh - 20px)}.lnvv-consent-actions button{min-height:44px}}';
     document.head.appendChild(style);
 
     var manage = document.createElement('button');
@@ -87,8 +88,18 @@
     dialog.appendChild(actions);
     document.body.appendChild(dialog);
 
-    function show() { dialog.hidden = false; dialog.style.display = 'block'; }
-    function hide() { dialog.hidden = true; dialog.style.display = 'none'; }
+    function show() {
+      dialog.hidden = false;
+      dialog.style.display = 'block';
+      manage.hidden = true;
+      manage.style.display = 'none';
+    }
+    function hide() {
+      dialog.hidden = true;
+      dialog.style.display = 'none';
+      manage.hidden = false;
+      manage.style.display = 'block';
+    }
 
     manage.addEventListener('click', show);
     reject.addEventListener('click', function () {
